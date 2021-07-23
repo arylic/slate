@@ -24,6 +24,30 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
+@import url("https://fonts.googleapis.com/css?family=Lato");html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto");html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+
+@import url("https://fonts.googleapis.com/css?family=Nunito");html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+
+@import url("https://fonts.googleapis.com/css?family=Fira%20Code");html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+
 html, body {
   color: $main-text;
   padding: 0;
@@ -59,7 +83,7 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -178,6 +202,7 @@ html, body {
     padding: 1em 0;
     margin-top: 1em;
     border-top: 1px dashed $nav-footer-border-color;
+    text-align: center;
 
     li,a {
       color: $nav-text;
@@ -189,7 +214,7 @@ html, body {
     }
 
     li {
-      font-size: 0.8em;
+      font-size: 0.95em;
       line-height: 1.7;
       text-decoration: none;
     }
@@ -385,6 +410,7 @@ html, body {
     font-size: 15px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
+    font-weight: bold;
   }
 
   h4, h5, h6 {
@@ -403,7 +429,7 @@ html, body {
     th,td {
       text-align: left;
       vertical-align: top;
-      line-height: 1.6;
+      line-height: 1.5;
       code {
         white-space: nowrap;
       }
@@ -413,6 +439,8 @@ html, body {
       padding: 5px 10px;
       border-bottom: 1px solid #ccc;
       vertical-align: bottom;
+      font-size: 0.8em;
+      font-weight: bolder;
     }
 
     td {
@@ -451,7 +479,10 @@ html, body {
 
   code {
     background-color: rgba(0,0,0,0.05);
-    padding: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
@@ -465,8 +496,8 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    // margin-top: 1.5em;
+    // margin-bottom: 1.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
 
@@ -487,14 +518,23 @@ html, body {
 
   aside.notice:before {
     @extend %icon-info-sign;
+    font-size: 1.5em;
+    vertical-align: middle;
+    opacity: 0.75;
   }
 
   aside.warning:before {
     @extend %icon-exclamation-sign;
+    font-size: 1.5em;
+    vertical-align: middle;
+    opacity: 0.75;
   }
 
   aside.success:before {
     @extend %icon-ok-sign;
+    font-size: 1.5em;
+    vertical-align: middle;
+    opacity: 0.75;
   }
 
   .search-highlight {
@@ -543,13 +583,13 @@ html, body {
     @extend %code-font;
     padding-top: 2em;
     padding-bottom: 2em;
-    padding: 2em $main-padding;
+    padding: 1.3em $main-padding;
   }
 
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      padding: $code-annotation-padding 2em;
+      padding: $code-annotation-padding 1.1em;
       color: #eee;
     }
   }
@@ -617,6 +657,10 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+.highlight .plaintext, .highlight .html {
+  color: $lang-plaintext
 }
 
 .copy-clipboard {
