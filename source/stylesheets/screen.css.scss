@@ -24,19 +24,7 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
-@import url("https://fonts.googleapis.com/css?family=Lato");html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%
-}
-
 @import url("https://fonts.googleapis.com/css?family=Roboto");html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%
-}
-
-@import url("https://fonts.googleapis.com/css?family=Nunito");html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%
@@ -179,6 +167,7 @@ html, body {
   .toc-link.active {
     background-color: $nav-active-bg;
     color: $nav-active-text;
+    font-weight: bold;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -214,7 +203,7 @@ html, body {
     }
 
     li {
-      font-size: 0.95em;
+      font-size: 0.85em;
       line-height: 1.7;
       text-decoration: none;
     }
@@ -444,7 +433,8 @@ html, body {
     }
 
     td {
-      padding: 10px;
+      padding: 8px 10px 8px 10px;
+      font-size: 0.95em;
     }
 
     tr:last-child {
@@ -456,7 +446,7 @@ html, body {
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      background-color: lighten($main-bg,1.2%);
     }
   }
 
@@ -478,12 +468,13 @@ html, body {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-radius: 3px;
+    color: rgba(231, 111, 67, 0.918);
+    background-color: rgba(223, 223, 223, 0.404);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 5px;
     @extend %break-words;
     @extend %code-font;
   }
@@ -521,6 +512,7 @@ html, body {
     font-size: 1.5em;
     vertical-align: middle;
     opacity: 0.75;
+    color: #ac8507c7;
   }
 
   aside.warning:before {
@@ -528,6 +520,7 @@ html, body {
     font-size: 1.5em;
     vertical-align: middle;
     opacity: 0.75;
+    color: #b61f29a8;
   }
 
   aside.success:before {
@@ -535,6 +528,7 @@ html, body {
     font-size: 1.5em;
     vertical-align: middle;
     opacity: 0.75;
+    color: #10a522a6;
   }
 
   .search-highlight {
@@ -591,6 +585,10 @@ html, body {
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 1.1em;
       color: #eee;
+    }
+    &>p code {
+      color: $code-annotation-code;
+      background-color: $code-annotation-code-bg;
     }
   }
 }
@@ -659,7 +657,8 @@ html, body {
   background-color: $code-bg;
 }
 
-.highlight .plaintext, .highlight .html {
+.highlight .plaintext code,
+.highlight .html code {
   color: $lang-plaintext
 }
 

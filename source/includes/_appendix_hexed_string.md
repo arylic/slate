@@ -1,6 +1,6 @@
 # Hexed Values
 
-> Convert a hexadecimal string representation in a human readable ASCII string.
+> Convert a hexadecimal string representation to a human readable ASCII string.
 
 ```c
 int hex_to_ascii(

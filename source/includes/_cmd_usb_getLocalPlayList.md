@@ -1,4 +1,6 @@
-## USB stick/disk playback
+## Get content from USB stick/disk
+
+Returns a list of music files on an attached USB stick or hard drive.
 
 Command: `getLocalPlayList`
 
@@ -33,8 +35,5 @@ no music file
 Key | Value-Description
 -+-
 `num` | Number of returned files
-`locallist` | The key to get the file an array of file
-`file` | Key to get the filepath
-
-
-
+`locallist` | The key to get an array of files
+`file` | The filepath of the file

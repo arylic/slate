@@ -1,7 +1,3 @@
-## Playback
-
-Command: `setPlayerCmd`  
-
 ### Playback
 
 > Request format for sub commands: `play` | `playlist` | `hex_playlist` | `playLocalList`:
@@ -12,13 +8,6 @@ GET /httpapi.asp?command=setPlayerCmd:playlist:<uri>:<index>
 GET /httpapi.asp?command=setPlayerCmd:hex_playlist:<uri>:<index>
 GET /httpapi.asp?command=setPlayerCmd:playLocalList:<index>
 ```
-
-Sub-Command | Parameters | Description
--+-+-
-`play` | | Play an URI<br>`uri` could be a direct URL to a web radio stream (must be URL encoded)
-`playlist` | `uri`, `index` | Play an URI<br>`uri` is an M3U playlist<br>`index` is the start index
-`hex_playlist` | `uri`, `index` | Play an URI<br>`uri` is an M3U playlist<br>`index` is the start index<br>The `uri` value must be a `[hexed string]`
-`playLocalList` | `index` | Play from USB disk<br>`index` is the start index
 
 ### Player Control
 
@@ -36,13 +25,6 @@ GET /httpapi.asp?command=setPlayerCmd:stop
 ```plaintext
 OK
 ```
-
-Sub-Command | Description
--+-
-`pause` | Pause current playback
-`resume` | Resume playback from last position, if it is paused
-`onepause` | Toggle Play/Pause
-`stop` | Stop current playback (play position will be reset to `0`)
 
 ### Track Selection
 
@@ -64,7 +46,7 @@ Sub-Command | Parameter | Description
 -+-+-
 `prev` | | Play previous track
 `next` | | Play next track
-`seek` | `position` | Seek in current track (fast forward and rewind) to `position`
+`seek` | `position` | Seconds to seek to, should be less than duration
 
 ### Adjusting Volume, Mute the Player
 
