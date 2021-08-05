@@ -40,14 +40,14 @@ GET /httpapi.asp?command=wlanGetApListEx
 ### Description of response values
 
 Key | Value Description
--+-
+---|---
 `res` | Number of SSID's found
 `aplist` | The key to get the list of scanned Access Points
 
 ### Description of an AP response object
 
 Key | Value Description
--+-
+---|---
 `auth` | Required WiFi authorization mechanism
 `bssid` | The MAC address of that WiFi
 `channel` | Used WiFi channel

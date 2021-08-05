@@ -49,7 +49,7 @@ GET /httpapi.asp?command=getFileInfo:<index>:<range>
 ### Parameter Description
 
 Parameter | Description
--+-
+---|---
 `index` | The sequence number of the  USB stick/disk playlist
 `range` | The number of files to be analized, starting an `index`
 
@@ -57,7 +57,7 @@ Parameter | Description
 ### Response Description
 
 Key | Value-Description
--+-
+---|---
 `Album` | The album where this track is from.<br>If the info is available, the value is returned as `[hexed string]`, otherwise `UNKNOWN` in plaintext
 `Artist` | The artist of that track.<br>If the info is available, the value is returned as `[hexed string]`, otherwise `UNKNOWN` in plaintext
 `Title` | The title of that track.<br>If the info is available, the value is returned as `[hexed string]`, otherwise `UNKNOWN` in plaintext

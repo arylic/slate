@@ -43,7 +43,7 @@ OK
 ```
 
 Sub-Command | Parameter | Description
--+-+-
+---|---|---
 `prev` | | Play previous track
 `next` | | Play next track
 `seek` | `position` | Seconds to seek to, should be less than duration
@@ -64,7 +64,7 @@ OK
 ```
 
 Sub-Command | Parameter | Description
--+-+-
+---|---|---
 `vol` | `value` | Adjusts the volume of the current device. The value ranges from `0-100`.
 `mute` | `value` | Set the mute mode<br>`0` - Not muted<br>`1` - Muted
 
@@ -83,7 +83,7 @@ OK
 ```
 
 Sub-Command | Parameter | Description
--+-+-
+---|---|---
 `loopmode` | `value` | Starts different playback modes<br>`0` - Sequential playback, no loop<br>`1` - Loops over the current track<br>`2` - Shuffle playback<br>`-1` - Playlist loop
 
 ### Adjust the Equalizer
@@ -101,7 +101,7 @@ OK
 ```
 
 Sub-Command | Parameter | Description
--+-+-
+---|---|---
 `equalizer` | `value` | Adjusts the built in equalizer. Available values are:<br>`0` - Disables EQ<br>`1` - Classic<br>`2` - Popular<br>`3` - Jazz<br>`4` - Vocal<br><br>**NOTE: Not all device supports an equalizer.**
 
 ### Get Equalizer Settings
@@ -119,6 +119,6 @@ GET /httpapi.asp?command=setPlayerCmd:getEqualizer
 ```
 
 Sub-Command | Description
--+-
+---|---
 `getEqualizer` | Returns current EQ setting. The response value is one of the possible settings from command `setPlayerCmd:equalizer:<value>`
 

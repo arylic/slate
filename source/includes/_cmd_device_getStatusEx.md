@@ -96,7 +96,7 @@ GET /httpapi.asp?command=getStatusEx
 ### Description of response values
 
 Key | Value Description
--+-
+---|---
 `BSSID` | *!! DOCUMENTATION IS MISSING !!*
 `CountryCode` | *!! DOCUMENTATION IS MISSING !!*
 `CountryRegion` | *!! DOCUMENTATION IS MISSING !!*

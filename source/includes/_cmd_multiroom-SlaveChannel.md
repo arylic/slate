@@ -19,7 +19,7 @@ OK
 ### Parameter Description
 
 Parameter | Description
--+-
+---|---
 `ip_address` | The IP address of the child player whose audio channel has to be switched
 `channel` | The channel that has to be switched<br>`0` - Stereo (both channels are on)<br>`1` - Left channel is on<br>`2` - Right channel is on
 

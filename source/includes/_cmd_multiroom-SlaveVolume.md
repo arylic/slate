@@ -18,7 +18,7 @@ OK
 ### Parameter Description
 
 Parameter | Description
--+-
+---|---
 `ip_address` | The IP address of the child player to be removed from the group
 `volume` | The volume to be set. Numeric value ranges from `0-100`
 

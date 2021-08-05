@@ -5,7 +5,7 @@ The command `setPlayerCmd` is just an abstract command, it needs a sub command t
 ### Playback Sub-Commands
 
 Sub-Command | Parameters | Description
--+-+-
+---|---|---
 `play` | | Play an URI<br>`uri` could be a direct URL to a web radio stream (must be URL encoded)
 `playlist` | `uri`, `index` | Play an URI<br>`uri` is an M3U playlist<br>`index` is the start index
 `hex_playlist` | `uri`, `index` | Play an URI<br>`uri` is an M3U playlist<br>`index` is the start index<br>The `uri` value must be a `[hexed string]`
@@ -14,7 +14,7 @@ Sub-Command | Parameters | Description
 ### Player Control Sub-Commands
 
 Sub-Command | Description
--+-
+---|---
 `pause` | Pause current playback
 `resume` | Resume playback from last position, if it is paused
 `onepause` | Toggle Play/Pause

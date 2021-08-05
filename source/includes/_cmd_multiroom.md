@@ -5,7 +5,7 @@ Command: `multiroom`
 The command `multiroom` is just an abstract command, it needs a sub command to work as expected. See the list of current available sub commands.
 
 Sub-Command | Description
--+-
+---|---
 `getSlaveList` | Retrieves a list of child players
 `SlaveVolume` | Adjusts the volume of a child player
 `SlaveMute` | Mute a child player

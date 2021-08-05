@@ -19,7 +19,7 @@ OK
 ### Parameter Description
 
 Parameter | Description
--+-
+---|---
 `ip_address` | The IP address of the child player that has to be masked
 
 

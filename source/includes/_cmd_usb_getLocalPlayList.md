@@ -33,7 +33,7 @@ no music file
 ```
 
 Key | Value-Description
--+-
+---|---
 `num` | Number of returned files
 `locallist` | The key to get an array of files
 `file` | The filepath of the file

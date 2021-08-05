@@ -17,7 +17,7 @@ OK
 Possible return values:
 
 Value | Value Description
--+-
+---|---
 `PROCESS` | Connection still in progress.
 `PAIRFAIL` | WiFi connection attempt failed. Wrong password given.
 `FAIL` | WiFi connection attempt failed.

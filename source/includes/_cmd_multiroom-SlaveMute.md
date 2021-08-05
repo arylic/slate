@@ -19,7 +19,7 @@ OK
 ### Parameter Description
 
 Parameter | Description
--+-
+---|---
 `ip_address` | The IP address of the child player which should be muted
 `mute` | The desired mute status<br>`0` - Unmuted<br>`1` - Muted
 

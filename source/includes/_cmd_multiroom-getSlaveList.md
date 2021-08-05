@@ -43,7 +43,7 @@ GET /httpapi.asp?command=multiroom:getSlaveList
 ### Response Description
 
 Key | Value-Description
--+-
+---|---
 `slaves` | The number of child players to this player. Numeric value.
 `wmrm_version` | *!! Documentation is MISSING !!*
 `slave_list` | Key to get the array of child players.
@@ -51,7 +51,7 @@ Key | Value-Description
 Child Player Item
 
 Key | Value-Description
--+-
+---|---
 `name` | The name of the player
 `uuid` | UUI of the player
 `ip` | Player's IP address

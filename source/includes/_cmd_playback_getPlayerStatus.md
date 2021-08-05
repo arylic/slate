@@ -35,7 +35,7 @@ GET /httpapi.asp?command=getPlayerStatus
 ### Description of response values
 
 Key | Value Description
--+-
+---|---
 `Album` | `[hexed string]` of the album
 `Artist` | `[hexed string]` of the artist
 `Title` | `[hexed string]` of the track title
