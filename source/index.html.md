@@ -15,10 +15,10 @@ includes:
   
   # Networking
   - group_networking
-  - cmd_wlanGetApListEx
-  - cmd_wlanConnectApEx
-  - cmd_wlanConnectHideApEx
-  - cmd_wlanGetConnectState
+  - cmd_networking_wlanGetApListEx
+  - cmd_networking_wlanConnectApEx
+  - cmd_networking_wlanConnectHideApEx
+  - cmd_networking_wlanGetConnectState
 
   # Device Informations
   - group_device
@@ -39,13 +39,13 @@ includes:
   # Multiroom
   - group_multiroom
   - cmd_multiroom
-  - cmd_multiroom-getSlaveList
-  - cmd_multiroom-SlaveChannel
-  - cmd_multiroom-SlaveMask
-  - cmd_multiroom-SlaveMute
-  - cmd_multiroom-SlaveVolume
-  - cmd_multiroom-SlaveKickout
-  - cmd_multiroom-ungroup
+  - cmd_multiroom_getSlaveList
+  - cmd_multiroom_SlaveChannel
+  - cmd_multiroom_SlaveMask
+  - cmd_multiroom_SlaveMute
+  - cmd_multiroom_SlaveVolume
+  - cmd_multiroom_SlaveKickout
+  - cmd_multiroom_ungroup
 
   # Appendix
   - appendix_hexed_string
