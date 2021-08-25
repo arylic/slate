@@ -8,7 +8,6 @@ Usage: $me [<options>] <command> [<command-options>]
 Run commands related to the slate process.
 
 Commands:
-
   serve                   Run the middleman server process, useful for
                           development.
   build                   Run the build process.
@@ -16,7 +15,6 @@ Commands:
                           --no-build to only deploy.
 
 Global Options:
-
   -h, --help              Show this help information.
   -v, --verbose           Increase verbosity. Useful for debugging.
 
@@ -29,7 +27,6 @@ Deploy options:
   --no-build              Do not build the source files.
 
 Arylic options:
-
   -t, --target            Builds the specified documentation target. If no
                           target parameter is given, the default is set to
                           'html'.
