@@ -27,14 +27,33 @@ Deploy options:
   -n, --no-hash           Don't append the source commit's hash to the deploy
                           commit's message.
   --no-build              Do not build the source files.
+
+Arylic options:
+
+  -t, --target            Builds the specified documentation target. If no
+                          target parameter is given, the default is set to
+                          'html'.
+
+                          There are three targets available:
+                          'html', 'tcp' and 'upnp'
+
+                          Example: ./slate.sh -t tcp serve
+                                   ./slate.sh --target html build
 "
 
+DOC_TARGET="html"
+
+run_copy_target() {
+  cp "source/${DOC_TARGET}-index.md" "source/index.html.md"
+}
 
 run_serve() {
+  run_copy_target
   exec bundle exec middleman serve --watcher-force-polling
 }
 
 run_build() {
+  run_copy_target
   bundle exec middleman build --clean
 }
 
@@ -68,6 +87,13 @@ parse_args() {
     elif [[ $1 = "--no-build" ]]; then
       no_build=true
       shift
+    elif [[ ( $1 = "-t" || $1 = "--target" ) && -n $2 ]]; then
+      if [[ $2 != "html" && $2 != "tcp" && $2 != "upnp" ]]; then
+        >&2 echo "Target parameter can only be one of: 'html', 'tcp' or 'upnp'!"
+        exit 1
+      fi
+      DOC_TARGET=$2
+      shift 2
     elif [[ $1 = "serve" || $1 = "build" || $1 = "deploy" ]]; then
       if [ ! -z "${command}" ]; then
         >&2 echo "You can only specify one command."

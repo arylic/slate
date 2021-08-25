@@ -1,5 +1,5 @@
 ---
-title: Arylic Audio UPnP API
+title: Arylic Audio TCP API
 
 # Languages must be one of: https://git.io/vQNgJ
 language_tabs:
@@ -10,7 +10,7 @@ toc_footers:
   - Based on firmware version<br><code>4.6.9724.26</code>
   
 includes:
-  - upnp/intro_welcome
+  - tcp/intro_welcome
 
 search: true
 
