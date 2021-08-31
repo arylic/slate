@@ -29,18 +29,20 @@ Deploy options:
 Arylic options:
   -t, --target            Builds the specified documentation target. If no
                           target parameter is given, the default is set to
-                          'html'.
+                          'http'.
 
                           There are three targets available:
-                          'html', 'tcp' and 'upnp'
+                          'http', 'tcp', 'uart' and 'upnp'
 
                           Example: ./slate.sh -t tcp serve
                                    ./slate.sh --target html build
 "
 
-DOC_TARGET="html"
+DOC_TARGET="http"
 
 run_copy_target() {
+  TARGET_UPPER=$( tr '[a-z]' '[A-Z]' <<< $DOC_TARGET)
+  echo "== Preparing Arylic ${TARGET_UPPER}-API"
   cp "source/${DOC_TARGET}-index.md" "source/index.html.md"
 }
 
@@ -85,8 +87,8 @@ parse_args() {
       no_build=true
       shift
     elif [[ ( $1 = "-t" || $1 = "--target" ) && -n $2 ]]; then
-      if [[ $2 != "html" && $2 != "tcp" && $2 != "upnp" ]]; then
-        >&2 echo "Target parameter can only be one of: 'html', 'tcp' or 'upnp'!"
+      if [[ $2 != "http" && $2 != "tcp" && $2 != "uart" && $2 != "upnp" ]]; then
+        >&2 echo "Target parameter can only be one of: 'html', 'tcp', 'uart' or 'upnp'!"
         exit 1
       fi
       DOC_TARGET=$2

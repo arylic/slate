@@ -6,8 +6,6 @@ language_tabs:
 
 toc_footers:
   - Documentation originally<br/>made with ❤️ by <a href='https://woodbytes.me' target='_blank'>Woodbytes</a>
-  - "&nbsp;"
-  - Based on firmware version<br><code>4.6.9724.26</code>
   
 includes:
   - http/intro_welcome
