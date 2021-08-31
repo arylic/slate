@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Arylic Audio UPnP API</title>
+    <title>Arylic Audio HTTP API</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -303,21 +303,1575 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#upnp-api" class="toc-h1 toc-link" data-title="UPnP API">UPnP API</a>
+            <a href="#http-api" class="toc-h1 toc-link" data-title="HTTP API">HTTP API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#abstract" class="toc-h2 toc-link" data-title="Abstract">Abstract</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#networking" class="toc-h1 toc-link" data-title="Networking">Networking</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-of-scanned-ap-39-s" class="toc-h2 toc-link" data-title="List of scanned AP's">List of scanned AP's</a>
+                  </li>
+                  <li>
+                    <a href="#connect-to-wifi" class="toc-h2 toc-link" data-title="Connect to WiFi">Connect to WiFi</a>
+                  </li>
+                  <li>
+                    <a href="#connect-to-hidden-wifi" class="toc-h2 toc-link" data-title="Connect to hidden WiFi">Connect to hidden WiFi</a>
+                  </li>
+                  <li>
+                    <a href="#device-connection-state" class="toc-h2 toc-link" data-title="Device connection state">Device connection state</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#device-informations" class="toc-h1 toc-link" data-title="Device Informations">Device Informations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-device-metadata" class="toc-h2 toc-link" data-title="Get Device Metadata">Get Device Metadata</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#playback-control" class="toc-h1 toc-link" data-title="Playback Control">Playback Control</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#playback-sub-commands" class="toc-h2 toc-link" data-title="Playback Sub-Commands">Playback Sub-Commands</a>
+                  </li>
+                  <li>
+                    <a href="#player-control-sub-commands" class="toc-h2 toc-link" data-title="Player Control Sub-Commands">Player Control Sub-Commands</a>
+                  </li>
+                  <li>
+                    <a href="#current-player-status" class="toc-h2 toc-link" data-title="Current Player status">Current Player status</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#usb-stick-disk-playback" class="toc-h1 toc-link" data-title="USB stick/disk playback">USB stick/disk playback</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-content-from-usb-stick-disk" class="toc-h2 toc-link" data-title="Get content from USB stick/disk">Get content from USB stick/disk</a>
+                  </li>
+                  <li>
+                    <a href="#play-from-usb-stick-disk" class="toc-h2 toc-link" data-title="Play from USB stick/disk">Play from USB stick/disk</a>
+                  </li>
+                  <li>
+                    <a href="#track-info-from-usb-stick-disk" class="toc-h2 toc-link" data-title="Track Info from USB stick/disk">Track Info from USB stick/disk</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#multiroom-multizone" class="toc-h1 toc-link" data-title="Multiroom / Multizone">Multiroom / Multizone</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#multiroom-overview" class="toc-h2 toc-link" data-title="Multiroom Overview">Multiroom Overview</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-list-of-child-players" class="toc-h2 toc-link" data-title="Get a list of child players">Get a list of child players</a>
+                  </li>
+                  <li>
+                    <a href="#set-the-audio-channel-of-a-player" class="toc-h2 toc-link" data-title="Set the Audio Channel of a Player">Set the Audio Channel of a Player</a>
+                  </li>
+                  <li>
+                    <a href="#hide-a-player-from-network" class="toc-h2 toc-link" data-title="Hide a Player from Network">Hide a Player from Network</a>
+                  </li>
+                  <li>
+                    <a href="#mute-a-player" class="toc-h2 toc-link" data-title="Mute a Player">Mute a Player</a>
+                  </li>
+                  <li>
+                    <a href="#adjust-volume-of-a-player" class="toc-h2 toc-link" data-title="Adjust Volume of a Player">Adjust Volume of a Player</a>
+                  </li>
+                  <li>
+                    <a href="#remove-player-from-group" class="toc-h2 toc-link" data-title="Remove Player from Group">Remove Player from Group</a>
+                  </li>
+                  <li>
+                    <a href="#disable-multiroom-mode" class="toc-h2 toc-link" data-title="Disable Multiroom Mode">Disable Multiroom Mode</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#hexed-values" class="toc-h1 toc-link" data-title="Hexed Values">Hexed Values</a>
           </li>
       </ul>
         <ul class="toc-footer">
             <li>Documentation originally<br/>made with ❤️ by <a href='https://woodbytes.me' target='_blank'>Woodbytes</a></li>
-            <li>&nbsp;</li>
-            <li>Based on firmware version<br><code>4.6.9724.26</code></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='upnp-api'>UPnP API</h1>
-<p>Welcome to Arylic&#39;s UPnP API developer documentation.<br>
+        <h1 id='http-api'>HTTP API</h1>
+<p>Welcome to Arylic&#39;s developer documentation.<br>
 This documentation describes the API of DIY audio boards, which are manufactured by the <a href="https://linkplay.com/">Linkplay</a> company. Their boards are so called white label solutions, which means that hundreds of brands use them in their own products (as Arylic does). There are many well-known manufacturers that use Linkplay as their core. Theoretically, most of them should be controllable with the API described below.</p>
+<h2 id='abstract'>Abstract</h2>
+<blockquote>
+<p>Assuming a device IP address of <code>192.168.10.1</code>, the general request format would look like:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code> GET http://192.168.10.1/httpapi.asp?command={command}
+</code></pre></div>
+<p>Arylic&#39;s <code>Axx</code> modules are SoC modules for WiFi Audio solutions, which supports Smartlink, DLNA, Spotify Connect and Airplay. They also provide support for an <code>HTTP</code> API to get quick access.</p>
+
+<p>To communicate with a board you have to send <code>HTTP GET</code> requests.<br>
+The response is in <code>JSON</code> format.</p>
+
+<aside class="notice">
+All response examples in this documentation are from different devices (<strong>Up2Stream Amp v4</strong>, <strong>Up2Stream mini v3</strong>) but same firmware version (<code>4.6.9724.26</code>). It is possible that responses from older firmware may differ.
+</aside>
+<h3 id='foo-bar'>Foo-Bar</h3><h1 id='networking'>Networking</h1><h2 id='list-of-scanned-ap-39-s'>List of scanned AP&#39;s</h2>
+<p>Retrieves a list of nearby scanned WiFi Access Points.</p>
+
+<p>Command: <code>wlanGetApListEx</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanGetApListEx
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"res"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"aplist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"auth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AES"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"bssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b4:fb:e4:f4:73:81"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"extch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"rssi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"ssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57696E6B656C6761737365"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"auth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WPA2PSK"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"bssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18:e8:29:9d:75:c5"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"encry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AES"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"extch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"rssi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"ssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42657465696765757A65556E696669"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='description-of-response-values'>Description of response values</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>res</code></td>
+<td>Number of SSID&#39;s found</td>
+</tr>
+<tr>
+<td><code>aplist</code></td>
+<td>The key to get the list of scanned Access Points</td>
+</tr>
+</tbody></table>
+<h3 id='description-of-an-ap-response-object'>Description of an AP response object</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>auth</code></td>
+<td>Required WiFi authorization mechanism</td>
+</tr>
+<tr>
+<td><code>bssid</code></td>
+<td>The MAC address of that WiFi</td>
+</tr>
+<tr>
+<td><code>channel</code></td>
+<td>Used WiFi channel</td>
+</tr>
+<tr>
+<td><code>extch</code></td>
+<td><em>!! Documentation is MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>rssi</code></td>
+<td>RSSI Level that WiFi<br>Value ranges from <code>0 - 100</code>.<br><code>100</code> means best signal strength.</td>
+</tr>
+<tr>
+<td><code>ssid</code></td>
+<td>The SSID of that WiFi network<br><code>[hexed string]</code></td>
+</tr>
+</tbody></table>
+<h2 id='connect-to-wifi'>Connect to WiFi</h2>
+<p>Request to connect to a desired WiFi network. Mainly used during device setup.</p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanConnectApEx:ssid=<span class="nt">&lt;SSID&gt;</span>:ch=<span class="nt">&lt;CHANNEL&gt;</span>:auth=<span class="nt">&lt;AUTH&gt;</span>:encry=<span class="nt">&lt;ENCRYPT&gt;</span>:pwd=<span class="nt">&lt;PASSWORD&gt;</span>:chext=1
+</code></pre></div>
+<p>Command: <code>wlanConnectApEx</code><br>
+Command parameters:</p>
+
+<ul>
+<li><code>ssid</code> - <code>[hexed string]</code> of the WiFi SSID</li>
+<li><code>ch</code> - WiFi channel to connect (1-12)</li>
+<li><code>auth</code> - WiFi authorization mechanism, <code>OPEN</code> or <code>WPA2PSK</code></li>
+<li><code>encry</code> - Encryption type, <code>AES</code> or <code>NONE</code></li>
+<li><code>pwd</code> - <code>[hexed string]</code> of the WiFi password</li>
+<li><code>chext</code> - 1</li>
+</ul>
+
+<aside class="notice">
+This request has no response, you can call <strong>wlanGetConnectState</strong> to get the connection state.
+</aside>
+<h2 id='connect-to-hidden-wifi'>Connect to hidden WiFi</h2>
+<p>Connect the device to a hidden WiFi network. When connecting, the device connection may be lost.</p>
+
+<blockquote>
+<p>Request format with password:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanConnectHideApEx:ssid=<span class="nt">&lt;SSID&gt;</span>:pwd=<span class="nt">&lt;PWD&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Request format without password:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanConnectHideApEx:ssid=<span class="nt">&lt;SSID&gt;</span>
+</code></pre></div>
+<p>Command: <code>wlanConnectHideApEx</code><br>
+Command parameters:</p>
+
+<ul>
+<li><code>ssid</code> - <code>[hexed string]</code> of the WiFi SSID</li>
+<li><code>pwd</code> - <code>[hexed string]</code> of the WiFi password<br>(optional value)</li>
+</ul>
+
+<aside class="notice">
+This request has no response, you can call <strong>wlanGetConnectState</strong> to get the connection state.
+</aside>
+<h2 id='device-connection-state'>Device connection state</h2>
+<p>Command: <code>wlanGetConnectState</code>  </p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanGetConnectState
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div>
+<p>Possible return values:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Value Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>PROCESS</code></td>
+<td>Connection still in progress.</td>
+</tr>
+<tr>
+<td><code>PAIRFAIL</code></td>
+<td>WiFi connection attempt failed. Wrong password given.</td>
+</tr>
+<tr>
+<td><code>FAIL</code></td>
+<td>WiFi connection attempt failed.</td>
+</tr>
+<tr>
+<td><code>OK</code></td>
+<td>Device is connected.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The response value is NOT in JSON format! It is just a plaintext string.
+</aside>
+<h1 id='device-informations'>Device Informations</h1><h2 id='get-device-metadata'>Get Device Metadata</h2>
+<p>Retrieves detailed informations about a connected device.</p>
+
+<p>Command: <code>getStatusEx</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getStatusEx
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"BSSID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B4:FB:E4:F4:73:81"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CountryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"CountryRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"DeviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Büro"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"GroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Büro"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"MAC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00:22:6C:2D:16:89"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"NewVer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"RSSI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-76"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20210624"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"SSIDStrategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"STA_MAC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00:22:6C:2D:16:8B"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"VersionUpdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"WifiChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apcli0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.213.69.116"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"auth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WPAPSKWPA2PSK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"battery"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"battery_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A31_stable_4.6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"release"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cap1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x305200"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"capability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x28e90b80"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"communication_port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8819"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021:07:23"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dsp_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dsp_ver_new"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dst_enable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"encry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AES"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"essid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57696E6B656C6761737365"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eth2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eth_dhcp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firmware"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.6.9724"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hardware"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hideSSID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ignore_silenceOTATime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ignore_talkstart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"iheartradio_new"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"internet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"iot_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_us"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lbc_support"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mcu_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mcu_ver_new"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"netstat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"new_iheart_podcast"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"new_tunein_preset_and_alarm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"plm_support"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"preset_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"priv_prj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP2STREAM_AMP_V4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"privacy_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP2STREAM_AMP_V4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"project_build_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a31rakoit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prompt_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ra0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.254"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"securemode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"security"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https/2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"security_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"silenceOTATime"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"spotify_active"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SoundSystem_1689"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"streams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x7b9831fe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"streams_all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x7bff7ffe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"temp_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F4F82885209537F1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tidal_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:56:44"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uart_pass_port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8899"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"upnp_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid:FF31F09E-501F-2B00-89EE-7709FF31F09E"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"upnp_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1005"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FF31F09E501F2B0089EE7709"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"web_firmware_update_hide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wmrm_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='description-of-response-values'>Description of response values</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>BSSID</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>CountryCode</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>CountryRegion</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>DeviceName</code></td>
+<td>The device UPnP and Airplay friendly name</td>
+</tr>
+<tr>
+<td><code>GroupName</code></td>
+<td>You can guess what it means, but:<br><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>MAC</code></td>
+<td>MAC address of the device</td>
+</tr>
+<tr>
+<td><code>NewVer</code></td>
+<td>If there is a new firmware available (in case of <code>VersionUpdate</code> is set to <code>1</code>), this is the new version number</td>
+</tr>
+<tr>
+<td><code>RSSI</code></td>
+<td><a href="https://en.wikipedia.org/wiki/Received_signal_strength_indication">RSSI Level</a> of used WiFi<br>Value ranges from <code>0 - 100</code>. <code>100</code> means best signal strength.</td>
+</tr>
+<tr>
+<td><code>Release</code></td>
+<td>Firmware build date<br>Format: <code>YYYYMMDD</code></td>
+</tr>
+<tr>
+<td><code>SSIDStrategy</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>STA_MAC</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>VersionUpdate</code></td>
+<td>Flag that determines, if there is a new firmware version available or not.<br><code>0</code>: no new firmware<br><code>1</code>: new firmware available</td>
+</tr>
+<tr>
+<td><code>WifiChannel</code></td>
+<td>The current connected WiFi channel</td>
+</tr>
+<tr>
+<td><code>apcli0</code></td>
+<td>Device&#39;s IP address over WiFi</td>
+</tr>
+<tr>
+<td><code>auth</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>battery</code></td>
+<td><code>0</code>: battery is not charging<br><code>1</code>: battery is charging</td>
+</tr>
+<tr>
+<td><code>battery_percent</code></td>
+<td>Battery charge level (<code>0 - 100</code>)</td>
+</tr>
+<tr>
+<td><code>branch</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>build</code></td>
+<td>Possible values: <code>release</code>, <code>debug</code>, <code>backup</code><br><code>release</code>: this is a release version<br><code>debug</code>: this is a debug version<br><code>backup</code>: this is a backup version</td>
+</tr>
+<tr>
+<td><code>cap1</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>capability</code></td>
+<td>This is a bit mask:<br><code>0</code>: has airplay support<br><code>1</code>: has ethernet support<br><code>2</code>: has USB disk support<br><code>3</code>: has WPS button support<br><code>4</code>: has battery support<br><code>5</code>: has preset key support<br><code>6</code>: has I2S in support</td>
+</tr>
+<tr>
+<td><code>communication_port</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>dsp_ver</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>dsp_ver_new</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>dst_enable</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>encry</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>essid</code></td>
+<td>SSID of the WiFi the device is connected to<br><code>[hexed string]</code></td>
+</tr>
+<tr>
+<td><code>eth2</code></td>
+<td>Device&#39;s IP address when it&#39;s connected to ethernet</td>
+</tr>
+<tr>
+<td><code>eth_dhcp</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>external</code></td>
+<td>hexadecimal value<br><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>firmware</code></td>
+<td>Current firmware version</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>hardware</code></td>
+<td>Hardware model</td>
+</tr>
+<tr>
+<td><code>hideSSID</code></td>
+<td>When the device is operating as a WiFi hotspot, this flag determines whether its SSID should be hidden or visible<br><code>0</code> - <code>ssid</code> is visible<br><code>1</code> - <code>ssid</code> is hidden</td>
+</tr>
+<tr>
+<td><code>ignore_silenceOTATime</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>ignore_talkstart</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>iheartradio_new</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>internet</code></td>
+<td>Curremt status of internet access:<br><code>0</code>: not ready<br><code>1</code>: ready</td>
+</tr>
+<tr>
+<td><code>iot_ver</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>The language</td>
+</tr>
+<tr>
+<td><code>languages</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>lbc_support</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>mcu_ver</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em><br>But I guess: Version of MCU</td>
+</tr>
+<tr>
+<td><code>mcu_ver_new</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em><br>But I guess:<br>Flag that indicates, if there is a newer version of MCU available<br><code>0</code> - No new version<br><code>1</code> - New version available</td>
+</tr>
+<tr>
+<td><code>netstat</code></td>
+<td>WiFi connect state:<br><code>0</code>: no connection<br><code>1</code>: connecting<br><code>2</code>: connected</td>
+</tr>
+<tr>
+<td><code>new_iheart_podcast</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>new_tunein_preset_and_alarm</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>plm_support</code></td>
+<td>This is a bit mask:<br><code>0</code>: LineIn (Aux support)<br><code>1</code>: Bluetooth support<br><code>2</code>: Optical support</td>
+</tr>
+<tr>
+<td><code>preset_key</code></td>
+<td>Presets key number. But in detail:<br><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>priv_prj</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>privacy_mode</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>project</code></td>
+<td>The project name</td>
+</tr>
+<tr>
+<td><code>project_build_name</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>prompt_status</code></td>
+<td>It seems to relate to the commands <code>PromptEnable</code> and <code>PromptDisable</code>, but:<br><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>ra0</code></td>
+<td>WiFi AP IP address, normally it is <code>10.10.10.254</code></td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>securemode</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>security_version</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>service_version</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>silenceOTATime</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>spotify_active</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em><br>But I guess:<br>Flag that indicates if Spotify is currently playing on the device (via Spotify Connect?)<br><code>0</code> - Spotify is not playing<br><code>1</code> - Spotify is playing</td>
+</tr>
+<tr>
+<td><code>ssid</code></td>
+<td>Device&#39;s own <code>SSID</code> when in WiFi pairing mode or when device&#39;s WiFi hotspot is active</td>
+</tr>
+<tr>
+<td><code>streams</code></td>
+<td>This is a bit mask:<br><code>0</code>: If Airplay is enabled<br><code>1</code>: If DLNA is enabled<br><code>2</code>: Has TTPod support<br><code>3</code>: Has TuneIn support<br><code>4</code>: Has Pandora support<br><code>5</code>: Has DoubanFM support<br>!! DOCUMENTATION IS MISSING !!*</td>
+</tr>
+<tr>
+<td><code>streams_all</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>temp_uuid</code></td>
+<td>Temporary UUID (will change after device reboot)</td>
+</tr>
+<tr>
+<td><code>tidal_version</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>tz</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>uart_pass_port</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>upnp_uuid</code></td>
+<td>The UPnP UUID</td>
+</tr>
+<tr>
+<td><code>upnp_version</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>usb_freesize</code></td>
+<td>USB disk available free space</td>
+</tr>
+<tr>
+<td><code>usb_storagesize</code></td>
+<td>USB disk storage size</td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td>Device permanent UUID (will remain after device reboot)</td>
+</tr>
+<tr>
+<td><code>web_firmware_update_hide</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>wmrm_version</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+There are <strong>LOTS</strong> of keys in the example response which don't have any description yet!
+</aside>
+<h1 id='playback-control'>Playback Control</h1><p>Command: <code>setPlayerCmd</code>  </p>
+
+<p>The command <code>setPlayerCmd</code> is just an abstract command, it needs a sub command to work as expected. See the list of current available sub commands.</p>
+<h3 id='playback-sub-commands'>Playback Sub-Commands</h3>
+<table><thead>
+<tr>
+<th>Sub-Command</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>play</code></td>
+<td></td>
+<td>Play an URI<br><code>uri</code> could be a direct URL to a web radio stream (must be URL encoded)</td>
+</tr>
+<tr>
+<td><code>playlist</code></td>
+<td><code>uri</code>, <code>index</code></td>
+<td>Play an URI<br><code>uri</code> is an M3U playlist<br><code>index</code> is the start index</td>
+</tr>
+<tr>
+<td><code>hex_playlist</code></td>
+<td><code>uri</code>, <code>index</code></td>
+<td>Play an URI<br><code>uri</code> is an M3U playlist<br><code>index</code> is the start index<br>The <code>uri</code> value must be a <code>[hexed string]</code></td>
+</tr>
+<tr>
+<td><code>playLocalList</code></td>
+<td><code>index</code></td>
+<td>Play from USB disk<br><code>index</code> is the start index</td>
+</tr>
+</tbody></table>
+<h3 id='player-control-sub-commands'>Player Control Sub-Commands</h3>
+<table><thead>
+<tr>
+<th>Sub-Command</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>pause</code></td>
+<td>Pause current playback</td>
+</tr>
+<tr>
+<td><code>resume</code></td>
+<td>Resume playback from last position, if it is paused</td>
+</tr>
+<tr>
+<td><code>onepause</code></td>
+<td>Toggle Play/Pause</td>
+</tr>
+<tr>
+<td><code>stop</code></td>
+<td>Stop current playback (play position will be reset to <code>0</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='current-player-status'>Current Player status</h2>
+<p>Command: <code>getPlayerStatus</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getPlayerStatus
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"Album"</span><span class="p">:</span><span class="w"> </span><span class="s2">"556E6B6E6F776E"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Artist"</span><span class="p">:</span><span class="w"> </span><span class="s2">"556E6B6E6F776E"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"556E6B6E6F776E"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alarmflag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"curpos"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89872"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offset_pts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4843754"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"plicount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"plicurr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totlen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"219806"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='description-of-response-values'>Description of response values</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Album</code></td>
+<td><code>[hexed string]</code> of the album</td>
+</tr>
+<tr>
+<td><code>Artist</code></td>
+<td><code>[hexed string]</code> of the artist</td>
+</tr>
+<tr>
+<td><code>Title</code></td>
+<td><code>[hexed string]</code> of the track title</td>
+</tr>
+<tr>
+<td><code>alarmflag</code></td>
+<td><em>!! Documentation is MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>ch</code></td>
+<td>Active channel(s)<br><code>0</code>: Stereo<br><code>1</code>: Left<br><code>2</code>: Right</td>
+</tr>
+<tr>
+<td><code>curpos</code></td>
+<td>Current playing position (in ms)</td>
+</tr>
+<tr>
+<td><code>eq</code></td>
+<td>The current Equalizer setting</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td>Loop mode<br><code>0</code>: Sequence, no loop<br><code>1</code>: Single loop<br><code>2</code>: Shuffle all<br><code>3</code>:loop all</td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td>Playback mode<br><code>0</code> - <code>PLAYER_MODE_NONE</code><br><code>1</code> - <code>PLAYER_MODE_AIRPLAY</code><br><code>2</code> - <code>PLAYER_MODE_DLNA</code><br><code>10</code> - <code>PLAYER_MODE_WIIMU</code><br><code>11</code> - <code>PLAYER_MODE_WIIMU_LOCAL</code><br><code>12</code> - <code>PLAYER_MODE_WIIMU_STATION</code><br><code>13</code> - <code>PLAYER_MODE_WIIMU_RADIO</code><br><code>14</code> - <code>PLAYER_MODE_WIIMU_SONGLIST</code><br><code>19</code> - <code>PLAYER_MODE_WIIMU_MAX</code><br><code>20</code> - <code>PLAYER_MODE_HTTP</code><br><code>21</code> - <code>PLAYER_MODE_HTTP_LOCAL</code><br><code>29</code> - <code>PLAYER_MODE_HTTP_MAX</code><br><code>30</code> - <code>PLAYER_MODE_ALARM</code><br><code>40</code> - <code>PLAYER_MODE_LINEIN</code><br><code>41</code> - <code>PLAYER_MODE_BT</code><br><code>42</code> - <code>PLAYER_MODE_EXT_LOCAL</code><br><code>43</code> - <code>PLAYER_MODE_OPTICAL</code><br><code>49</code> - <code>PLAYER_MODE_LINEIN_MAX</code><br><code>50</code> - <code>PLAYER_MODE_MIRROR</code><br><code>60</code> - <code>PLAYER_MODE_TALK</code><br><code>99</code> - <code>PLAYER_MODE_CHILD</code><br><br><aside class="warning">@Arylic: Documentation is MISSING! Please review and give feedback.</aside></td>
+</tr>
+<tr>
+<td><code>mute</code></td>
+<td>The mute status<br><code>0</code>: Not muted<br><code>1</code>: Muted</td>
+</tr>
+<tr>
+<td><code>offset_pts</code></td>
+<td><em>!! DOCUMENTATION IS MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>plicount</code></td>
+<td>The total number of tracks in the playlist</td>
+</tr>
+<tr>
+<td><code>plicurr</code></td>
+<td>Index of current track in playlist</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>Player status<br><code>0</code>: stop<br><code>1</code>: play<br><code>2</code>: load<br><code>3</code>: pause<br><br><strong>NOTE: This documentation describes number values for the key. However, the example response from my device returns the text representations instead!</strong></td>
+</tr>
+<tr>
+<td><code>totlen</code></td>
+<td>Current track length (in ms)</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>0</code>: Main or standalone device<br><code>1</code>: Child</td>
+</tr>
+<tr>
+<td><code>vol</code></td>
+<td>Current volume<br>Value ranges from <code>0 - 100</code><br><code>0</code> means off</td>
+</tr>
+</tbody></table>
+<h3 id='playback'>Playback</h3>
+<blockquote>
+<p>Request format for sub commands: <code>play</code> | <code>playlist</code> | <code>hex_playlist</code> | <code>playLocalList</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:play:<span class="nt">&lt;uri&gt;</span>
+GET /httpapi.asp?command=setPlayerCmd:playlist:<span class="nt">&lt;uri&gt;</span>:<span class="nt">&lt;index&gt;</span>
+GET /httpapi.asp?command=setPlayerCmd:hex_playlist:<span class="nt">&lt;uri&gt;</span>:<span class="nt">&lt;index&gt;</span>
+GET /httpapi.asp?command=setPlayerCmd:playLocalList:<span class="nt">&lt;index&gt;</span>
+</code></pre></div><h3 id='player-control'>Player Control</h3>
+<blockquote>
+<p>Request format for sub commands: <code>pause</code> | <code>resume</code> | <code>onepause</code> | <code>stop</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:pause
+GET /httpapi.asp?command=setPlayerCmd:resume
+GET /httpapi.asp?command=setPlayerCmd:onepause
+GET /httpapi.asp?command=setPlayerCmd:stop
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div><h3 id='track-selection'>Track Selection</h3>
+<blockquote>
+<p>Request format for sub commands: <code>prev</code> | <code>next</code> | <code>seek</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:prev
+GET /httpapi.asp?command=setPlayerCmd:next
+GET /httpapi.asp?command=setPlayerCmd:seek:<span class="nt">&lt;position&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Sub-Command</th>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>prev</code></td>
+<td></td>
+<td>Play previous track</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td></td>
+<td>Play next track</td>
+</tr>
+<tr>
+<td><code>seek</code></td>
+<td><code>position</code></td>
+<td>Seconds to seek to, should be less than duration</td>
+</tr>
+</tbody></table>
+<h3 id='adjusting-volume-mute-the-player'>Adjusting Volume, Mute the Player</h3>
+<blockquote>
+<p>Request format for sub command: <code>vol</code> | <code>mute</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GEt /httpapi.asp?command=setPlayerCmd:vol:<span class="nt">&lt;value&gt;</span>
+GEt /httpapi.asp?command=setPlayerCmd:mute:<span class="nt">&lt;value&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Sub-Command</th>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>vol</code></td>
+<td><code>value</code></td>
+<td>Adjusts the volume of the current device. The value ranges from <code>0-100</code>.</td>
+</tr>
+<tr>
+<td><code>mute</code></td>
+<td><code>value</code></td>
+<td>Set the mute mode<br><code>0</code> - Not muted<br><code>1</code> - Muted</td>
+</tr>
+</tbody></table>
+<h3 id='playback-mode'>Playback Mode</h3>
+<blockquote>
+<p>Request format for sub command: <code>loopmode</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>SET /httpapi.asp?command=setPlayerCmd:loopmode:<span class="nt">&lt;value&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Sub-Command</th>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>loopmode</code></td>
+<td><code>value</code></td>
+<td>Starts different playback modes<br><code>0</code> - Sequential playback, no loop<br><code>1</code> - Loops over the current track<br><code>2</code> - Shuffle playback<br><code>-1</code> - Playlist loop</td>
+</tr>
+</tbody></table>
+<h3 id='adjust-the-equalizer'>Adjust the Equalizer</h3>
+<blockquote>
+<p>Request format for sub command: <code>equalizer</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>SET /httpapi.asp?command=setPlayerCmd:equalizer:<span class="nt">&lt;value&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Sub-Command</th>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>equalizer</code></td>
+<td><code>value</code></td>
+<td>Adjusts the built in equalizer. Available values are:<br><code>0</code> - Disables EQ<br><code>1</code> - Classic<br><code>2</code> - Popular<br><code>3</code> - Jazz<br><code>4</code> - Vocal<br><br><strong>NOTE: Not all device supports an equalizer.</strong></td>
+</tr>
+</tbody></table>
+<h3 id='get-equalizer-settings'>Get Equalizer Settings</h3>
+<blockquote>
+<p>Request format for sub command: <code>getEqualizer</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:getEqualizer
+</code></pre></div>
+<blockquote>
+<p>Example response (when EQ is set to Jazz):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>3
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Sub-Command</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>getEqualizer</code></td>
+<td>Returns current EQ setting. The response value is one of the possible settings from command <code>setPlayerCmd:equalizer:&lt;value&gt;</code></td>
+</tr>
+</tbody></table>
+<h1 id='usb-stick-disk-playback'>USB stick/disk playback</h1><h2 id='get-content-from-usb-stick-disk'>Get content from USB stick/disk</h2>
+<p>Returns a list of music files on an attached USB stick or hard drive.</p>
+
+<p>Command: <code>getLocalPlayList</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getLocalPlayList
+</code></pre></div>
+<blockquote>
+<p>Example response when a stick/disk is connected and files where found:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"locallist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/media/sda1/avril lavigne - tik tok.mp3"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/media/sda1/avril lavigne – hush hush.mp3"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example response when no stick/disk is connected or no files where found:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>no music file
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value-Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>num</code></td>
+<td>Number of returned files</td>
+</tr>
+<tr>
+<td><code>locallist</code></td>
+<td>The key to get an array of files</td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td>The filepath of the file</td>
+</tr>
+</tbody></table>
+<h2 id='play-from-usb-stick-disk'>Play from USB stick/disk</h2>
+<p>Based on the return value of <code>getLocalPlayList</code> this command can be used to selectively play individual tracks on a connected USB stick/hard disk. The parameter <index> specifies the position of the track within the array returned by <code>getLocalPlayList</code>.</p>
+
+<p>Command: <code>playLocalList</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=playLocalList:<span class="nt">&lt;index&gt;</span>
+</code></pre></div>
+<p>This request produces no response.</p>
+<h2 id='track-info-from-usb-stick-disk'>Track Info from USB stick/disk</h2>
+<p>Allows to query file information on a connected USB stick or hard drive. Two parameters are passed. The first, the  <code>index</code> value, stands for &quot;the number of files in the file system&quot; from which the output should start. The second parameter <code>range</code> specifies how many files should be analyzed, starting with <code>index</code>. So, if <code>range</code> is larger than <code>1</code>, the response will give informations for multiple music files.</p>
+
+<p>Command: <code>getFileInfo</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getFileInfo:<span class="nt">&lt;index&gt;</span>:<span class="nt">&lt;range&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example response for <code>range=1</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"Album"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Artist"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/media/sda1/avril lavigne – hush hush.mp3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totlen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example response for <code>range=2</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"infolist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"Album"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"Artist"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/ media / sda1 / avrilavigne - hush hush.mp3"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"totlen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"Album"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"Artist"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/ media / sda1 / avrilavigne - hush hush2.mp3"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"totlen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='parameter-description'>Parameter Description</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>index</code></td>
+<td>The sequence number of the  USB stick/disk playlist</td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td>The number of files to be analized, starting an <code>index</code></td>
+</tr>
+</tbody></table>
+<h3 id='response-description'>Response Description</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value-Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Album</code></td>
+<td>The album where this track is from.<br>If the info is available, the value is returned as <code>[hexed string]</code>, otherwise <code>UNKNOWN</code> in plaintext</td>
+</tr>
+<tr>
+<td><code>Artist</code></td>
+<td>The artist of that track.<br>If the info is available, the value is returned as <code>[hexed string]</code>, otherwise <code>UNKNOWN</code> in plaintext</td>
+</tr>
+<tr>
+<td><code>Title</code></td>
+<td>The title of that track.<br>If the info is available, the value is returned as <code>[hexed string]</code>, otherwise <code>UNKNOWN</code> in plaintext</td>
+</tr>
+<tr>
+<td><code>filename</code></td>
+<td>The filename as <code>[hexed string]</code></td>
+</tr>
+<tr>
+<td><code>totlen</code></td>
+<td>Total playing time of that track (in ms)</td>
+</tr>
+</tbody></table>
+<h1 id='multiroom-multizone'>Multiroom / Multizone</h1>
+<p>Multiroom is a very special feature in LinkPlay modules. Several devices can be grouped together to form a so-called listening zone, so that all devices in this group play music from one and the same source. The volume can be controlled per device or for the entire group.</p>
+
+<p>If you have already grouped several devices into one zone, then one device of this group is always the host. All other devices are child to this one. This is important to know if you want to play music via Spotify Connect. In the Spotify app, only the host appears in the list of Connect devices! All other devices are hidden.</p>
+<h2 id='multiroom-overview'>Multiroom Overview</h2>
+<p>Command: <code>multiroom</code></p>
+
+<p>The command <code>multiroom</code> is just an abstract command, it needs a sub command to work as expected. See the list of current available sub commands.</p>
+
+<table><thead>
+<tr>
+<th>Sub-Command</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>getSlaveList</code></td>
+<td>Retrieves a list of child players</td>
+</tr>
+<tr>
+<td><code>SlaveVolume</code></td>
+<td>Adjusts the volume of a child player</td>
+</tr>
+<tr>
+<td><code>SlaveMute</code></td>
+<td>Mute a child player</td>
+</tr>
+<tr>
+<td><code>SlaveMask</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SlaveUnMask</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SlaveKickout</code></td>
+<td>Tells the main device to delete a child player from a group, given by its IP address</td>
+</tr>
+<tr>
+<td><code>SlaveChannel</code></td>
+<td>Tells the main device to set the audio channel of a child player</td>
+</tr>
+<tr>
+<td><code>Ungroup</code></td>
+<td>Disables multiroom mode on the main device. This kicks out all child players</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-list-of-child-players'>Get a list of child players</h2>
+<p>Sub-Command: <code>getSlaveList</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:getSlaveList
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"slaves"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"wmrm_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"slave_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wohnzimmer"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FF31F09EFFF1D2BB4FDE2B3F"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.213.69.106"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WiiMu-A31"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"mute"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"battery_percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"battery_charging"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example response when there are no child players where found:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"slaves"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"wmrm_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-description'>Response Description</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value-Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>slaves</code></td>
+<td>The number of child players to this player. Numeric value.</td>
+</tr>
+<tr>
+<td><code>wmrm_version</code></td>
+<td><em>!! Documentation is MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>slave_list</code></td>
+<td>Key to get the array of child players.</td>
+</tr>
+</tbody></table>
+
+<p>Child Player Item</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value-Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>The name of the player</td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td>UUI of the player</td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td>Player&#39;s IP address</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><em>!! Documentation is MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Board type (I guess)<br><em>!! Documentation is MISSING !!</em></td>
+</tr>
+<tr>
+<td><code>channel</code></td>
+<td>Active audio channel<br><code>0</code> - Stereo<br><code>1</code> - Left channel<br><code>2</code> - Right channel</td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td>Current volume. Value ranges from <code>0 - 100</code></td>
+</tr>
+<tr>
+<td><code>mute</code></td>
+<td>Mute status:<br><code>0</code> - Device is unmuted<br><code>1</code> - Device is muted</td>
+</tr>
+<tr>
+<td><code>battery_percent</code></td>
+<td>Battery level (if battery is present). Value ranges from <code>0 - 100</code></td>
+</tr>
+<tr>
+<td><code>battery_charging</code></td>
+<td>Flag that indicates whether the battery is currently charging or not.<br><code>0</code> - Battery not charging<br><code>1</code> - Battery is charging</td>
+</tr>
+</tbody></table>
+<h2 id='set-the-audio-channel-of-a-player'>Set the Audio Channel of a Player</h2>
+<p>Allows dedicated switching on and off of an audio channel from a child player in a Multiroom group.</p>
+
+<p>Sub-Command: <code>SlaveChannel</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:SlaveChannel:<span class="nt">&lt;ip_address&gt;</span>:<span class="nt">&lt;channel&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div><h3 id='parameter-description'>Parameter Description</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ip_address</code></td>
+<td>The IP address of the child player whose audio channel has to be switched</td>
+</tr>
+<tr>
+<td><code>channel</code></td>
+<td>The channel that has to be switched<br><code>0</code> - Stereo (both channels are on)<br><code>1</code> - Left channel is on<br><code>2</code> - Right channel is on</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The response isn't in JSON format. It is just plaintext.
+</aside>
+<h2 id='hide-a-player-from-network'>Hide a Player from Network</h2>
+<p>Mask one slave, If slave is masked, it will act as a standalone device.</p>
+
+<p>Sub-Command: <code>SlaveMask</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:SlaveMask:<span class="nt">&lt;ip_address&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div><h3 id='parameter-description'>Parameter Description</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ip_address</code></td>
+<td>The IP address of the child player that has to be masked</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The response isn't in JSON format. It is just plaintext.
+</aside>
+<h2 id='mute-a-player'>Mute a Player</h2>
+<p>Enables to mute a specific player of a Multiroom group.</p>
+
+<p>Sub-Command: <code>SlaveMute</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:SlaveMute:<span class="nt">&lt;ip_address&gt;</span>:<span class="nt">&lt;mute&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div><h3 id='parameter-description'>Parameter Description</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ip_address</code></td>
+<td>The IP address of the child player which should be muted</td>
+</tr>
+<tr>
+<td><code>mute</code></td>
+<td>The desired mute status<br><code>0</code> - Unmuted<br><code>1</code> - Muted</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The response isn't in JSON format. It is just plaintext.
+</aside>
+<h2 id='adjust-volume-of-a-player'>Adjust Volume of a Player</h2>
+<p>Allows you to adjust the volume of each player in a group. The request must be sent to the host of the group. When a player is removed from the group (command <code>multiroom:SlaveKickout</code>), this setting is lost, and the player gets its previous volume.</p>
+
+<p>Sub-Command: <code>SlaveVolume</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:SlaveVolume:<span class="nt">&lt;ip_address&gt;</span>:<span class="nt">&lt;volume&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div><h3 id='parameter-description'>Parameter Description</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ip_address</code></td>
+<td>The IP address of the child player to be removed from the group</td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td>The volume to be set. Numeric value ranges from <code>0-100</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The response isn't in JSON format. It is just plaintext.
+</aside>
+<h2 id='remove-player-from-group'>Remove Player from Group</h2>
+<p>Sub-Command: <code>SlaveKickout</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:SlaveKickout:<span class="nt">&lt;ip_address&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div><h3 id='parameter-description'>Parameter Description</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ip_address</code></td>
+<td>The IP address of the child player to be removed from the group</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The response isn't in JSON format. It is just plaintext.
+</aside>
+<h2 id='disable-multiroom-mode'>Disable Multiroom Mode</h2>
+<p>Turns off Multiroom mode on a host player, and resolves the entire group.</p>
+
+<p>Sub-Command: <code>Ungroup</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:Ungroup
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+</code></pre></div>
+<aside class="notice">
+The response isn't in JSON format. It is just plaintext.
+</aside>
+<h1 id='hexed-values'>Hexed Values</h1>
+<blockquote>
+<p>Convert a hexadecimal string representation to a human readable ASCII string.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight c tab-c"><code><span class="kt">int</span> <span class="nf">hex_to_ascii</span><span class="p">(</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pSrc</span><span class="p">,</span> 
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pDst</span><span class="p">,</span> 
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nSrcLength</span><span class="p">,</span> 
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nDstLength</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">pDst</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nDstLength</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">nSrcLength</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">2</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="kt">char</span> <span class="n">val1</span> <span class="o">=</span> <span class="n">pSrc</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="kt">char</span> <span class="n">val2</span> <span class="o">=</span> <span class="n">pSrc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span> <span class="n">val1</span> <span class="o">&gt;</span> <span class="mh">0x60</span><span class="p">)</span>
+             <span class="n">val1</span> <span class="o">-=</span> <span class="mh">0x57</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">val1</span> <span class="o">&gt;</span> <span class="mh">0x40</span><span class="p">)</span>
+             <span class="n">val1</span> <span class="o">-=</span> <span class="mh">0x37</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="n">val1</span> <span class="o">-=</span> <span class="mh">0x30</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span> <span class="n">val2</span> <span class="o">&gt;</span> <span class="mh">0x60</span><span class="p">)</span>
+            <span class="n">val2</span> <span class="o">-=</span> <span class="mh">0x57</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">val2</span> <span class="o">&gt;</span> <span class="mh">0x40</span><span class="p">)</span>
+            <span class="n">val2</span> <span class="o">-=</span> <span class="mh">0x37</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="n">val2</span> <span class="o">-=</span> <span class="mh">0x30</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">val1</span> <span class="o">&gt;</span> <span class="mi">15</span> <span class="o">||</span> <span class="n">val2</span> <span class="o">&gt;</span> <span class="mi">15</span> <span class="o">||</span> <span class="n">val1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">val2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="n">pDst</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">val1</span><span class="o">*</span><span class="mi">16</span> <span class="o">+</span> <span class="n">val2</span><span class="p">;</span>
+        <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">j</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Convert a human readable ASCII string to a hexadecimal string representation.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight c tab-c"><code><span class="kt">int</span> <span class="nf">ascii_to_hex</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">ascii_in</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">hex_out</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ascii_len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">hex_len</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="n">hex</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'0'</span><span class="p">,</span> <span class="sc">'1'</span><span class="p">,</span> <span class="sc">'2'</span><span class="p">,</span> <span class="sc">'3'</span><span class="p">,</span> <span class="sc">'4'</span><span class="p">,</span> <span class="sc">'5'</span><span class="p">,</span> <span class="sc">'6'</span><span class="p">,</span> <span class="sc">'7'</span><span class="p">,</span> <span class="sc">'8'</span><span class="p">,</span><span class="sc">'9'</span><span class="p">,</span> <span class="sc">'A'</span><span class="p">,</span> <span class="sc">'B'</span><span class="p">,</span> <span class="sc">'C'</span><span class="p">,</span> <span class="sc">'D'</span><span class="p">,</span> <span class="sc">'E'</span><span class="p">,</span> <span class="sc">'F'</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">memset</span><span class="p">(</span><span class="n">hex_out</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hex_len</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">ascii_len</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">ascii_in</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x000000ff</span><span class="p">;</span> 
+        <span class="n">hex_out</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex</span><span class="p">[</span><span class="n">b</span> <span class="o">/</span> <span class="mi">16</span><span class="p">];</span>
+        <span class="n">hex_out</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex</span><span class="p">[</span><span class="n">b</span> <span class="o">%</span> <span class="mi">16</span><span class="p">];</span>
+
+        <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+        <span class="n">ret</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div>
+<p>As you may have noticed in some examples, there are certain values that need to be converted from a string to a hexadecimal value before sending to the API, or from a hexadecimal value to a human readable ASCII string after receiving a response. These values are marked with <code>[hexed string]</code>.</p>
+
+<p>Here are two C functions, one to convert a hexadecimal string representation in a human readable ASCII string, and one function to do the opposide:</p>
 
       </div>
       <div class="dark-box">
