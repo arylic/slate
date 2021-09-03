@@ -1,1 +1,1 @@
-# Device Informations
+# Device Information

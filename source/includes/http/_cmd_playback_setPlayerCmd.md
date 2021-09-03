@@ -1,39 +1,67 @@
 ### Playback
 
-> Request format for sub commands: `play` | `playlist` | `hex_playlist` | `playLocalList` | `m3u:play`:
+Command: `setPlayerCmd`  
+
+The command `setPlayerCmd` is the main command, it needs a sub command to execute an action. See the list of current available sub commands.
+
+
+### Play Sub-command
+> Request format for sub command: `play`
 
 ```html
-GET /httpapi.asp?command=setPlayerCmd:play:<uri>
-GET /httpapi.asp?command=setPlayerCmd:playlist:<uri>:<index>
-GET /httpapi.asp?command=setPlayerCmd:hex_playlist:<uri>:<index>
-GET /httpapi.asp?command=setPlayerCmd:playLocalList:<index>
-GET /httpapi.asp?command=setPlayerCmd:m3u:play:<uri>
+SET /httpapi.asp?command=setPlayerCmd:play:<url>
 ```
 
-Sub-Command | Parameter | Description
----|---|---
-`play` | `uri` | Play the `uri` immediately, it's normally used to play a radio link
-`playLocalList` | `index` | Play the songs on USB pendrive start from <index>, and <index> start from 1
-`m3u:play` | `uri` | 
-
-M3U format private extension
-
-To send a M3U link, and it will be then parsed and create a playlist for playback. supported M3U tags:
+> Example response:
 
 ```plaintext
-  #EXTM3U m3u header, must be in the first line
-  #EXTURL:URL URL for coverart, placed before the music link
-  #EXTINF:N,ARTIST - TITLE Meta info, placed before the music link
-  URL music link, relative to m3u or absolute,
-    example:
-  #EXTM3U
-  #EXTURL:http://192.168.0.2/test/cover.jpg
-  #EXTINF:1,P!nk - Just give me a reason
-    Just Give Me A Reason.mp3
+OK
 ```
 
-### Player Control
+Play Instruction for any valid audio file or stream specified as a `URL`. 
 
+Sub-Command: `play`
+
+Parameter | Description
+---|---|---
+`url` | A complete `URL` for an audio source on the internet or addressable local device<br>`http://89.223.45.5:8000/progressive-flac` example audio file<br>`http://stream.live.vc.bbcmedia.co.uk/bbc_6music` example radio station file   
+
+
+### M3U File/Playlist Sub-command
+> Request format for sub command: `m3u:playlist`
+
+```html
+SET /httpapi.asp?command=setPlayerCmd:m3u:play:<url><index>
+```
+
+> Example response:
+
+```plaintext
+OK
+```
+
+Play Instruction for any valid `m3u` file or playlist specified as a `URL`. 
+
+Sub-Command: `m3u:play`
+
+Parameter | Description
+---|---|---
+`url` | A complete `URL` for an m3u file source on the internet or addressable local device<br>`http://nwt-stuff.com/Audio/playlists/ProgFLAC.m3u` example audio file<br>`http://nwt-stuff.com/Audio/playlists/bbc_6music.m3u8` example radio station file   
+
+<aside class="notice">
+The format of `m3u` files is not covered in this documentation. See <a href="https://docs.fileformat.com/audio/m3u/" target="_blank">further information on m3u file formats</a>.
+</aside>
+
+
+### Other Playback Sub-Commands
+*!! DOCUMENTATION IN PROGRESS !!*
+
+Sub-Command | Parameters | Description
+---|---|---
+`hex_playlist` | `uri`, `index` | Play an URI<br>`uri` is an M3U playlist<br>`index` is the start index<br>The `uri` value must be a `[hexed string]`
+
+
+### Playback Control Sub-Commands
 > Request format for sub commands: `pause` | `resume` | `onepause` | `stop`:
 
 ```html
@@ -49,8 +77,17 @@ GET /httpapi.asp?command=setPlayerCmd:stop
 OK
 ```
 
-### Track Selection
+The following commands will operate on the selected audio device.  
 
+Sub-Command | Description
+---|---
+`pause` | Pause current playback
+`resume` | Resume playback from last position, if it is paused
+`onepause` | Toggle Play/Pause
+`stop` | Stop current playback and removes slected source from device
+
+
+### Track Selection
 > Request format for sub commands: `prev` | `next` | `seek`:
 
 ```html
@@ -65,6 +102,7 @@ GET /httpapi.asp?command=setPlayerCmd:playindex:<index>
 ```plaintext
 OK
 ```
+The following commands will operate on the selected audio device.
 
 Sub-Command | Parameter | Description
 ---|---|---
@@ -78,8 +116,8 @@ Sub-Command | Parameter | Description
 > Request format for sub command: `vol` | `mute`
 
 ```html
-GEt /httpapi.asp?command=setPlayerCmd:vol:<value>
-GEt /httpapi.asp?command=setPlayerCmd:mute:<value>
+GEt /httpapi.asp?command=setPlayerCmd:vol:<num_value>
+GEt /httpapi.asp?command=setPlayerCmd:mute:<flag_value>
 ```
 
 > Example response:
@@ -90,15 +128,14 @@ OK
 
 Sub-Command | Parameter | Description
 ---|---|---
-`vol` | `value` | Adjusts the volume of the current device. The value ranges from `0-100`.
-`mute` | `value` | Set the mute mode<br>`0` - Not muted<br>`1` - Muted
+`vol` | `num_value` | Adjusts the volume of the current device.<br>Value range is from `0-100`.
+`mute` | `flag_value` | Set the mute mode<br>`0`: Not muted<br>`1`: Muted
 
-### Playback Mode
-
+### Playback SHUFFLE and REPEAT Mode 
 > Request format for sub command: `loopmode`
 
 ```html
-SET /httpapi.asp?command=setPlayerCmd:loopmode:<value>
+SET /httpapi.asp?command=setPlayerCmd:loopmode:<flag_value>
 ```
 
 > Example response:
@@ -109,14 +146,13 @@ OK
 
 Sub-Command | Parameter | Description
 ---|---|---
-`loopmode` | `value` | Starts different playback modes<br>`0` - Sequential playback, no loop<br>`1` - Loops over the current track<br>`2` - Shuffle playback<br>`-1` - Playlist loop
+`loopmode` | `flag_value` | Activates a combination of Shuffle and Repeat modes<br>`0`: Shuffle disabled, Repeat enabled - loop<br>`1`: Shuffle disabled, Repeat enabled - loop once<br>`2`: Shuffle enabled, Repeat enabled - loop<br>`3`: Shuffle enabled, Repeat disabled<br>`4`: Shuffle disabled, Repeat disabled<br>`5`: Shuffle enabled, Repeat enabled - loop once<br>
 
 ### Adjust the Equalizer
-
 > Request format for sub command: `equalizer`
 
 ```html
-SET /httpapi.asp?command=setPlayerCmd:equalizer:<value>
+SET /httpapi.asp?command=setPlayerCmd:equalizer:<flag_value>
 ```
 
 > Example response:
@@ -127,10 +163,9 @@ OK
 
 Sub-Command | Parameter | Description
 ---|---|---
-`equalizer` | `value` | Adjusts the built in equalizer. Available values are:<br>`0` - Disables EQ<br>`1` - Classic<br>`2` - Popular<br>`3` - Jazz<br>`4` - Vocal<br><br>**NOTE: Not all device supports an equalizer.**
+`equalizer` | `flag_value` | Adjusts the built in equalizer. Available values are:<br>`0`: Disables EQ<br>`1`: Classic<br>`2`: Popular<br>`3`: Jazz<br>`4`: Vocal<br><br>**NOTE: Not all device supports an equalizer.**
 
 ### Get Equalizer Settings
-
 > Request format for sub command: `getEqualizer`
 
 ```html
