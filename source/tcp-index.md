@@ -1,5 +1,5 @@
 ---
-title: Arylic Audio TCP API
+title: Arylic Audio TCP API Interface
 
 # Languages must be one of: https://git.io/vQNgJ
 language_tabs:
