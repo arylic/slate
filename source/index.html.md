@@ -17,16 +17,21 @@ includes:
   - http/cmd_networking_wlanConnectApEx
   - http/cmd_networking_wlanConnectHideApEx
   - http/cmd_networking_wlanGetConnectState
+  - http/cmd_networking_getStaticIP
+  - http/cmd_networking_setStaticIP
+  - http/cmd_networking_setDhcp
 
   # Device Informations
   - http/group_device
   - http/cmd_device_getStatusEx
+  - http/cmd_device_getsyslog
 
   # Playback control
   - http/group_playback
   - http/cmd_playback
   - http/cmd_playback_getPlayerStatus
   - http/cmd_playback_setPlayerCmd
+  - http/cmd_playback_GetTrackNumber
 
   # USB disk playback
   - http/group_usb
