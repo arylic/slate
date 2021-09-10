@@ -325,6 +325,15 @@
                   <li>
                     <a href="#device-connection-state" class="toc-h2 toc-link" data-title="Device connection state">Device connection state</a>
                   </li>
+                  <li>
+                    <a href="#query-networking-status" class="toc-h2 toc-link" data-title="Query networking status">Query networking status</a>
+                  </li>
+                  <li>
+                    <a href="#set-manual-ip" class="toc-h2 toc-link" data-title="Set Manual IP">Set Manual IP</a>
+                  </li>
+                  <li>
+                    <a href="#set-dhcp" class="toc-h2 toc-link" data-title="Set DHCP">Set DHCP</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -332,6 +341,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-device-metadata" class="toc-h2 toc-link" data-title="Get Device Metadata">Get Device Metadata</a>
+                  </li>
+                  <li>
+                    <a href="#get-system-log" class="toc-h2 toc-link" data-title="Get System Log">Get System Log</a>
                   </li>
               </ul>
           </li>
@@ -346,6 +358,9 @@
                   </li>
                   <li>
                     <a href="#current-player-status" class="toc-h2 toc-link" data-title="Current Player status">Current Player status</a>
+                  </li>
+                  <li>
+                    <a href="#query-playlist-song-count" class="toc-h2 toc-link" data-title="Query Playlist Song Count">Query Playlist Song Count</a>
                   </li>
               </ul>
           </li>
@@ -591,6 +606,149 @@ This request has no response, you can call <strong>wlanGetConnectState</strong> 
 
 <aside class="notice">
 The response value is NOT in JSON format! It is just a plaintext string.
+</aside>
+<h2 id='query-networking-status'>Query networking status</h2>
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getStaticIP
+</code></pre></div>
+<blockquote>
+<p>Example response for ETH DHCP:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"wifi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example response for ETH Manual IP:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"wifi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eth_static_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.10.103"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eth_static_mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255.255.255.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eth_static_gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.10.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eth_static_dns1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.10.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eth_static_dns2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Query current networking status</p>
+
+<p>Command: <code>getStaticIP</code>  </p>
+<h3 id='description-of-response-values'>Description of response values</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>wifi</code></td>
+<td>state of WiFi: <br><code>-1</code> - not connected<br><code>0</code> - Static IP<br><code>1</code> - DHCP</td>
+</tr>
+<tr>
+<td><code>eth</code></td>
+<td>state of ETH: <br><code>-1</code> - not connected<br><code>0</code> - Static IP<br><code>1</code> - DHCP</td>
+</tr>
+<tr>
+<td><code>eth_static_ip</code></td>
+<td>Available when <code>eth</code> is <code>0</code>, Manually set IP address</td>
+</tr>
+<tr>
+<td><code>eth_static_mask</code></td>
+<td>Available when <code>eth</code> is <code>0</code>, Net mask</td>
+</tr>
+<tr>
+<td><code>eth_static_gateway</code></td>
+<td>Available when <code>eth</code> is <code>0</code>, Gateway</td>
+</tr>
+<tr>
+<td><code>eth_static_dns1</code></td>
+<td>Available when <code>eth</code> is <code>0</code>, Prefered DNS</td>
+</tr>
+<tr>
+<td><code>eth_static_dsn2</code></td>
+<td>Available when <code>eth</code> is <code>0</code>, Alternate DNS</td>
+</tr>
+<tr>
+<td><code>wifi_static_ip</code></td>
+<td>Available when <code>wifi</code> is <code>0</code>, Manually set IP address</td>
+</tr>
+<tr>
+<td><code>wifi_static_mask</code></td>
+<td>Available when <code>wifi</code> is <code>0</code>, Net mask</td>
+</tr>
+<tr>
+<td><code>wifi_static_gateway</code></td>
+<td>Available when <code>wifi</code> is <code>0</code>, Gateway</td>
+</tr>
+<tr>
+<td><code>wifi_static_dns1</code></td>
+<td>Available when <code>wifi</code> is <code>0</code>, Prefered DNS</td>
+</tr>
+<tr>
+<td><code>wifi_static_dsn2</code></td>
+<td>Available when <code>wifi</code> is <code>0</code>, Alternate DNS</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Introduced in version 4.6.328252
+</aside>
+<h2 id='set-manual-ip'>Set Manual IP</h2>
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setStaticIP:{"type":"<span class="nt">&lt;TYPE&gt;</span>","ip":"<span class="nt">&lt;IP&gt;</span>","mask":"<span class="nt">&lt;MASK&gt;</span>","gateway":"<span class="nt">&lt;GW&gt;</span>","dns":[{"service":"<span class="nt">&lt;DNS1&gt;</span>"},{"service":"<span class="nt">&lt;DNS2&gt;</span>"}]}
+</code></pre></div>
+<blockquote>
+<p>Sample Response: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>OK
+</code></pre></div>
+<p>Manually set network parameters for WiFi or Ethernet.</p>
+
+<p>Command: <code>setStaticIP</code>  </p>
+
+<p>Command parameters:</p>
+
+<ul>
+<li><code>&lt;TYPE&gt;</code> - Network interface to set, could be <code>wifi</code> or <code>eth</code></li>
+<li><code>&lt;IP&gt;</code> - IPV4 address to manually set</li>
+<li><code>&lt;MASK&gt;</code> - network mask </li>
+<li><code>&lt;GW&gt;</code> - Gateway</li>
+<li><code>&lt;DNS1&gt;</code> - Prefered DNS</li>
+<li><code>&lt;DNS2&gt;</code> - Alternate DNS</li>
+</ul>
+
+<aside class="notice">
+Introduced in version 4.6.328252
+</aside>
+<h2 id='set-dhcp'>Set DHCP</h2>
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setDhcp:<span class="nt">&lt;TYPE&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Sample Response: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>OK
+</code></pre></div>
+<p>Request to connect to a desired WiFi network. Mainly used during device setup.</p>
+
+<p>Command: <code>setDhcp</code>  </p>
+
+<p>Command parameters:</p>
+
+<ul>
+<li><code>&lt;TYPE&gt;</code> - Network interface to set, could be <code>wifi</code> or <code>eth</code></li>
+</ul>
+
+<aside class="notice">
+Introduced in version 4.6.328252
 </aside>
 <h1 id='device-informations'>Device Informations</h1><h2 id='get-device-metadata'>Get Device Metadata</h2>
 <p>Retrieves detailed informations about a connected device.</p>
@@ -1007,6 +1165,30 @@ The response value is NOT in JSON format! It is just a plaintext string.
 <aside class="warning">
 There are <strong>LOTS</strong> of keys in the example response which don't have any description yet!
 </aside>
+<h2 id='get-system-log'>Get System Log</h2>
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getsyslog
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;DIV&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"dl"</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">data/sys.log</span><span class="nt">&gt;</span>download<span class="nt">&lt;/a&gt;&lt;hr&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/DIV&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
+<p>Command: <code>getsyslog</code></p>
+
+<p>To get current system log for debugging, the content is encryted. The response for this command is special, it will show a download link for user. And after clicked, will download the log file onto your computer. </p>
 <h1 id='playback-control'>Playback Control</h1><p>Command: <code>setPlayerCmd</code>  </p>
 
 <p>The command <code>setPlayerCmd</code> is just an abstract command, it needs a sub command to work as expected. See the list of current available sub commands.</p>
@@ -1171,12 +1353,50 @@ There are <strong>LOTS</strong> of keys in the example response which don't have
 </tbody></table>
 <h3 id='playback'>Playback</h3>
 <blockquote>
-<p>Request format for sub commands: <code>play</code> | <code>playlist</code> | <code>hex_playlist</code> | <code>playLocalList</code>:</p>
+<p>Request format for sub commands: <code>play</code> | <code>playlist</code> | <code>hex_playlist</code> | <code>playLocalList</code> | <code>m3u:play</code>:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:play:<span class="nt">&lt;uri&gt;</span>
 GET /httpapi.asp?command=setPlayerCmd:playlist:<span class="nt">&lt;uri&gt;</span>:<span class="nt">&lt;index&gt;</span>
 GET /httpapi.asp?command=setPlayerCmd:hex_playlist:<span class="nt">&lt;uri&gt;</span>:<span class="nt">&lt;index&gt;</span>
 GET /httpapi.asp?command=setPlayerCmd:playLocalList:<span class="nt">&lt;index&gt;</span>
+GET /httpapi.asp?command=setPlayerCmd:m3u:play:<span class="nt">&lt;uri&gt;</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Sub-Command</th>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>play</code></td>
+<td><code>uri</code></td>
+<td>Play the <code>uri</code> immediately, it&#39;s normally used to play a radio link</td>
+</tr>
+<tr>
+<td><code>playLocalList</code></td>
+<td><code>index</code></td>
+<td>Play the songs on USB pendrive start from <index>, and <index> start from 1</td>
+</tr>
+<tr>
+<td><code>m3u:play</code></td>
+<td><code>uri</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>M3U format private extension</p>
+
+<p>To send a M3U link, and it will be then parsed and create a playlist for playback. supported M3U tags:</p>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>  #EXTM3U m3u header, must be in the first line
+  #EXTURL:URL URL for coverart, placed before the music link
+  #EXTINF:N,ARTIST - TITLE Meta info, placed before the music link
+  URL music link, relative to m3u or absolute,
+    example:
+  #EXTM3U
+  #EXTURL:http://192.168.0.2/test/cover.jpg
+  #EXTINF:1,P!nk - Just give me a reason
+    Just Give Me A Reason.mp3
 </code></pre></div><h3 id='player-control'>Player Control</h3>
 <blockquote>
 <p>Request format for sub commands: <code>pause</code> | <code>resume</code> | <code>onepause</code> | <code>stop</code>:</p>
@@ -1197,6 +1417,7 @@ GET /httpapi.asp?command=setPlayerCmd:stop
 <div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:prev
 GET /httpapi.asp?command=setPlayerCmd:next
 GET /httpapi.asp?command=setPlayerCmd:seek:<span class="nt">&lt;position&gt;</span>
+GET /httpapi.asp?command=setPlayerCmd:playindex:<span class="nt">&lt;index&gt;</span>
 </code></pre></div>
 <blockquote>
 <p>Example response:</p>
@@ -1224,6 +1445,11 @@ GET /httpapi.asp?command=setPlayerCmd:seek:<span class="nt">&lt;position&gt;</sp
 <td><code>seek</code></td>
 <td><code>position</code></td>
 <td>Seconds to seek to, should be less than duration</td>
+</tr>
+<tr>
+<td><code>playindex</code></td>
+<td><code>index</code></td>
+<td>play the selected track in current playlist, start from 1, and will play last track when <code>index</code> exceed the number of tracks. <br><aside class="notice"> Introduced in version 4.6.328252 </aside></td>
 </tr>
 </tbody></table>
 <h3 id='adjusting-volume-mute-the-player'>Adjusting Volume, Mute the Player</h3>
@@ -1326,6 +1552,24 @@ GEt /httpapi.asp?command=setPlayerCmd:mute:<span class="nt">&lt;value&gt;</span>
 <td>Returns current EQ setting. The response value is one of the possible settings from command <code>setPlayerCmd:equalizer:&lt;value&gt;</code></td>
 </tr>
 </tbody></table>
+<h2 id='query-playlist-song-count'>Query Playlist Song Count</h2>
+<p>Query number of tracks of current playlist, will return the number in plain.</p>
+
+<p>Command: <code>GetTrackNumber</code></p>
+
+<blockquote>
+<p>Request format:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=GetTrackNumber
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>0
+</code></pre></div>
+<aside class="notice">
+Introduced in version 4.6.328252
+</aside>
 <h1 id='usb-stick-disk-playback'>USB stick/disk playback</h1><h2 id='get-content-from-usb-stick-disk'>Get content from USB stick/disk</h2>
 <p>Returns a list of music files on an attached USB stick or hard drive.</p>
 
