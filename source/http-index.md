@@ -5,7 +5,7 @@ title: Arylic Audio HTTP API
 language_tabs:
 
 toc_footers:
-  - Documentation originally<br/>made with ❤️ by <a href='https://woodbytes.me' target='_blank'>Woodbytes</a>
+  - Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a>
   
 includes:
   - http/intro_welcome
@@ -41,12 +41,13 @@ includes:
   
   # Multiroom
   - http/group_multiroom
+  - http/cmd_ConnectMasterAp_JoinGroupMaster
   - http/cmd_multiroom
   - http/cmd_multiroom_getSlaveList
-  - http/cmd_multiroom_SlaveChannel
-  - http/cmd_multiroom_SlaveMask
+  # - http/cmd_multiroom_SlaveChannel **KPW removed for now doesn't do anything !!
+  # - http/cmd_multiroom_SlaveMask **KPW removed for now doesn't do anything !!
   - http/cmd_multiroom_SlaveMute
-  - http/cmd_multiroom_SlaveVolume
+  # - http/cmd_multiroom_SlaveVolume **KPW removed for now as confusing can be acheieved with other commands !!
   - http/cmd_multiroom_SlaveKickout
   - http/cmd_multiroom_ungroup
 

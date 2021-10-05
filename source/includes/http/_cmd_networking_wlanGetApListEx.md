@@ -1,9 +1,4 @@
 ## List of scanned AP's
-
-Retrieves a list of nearby scanned WiFi Access Points.
-
-Command: `wlanGetApListEx`
-
 > Request format:
 
 ```html
@@ -37,6 +32,11 @@ GET /httpapi.asp?command=wlanGetApListEx
 }
 ```
 
+Retrieves a list of nearby scanned WiFi Access Points and reports some of the main properties.  The JSON table results will be sorted by signal strength `RSSI` 
+
+Command: `wlanGetApListEx`
+
+
 ### Description of response values
 
 Key | Value Description
@@ -51,6 +51,6 @@ Key | Value Description
 `auth` | Required WiFi authorization mechanism
 `bssid` | The MAC address of that WiFi
 `channel` | Used WiFi channel
-`extch` | *!! Documentation is MISSING !!*
-`rssi` | RSSI Level that WiFi<br>Value ranges from `0 - 100`.<br>`100` means best signal strength.
+`extch` | *!! DOCUMENTATION IN PROGRESS !!*
+`rssi` | RSSI (Received Signal Strength Indication) value<br>Value range is from `0 - 100`.<br>`100` means best signal strength.
 `ssid` | The SSID of that WiFi network<br>`[hexed string]`
