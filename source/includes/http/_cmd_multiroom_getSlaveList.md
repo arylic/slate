@@ -1,7 +1,4 @@
-## Get a list of child players
-
-Sub-Command: `getSlaveList`
-
+## Request a list of Guest Devices in a Multiroom Group
 > Request format:
 
 ```html
@@ -31,7 +28,7 @@ GET /httpapi.asp?command=multiroom:getSlaveList
 }
 ```
 
-> Example response when there are no child players where found:
+> Example response when there are no Guest Devices connected e.g. This Device is in standalone mode:
 
 ```json
 {
@@ -40,25 +37,29 @@ GET /httpapi.asp?command=multiroom:getSlaveList
 }
 ```
 
-### Response Description
+Sub-Command: `getSlaveList`
+
+This sub-command requests a list of Guest Devices in the Multiroom Group.  A `JSON` table with information about the Guest Devices is returned.
+
+### Response Description (JSON Table)
 
 Key | Value-Description
 ---|---
-`slaves` | The number of child players to this player. Numeric value.
-`wmrm_version` | *!! Documentation is MISSING !!*
-`slave_list` | Key to get the array of child players.
+`slaves` | The number of Guest Devices connected to this Host Device. Numeric value.
+`wmrm_version` | *!! DOCUMENTATION IN PROGRESS  Windows Media Rights Management ? !!*
+`slave_list` | Identifier for the array of Guest Devices.
 
-Child Player Item
+Guest Device Information
 
 Key | Value-Description
 ---|---
-`name` | The name of the player
-`uuid` | UUI of the player
-`ip` | Player's IP address
-`version` | *!! Documentation is MISSING !!*
-`type` | Board type (I guess)<br>*!! Documentation is MISSING !!*
-`channel` | Active audio channel<br>`0` - Stereo<br>`1` - Left channel<br>`2` - Right channel
-`volume` | Current volume. Value ranges from `0 - 100`
-`mute` | Mute status:<br>`0` - Device is unmuted<br>`1` - Device is muted
-`battery_percent` | Battery level (if battery is present). Value ranges from `0 - 100`
-`battery_charging` | Flag that indicates whether the battery is currently charging or not.<br>`0` - Battery not charging<br>`1` - Battery is charging
+`name` | The name of the Guest Device
+`uuid` | UUI of the Guest Device
+`ip` | Guest Device's IP address
+`version` | *!! DOCUMENTATION IN PROGRESS !!*
+`type` | Audio Module type  <br>`WiiMu-A31`: LinkPlay A31 (used for A50, PRO, MINI, S50+ AMP)
+`channel` | Active audio channel<br>`0`: Stereo<br>`1`: Left channel<br>`2`: Right channel
+`volume` | Current volume.<br>Value range is from `0 - 100`.<br>So can be considered a linear percentage (0% to 100%)
+`mute` | Mute status:<br>`0`: Guest Device is unmuted<br>`1`: Guest Device is muted
+`battery_percent` | Battery level (if battery is present).<br>Value ranges from `0 - 100`.<br>So can be considered a linear percentage (0% to 100%) 
+`battery_charging` | Flag that indicates whether the battery is currently charging or not.<br>`0`: Battery not charging<br>`1`: Battery is charging

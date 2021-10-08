@@ -1,0 +1,11 @@
+KPW Notes - September 2021
+
+'SlaveChannel' Command didn't work for me. Kind of Pointless command anyway
+
+'SlaveMask' Command doesn't seem to have an effect for me
+
+'SlaveMute' *// Note KPW - This Command didn't work for me with Slaves MINI & S50 of Master PRO.  I got the response "OK" but nothing happened on the devices. //* 
+
+'setPlayerCmd:slave_vol' *// Note KPW - This command also works with Host Device !! So it is identical to 'setPlayerCmd:vol'
+
+Command: `getFileInfo` Note KPW  `totlen=00:00:00` Total Length is always 0  

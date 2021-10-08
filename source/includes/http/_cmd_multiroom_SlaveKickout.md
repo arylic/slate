@@ -1,7 +1,4 @@
-## Remove Player from Group
-
-Sub-Command: `SlaveKickout`
-
+## Remove Guest Device from Multi-Room Group
 > Request format:
 
 ```html
@@ -14,11 +11,15 @@ GET /httpapi.asp?command=multiroom:SlaveKickout:<ip_address>
 OK
 ```
 
+Sub-Command: `SlaveKickout`
+
+This command will remove the required Guest Device from the Multi-Room Group
+
 ### Parameter Description
 
 Parameter | Description
 ---|---
-`ip_address` | The IP address of the child player to be removed from the group
+`ip_address` | The IP address of the Guest Device to control with this command
 
 
 <aside class="notice">

@@ -5,8 +5,8 @@ title: Arylic Audio UART API
 language_tabs:
 
 toc_footers:
-  - Documentation originally<br/>made with ❤️ by <a href='https://woodbytes.me' target='_blank'>Woodbytes</a>
-  
+  - Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a>
+    
 includes:
   - uart/intro_welcome
 

@@ -1,21 +1,43 @@
-Command: `setPlayerCmd`  
+### Device Audio Source
+> Request format:
 
-The command `setPlayerCmd` is just an abstract command, it needs a sub command to work as expected. See the list of current available sub commands.
+```html
+GET /httpapi.asp?command=switchmode:<player_mode>
+```
 
-### Playback Sub-Commands
+> Example Response:
 
-Sub-Command | Parameters | Description
----|---|---
-`play` | | Play an URI<br>`uri` could be a direct URL to a web radio stream (must be URL encoded)
-`playlist` | `uri`, `index` | Play an URI<br>`uri` is an M3U playlist<br>`index` is the start index
-`hex_playlist` | `uri`, `index` | Play an URI<br>`uri` is an M3U playlist<br>`index` is the start index<br>The `uri` value must be a `[hexed string]`
-`playLocalList` | `index` | Play from USB disk<br>`index` is the start index
+```plaintext
+OK
+```
 
-### Player Control Sub-Commands
+Selects the Audio Source of the Device. The available audio sources for each device will depend on the installed hardware. 
 
-Sub-Command | Description
+Sub-Command: `switchmode`
+
+Parameter | Description
 ---|---
-`pause` | Pause current playback
-`resume` | Resume playback from last position, if it is paused
-`onepause` | Toggle Play/Pause
-`stop` | Stop current playback (play position will be reset to `0`)
+`player_mode` | The audio source that has to be switched<br>`0`: wifi mode<br>`40`: line analogue input<br>`41`: bluetooth mode<br>`43`: optical digital input<br>`44`: RCA Analogue input<br>`45`: co-axial digital input<br>`47`: line analogue input #2
+
+
+### Play Preset Content
+> Request format
+
+```html
+SET /httpapi.asp?command=MCUKeyShortClick:<num_value>
+```
+
+> Example response:
+
+```plaintext
+OK
+```
+
+Play Instruction for one of the Programmable Presets (maximum 10) 
+
+Command: `MCUKeyShortClick`
+
+Parameter | Description
+---|---|---
+`num_value` | The numeric value of the required Preset<br>Value range is from `0 - 10`   
+
