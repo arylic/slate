@@ -24,7 +24,7 @@ Parameter | Description
 > Request format
 
 ```html
-SET /httpapi.asp?command=MCUKeyShortClick:<num_value>
+GET /httpapi.asp?command=MCUKeyShortClick:<num_value>
 ```
 
 > Example response:

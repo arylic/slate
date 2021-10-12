@@ -104,24 +104,26 @@ Key | Value Description
 ---|---
 `uuid` | Device permanent UUID (will remain after device reboot)
 `DeviceName` | The device UPnP and Airplay friendly name
-`GroupName` | You can guess what it means, but:<br>*!! DOCUMENTATION IN PROGRESS !!*
+`GroupName` | *!! DOCUMENTATION IN PROGRESS !!*
 `ssid` | Device's own `SSID` when in WiFi pairing mode or when device's WiFi hotspot is active
 `language` | The language
 `firmware` | Current firmware version
 `hardware` | Hardware model
 `build` | Possible values: `release`, `debug`, `backup`<br>`release`: this is a release version<br>`debug`: this is a debug version<br>`backup`: this is a backup version
 `project` | The project name
-`priv_prj` | *!! DOCUMENTATION IN PROGRESS !!*
-`project_build_name` | *!! DOCUMENTATION IN PROGRESS !!*
+`priv_prj` | Project name which would stand for a specific board
+`project_build_name` | Code identifier for customized release
 `Release` | Firmware build date<br>Format: `YYYYMMDD`
 `temp_uuid` | Temporary UUID (will change after device reboot)
 `hideSSID` | When the device is operating as a WiFi hotspot, this flag determines whether its SSID should be hidden or visible<br>`0`: `ssid` is visible<br>`1`: `ssid` is hidden
 `SSIDStrategy` | *!! DOCUMENTATION IN PROGRESS !!*
-`branch` | *!! DOCUMENTATION IN PROGRESS !!*
-`group` | *!! DOCUMENTATION IN PROGRESS !!*
-`wmrm_version` | *!! DOCUMENTATION IN PROGRESS !!*
+`branch` | Code branch
+`group` | Wether the device is working slave mode, `0` means master or standalone.
+`master_uuid` | Exist when working in slave mode, showing the `UUID` of master device.
+`slave_mask` | Exist when working in slave mode, showing if the device support mask feature. `0` means not supported.
+`wmrm_version` | Multiroom library version, the latest version 4.2 is not compatible with 2.0.
 `internet` | Current status of internet access:<br>`0`: not ready<br>`1`: ready
-`MAC` | MAC address of the active network connection 
+`MAC` | MAC address of the device when working in hotspot mode, will show on APP and also the sticker on module/device.
 `STA_MAC` | MAC address of the `STA` = STATION 
 `CountryCode` | *!! DOCUMENTATION IN PROGRESS !!*
 `CountryRegion` | *!! DOCUMENTATION IN PROGRESS !!*
@@ -138,25 +140,25 @@ Key | Value Description
 `eth_static_dns2` | Device's Secondary DNS Server (If `eth_dhcp=0`)
 `VersionUpdate` | Flag that determines, if there is a new firmware version available or not.<br>`0`: no new firmware<br>`1`: new firmware available
 `NewVer` | If there is a new firmware available (in case of `VersionUpdate` is set to `1`), this is the new version number
-`mcu_ver` | *!! DOCUMENTATION IN PROGRESS !!*<br>But I guess: Version of MCU
-`mcu_ver_new` | *!! DOCUMENTATION IN PROGRESS !!*<br>But I guess:<br>Flag that indicates, if there is a newer version of MCU available<br>`0`: No<br>`1`: Yes
-`dsp_ver` | *!! DOCUMENTATION IN PROGRESS !!*
-`dsp_ver_new` | *!! DOCUMENTATION IN PROGRESS !!*
+`mcu_ver` | Version of MCU on base board
+`mcu_ver_new` | New version of MCU on base board, indicates if there is a newer version of MCU available<br>`0` - No new version<br>`others` - New version
+`dsp_ver` | Version for voice processing, not used
+`dsp_ver_new` | New version for voice processing, not used
 `date` | Current Date
-`time` | Current Time
-`tz` | *!! DOCUMENTATION IN PROGRESS !!*
+`time` | Current local time
+`tz` | Offset of timezone
 `dst_enable` | *!! DOCUMENTATION IN PROGRESS !!*
 `region` | *!! DOCUMENTATION IN PROGRESS !!*
-`prompt_status` | It seems to relate to the commands `PromptEnable` and 
-`iot_ver` | *!! DOCUMENTATION IN PROGRESS !!*
+`prompt_status` | Indicates if the prompting voice would be played or not, you can set with command `PromptEnable` and `PromptDisable`.<br>`0` - No prompting voice<br>`1` - Have prompting voice
+`iot_ver` | IOT library version, not used
 `upnp_version` | UPnP Device Architecture Version
-`cap1` | *!! DOCUMENTATION IN PROGRESS !!*
-`capability` | This is a bit mask:<br>`0`: has airplay support<br>`1`: has ethernet support<br>`2`: has USB disk support<br>`3`: has WPS button support<br>`4`: has battery support<br>`5`: has preset key support<br>`6`: has I2S in support
+`cap1` | Bit mask for the module feature, used internally
+`capability` | Bit mask for the module feature, used internally
 `languages` | *!! DOCUMENTATION IN PROGRESS !!*
 `streams_all` | *!! DOCUMENTATION IN PROGRESS !!*
 `streams` | This is a bit mask:<br>`0`: If Airplay is enabled<br>`1`: If DLNA is enabled<br>`2`: Has TTPod support<br>`3`: Has TuneIn support<br>`4`: Has Pandora support<br>`5`: Has DoubanFM support<br>!! DOCUMENTATION IN PROGRESS !!*
 `external` | hexadecimal value<br>*!! DOCUMENTATION IN PROGRESS !!*
-`plm_support` | This is a bit mask:<br>`0`: LineIn (Aux support)<br>`1`: Bluetooth support<br>`2`: Optical support 
+`plm_support` | This is a bit mask, each bit stands for an external input source:<br>`bit1`: LineIn (Aux support)<br>`bit2`: Bluetooth support<br>`bit3`: USB support<br>`bit4`: Optical support<br>`bit6`: Coaxial support<br>`bit8`: LineIn 2 support<br>`bit15`: USBDAC support<br>Others are reserved or not used.
 `preset_key` | Quantity of presets available:<br>
 `spotify_active` | *!! DOCUMENTATION IN PROGRESS !!*<br>But I guess:<br>Flag that indicates if Spotify is currently playing on the device (via Spotify Connect?)<br>`0`: Spotify is not playing<br>`1`: Spotify is playing
 `lbc_support` | *!! DOCUMENTATION IN PROGRESS !!*
@@ -171,7 +173,7 @@ Key | Value Description
 `encry` | Type of WiFi Protected Access used (Encryption Protocol).
 `upnp_uuid` | The UPnP UUID
 `uart_pass_port` | Port used for TCP/IP Communcations/Socket Connections
-`communication_port` | *!! DOCUMENTATION IN PROGRESS !!*
+`communication_port` | TCP port for internal messages
 `web_firmware_update_hide` | *!! DOCUMENTATION IN PROGRESS !!*
 `ignore_talkstart` | *!! DOCUMENTATION IN PROGRESS !!*
 `silenceOTATime` | *!! DOCUMENTATION IN PROGRESS !!*
@@ -179,7 +181,7 @@ Key | Value Description
 `new_tunein_preset_and_alarm` | *!! DOCUMENTATION IN PROGRESS !!*
 `iheartradio_new` | *!! DOCUMENTATION IN PROGRESS !!*
 `new_iheart_podcast` | *!! DOCUMENTATION IN PROGRESS !!*
-`tidal_version` | *!! DOCUMENTATION IN PROGRESS !!*
+`tidal_version` | TIDAL API version
 `service_version` | *!! DOCUMENTATION IN PROGRESS !!*
 `security` | *!! DOCUMENTATION IN PROGRESS !!*
 `security_version` | *!! DOCUMENTATION IN PROGRESS !!*

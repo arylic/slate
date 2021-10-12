@@ -5,7 +5,7 @@ title: Arylic Audio HTTP API
 language_tabs:
 
 toc_footers:
-  - Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a>
+  - V1.0.0<br>Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a> 
   
 includes:
   - http/intro_welcome
@@ -52,7 +52,9 @@ includes:
   - http/cmd_multiroom_ungroup
 
   # Appendix
+  - http/group_appendix
   - http/appendix_hexed_string
+  - http/appendix_extended_m3u
 
 search: true
 

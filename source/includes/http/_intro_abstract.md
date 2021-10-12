@@ -16,4 +16,3 @@ All response examples in this documentation are from different devices (<strong>
 </aside>
 
 
-### Foo-Bar

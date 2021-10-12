@@ -9,7 +9,7 @@ The command `setPlayerCmd` is the main command, it needs a sub command to execut
 > Request format for sub command: `play`
 
 ```html
-SET /httpapi.asp?command=setPlayerCmd:play:<url>
+GET /httpapi.asp?command=setPlayerCmd:play:<url>
 ```
 
 > Example response:
@@ -28,10 +28,10 @@ Parameter | Description
 
 
 ### M3U File/Playlist Sub-command
-> Request format for sub command: `m3u:playlist`
+> Request format for sub command: `m3u:play`
 
 ```html
-SET /httpapi.asp?command=setPlayerCmd:m3u:play:<url><index>
+GET /httpapi.asp?command=setPlayerCmd:m3u:play:<url>
 ```
 
 > Example response:
@@ -40,7 +40,7 @@ SET /httpapi.asp?command=setPlayerCmd:m3u:play:<url><index>
 OK
 ```
 
-Play Instruction for any valid `m3u` file or playlist specified as a `URL`. 
+Play Instruction for any valid `m3u` file or playlist specified as a `URL`. The M3U used [extended tags](#extended-m3u-tags) to support coverart URL, title and artist for the tracks.
 
 Sub-Command: `m3u:play`
 
@@ -135,7 +135,7 @@ Sub-Command | Parameter | Description
 > Request format for sub command: `loopmode`
 
 ```html
-SET /httpapi.asp?command=setPlayerCmd:loopmode:<flag_value>
+GET /httpapi.asp?command=setPlayerCmd:loopmode:<flag_value>
 ```
 
 > Example response:
@@ -152,7 +152,7 @@ Sub-Command | Parameter | Description
 > Request format for sub command: `equalizer`
 
 ```html
-SET /httpapi.asp?command=setPlayerCmd:equalizer:<flag_value>
+GET /httpapi.asp?command=setPlayerCmd:equalizer:<flag_value>
 ```
 
 > Example response:

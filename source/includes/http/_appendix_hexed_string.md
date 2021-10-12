@@ -1,4 +1,4 @@
-# Hexed Values
+## Hexed Values
 
 > Convert a hexadecimal string representation to a human readable ASCII string.
 
