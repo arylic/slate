@@ -432,11 +432,19 @@
               </ul>
           </li>
           <li>
-            <a href="#hexed-values" class="toc-h1 toc-link" data-title="Hexed Values">Hexed Values</a>
+            <a href="#appendix" class="toc-h1 toc-link" data-title="Appendix">Appendix</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#hexed-values" class="toc-h2 toc-link" data-title="Hexed Values">Hexed Values</a>
+                  </li>
+                  <li>
+                    <a href="#extended-m3u-tags" class="toc-h2 toc-link" data-title="Extended M3U Tags">Extended M3U Tags</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li>Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a></li>
+            <li>V1.0.0<br>Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -459,7 +467,7 @@ The response is in <code>JSON</code> format.</p>
 <aside class="notice">
 All response examples in this documentation are from different devices (<strong>Up2Stream Amp v4</strong>, <strong>Up2Stream mini v3</strong>) but same firmware version (<code>4.6.9724.26</code>). It is possible that responses from older firmware may differ.
 </aside>
-<h3 id='foo-bar'>Foo-Bar</h3><h1 id='networking'>Networking</h1><h2 id='list-of-scanned-ap-39-s'>List of scanned AP&#39;s</h2>
+<h1 id='networking'>Networking</h1><h2 id='list-of-scanned-ap-39-s'>List of scanned AP&#39;s</h2>
 <blockquote>
 <p>Request format:</p>
 </blockquote>
@@ -921,7 +929,7 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>GroupName</code></td>
-<td>You can guess what it means, but:<br><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
 </tr>
 <tr>
 <td><code>ssid</code></td>
@@ -949,11 +957,11 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>priv_prj</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>Project name which would stand for a specific board</td>
 </tr>
 <tr>
 <td><code>project_build_name</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>Code identifier for customized release</td>
 </tr>
 <tr>
 <td><code>Release</code></td>
@@ -973,15 +981,23 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>branch</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>Code branch</td>
 </tr>
 <tr>
 <td><code>group</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>Wether the device is working slave mode, <code>0</code> means master or standalone.</td>
+</tr>
+<tr>
+<td><code>master_uuid</code></td>
+<td>Exist when working in slave mode, showing the <code>UUID</code> of master device.</td>
+</tr>
+<tr>
+<td><code>slave_mask</code></td>
+<td>Exist when working in slave mode, showing if the device support mask feature. <code>0</code> means not supported.</td>
 </tr>
 <tr>
 <td><code>wmrm_version</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>Multiroom library version, the latest version 4.2 is not compatible with 2.0.</td>
 </tr>
 <tr>
 <td><code>internet</code></td>
@@ -989,7 +1005,7 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>MAC</code></td>
-<td>MAC address of the active network connection</td>
+<td>MAC address of the device when working in hotspot mode, will show on APP and also the sticker on module/device.</td>
 </tr>
 <tr>
 <td><code>STA_MAC</code></td>
@@ -1057,19 +1073,19 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>mcu_ver</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em><br>But I guess: Version of MCU</td>
+<td>Version of MCU on base board</td>
 </tr>
 <tr>
 <td><code>mcu_ver_new</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em><br>But I guess:<br>Flag that indicates, if there is a newer version of MCU available<br><code>0</code>: No<br><code>1</code>: Yes</td>
+<td>New version of MCU on base board, indicates if there is a newer version of MCU available<br><code>0</code> - No new version<br><code>others</code> - New version</td>
 </tr>
 <tr>
 <td><code>dsp_ver</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>Version for voice processing, not used</td>
 </tr>
 <tr>
 <td><code>dsp_ver_new</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>New version for voice processing, not used</td>
 </tr>
 <tr>
 <td><code>date</code></td>
@@ -1077,11 +1093,11 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>time</code></td>
-<td>Current Time</td>
+<td>Current local time</td>
 </tr>
 <tr>
 <td><code>tz</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>Offset of timezone</td>
 </tr>
 <tr>
 <td><code>dst_enable</code></td>
@@ -1093,11 +1109,11 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>prompt_status</code></td>
-<td>It seems to relate to the commands <code>PromptEnable</code> and</td>
+<td>Indicates if the prompting voice would be played or not, you can set with command <code>PromptEnable</code> and <code>PromptDisable</code>.<br><code>0</code> - No prompting voice<br><code>1</code> - Have prompting voice</td>
 </tr>
 <tr>
 <td><code>iot_ver</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>IOT library version, not used</td>
 </tr>
 <tr>
 <td><code>upnp_version</code></td>
@@ -1105,11 +1121,11 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>cap1</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>Bit mask for the module feature, used internally</td>
 </tr>
 <tr>
 <td><code>capability</code></td>
-<td>This is a bit mask:<br><code>0</code>: has airplay support<br><code>1</code>: has ethernet support<br><code>2</code>: has USB disk support<br><code>3</code>: has WPS button support<br><code>4</code>: has battery support<br><code>5</code>: has preset key support<br><code>6</code>: has I2S in support</td>
+<td>Bit mask for the module feature, used internally</td>
 </tr>
 <tr>
 <td><code>languages</code></td>
@@ -1129,7 +1145,7 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>plm_support</code></td>
-<td>This is a bit mask:<br><code>0</code>: LineIn (Aux support)<br><code>1</code>: Bluetooth support<br><code>2</code>: Optical support</td>
+<td>This is a bit mask, each bit stands for an external input source:<br><code>bit1</code>: LineIn (Aux support)<br><code>bit2</code>: Bluetooth support<br><code>bit3</code>: USB support<br><code>bit4</code>: Optical support<br><code>bit6</code>: Coaxial support<br><code>bit8</code>: LineIn 2 support<br><code>bit15</code>: USBDAC support<br>Others are reserved or not used.</td>
 </tr>
 <tr>
 <td><code>preset_key</code></td>
@@ -1189,7 +1205,7 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>communication_port</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>TCP port for internal messages</td>
 </tr>
 <tr>
 <td><code>web_firmware_update_hide</code></td>
@@ -1221,7 +1237,7 @@ Introduced in version 4.6.328252
 </tr>
 <tr>
 <td><code>tidal_version</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
+<td>TIDAL API version</td>
 </tr>
 <tr>
 <td><code>service_version</code></td>
@@ -1294,7 +1310,7 @@ There are <strong>LOTS</strong> of keys in the example response which don't have
 <blockquote>
 <p>Request format</p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>SET /httpapi.asp?command=MCUKeyShortClick:<span class="nt">&lt;num_value&gt;</span>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=MCUKeyShortClick:<span class="nt">&lt;num_value&gt;</span>
 </code></pre></div>
 <blockquote>
 <p>Example response:</p>
@@ -1432,7 +1448,7 @@ There are <strong>LOTS</strong> of keys in the example response which don't have
 <blockquote>
 <p>Request format for sub command: <code>play</code></p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>SET /httpapi.asp?command=setPlayerCmd:play:<span class="nt">&lt;url&gt;</span>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:play:<span class="nt">&lt;url&gt;</span>
 </code></pre></div>
 <blockquote>
 <p>Example response:</p>
@@ -1456,16 +1472,16 @@ There are <strong>LOTS</strong> of keys in the example response which don't have
 </tbody></table>
 <h3 id='m3u-file-playlist-sub-command'>M3U File/Playlist Sub-command</h3>
 <blockquote>
-<p>Request format for sub command: <code>m3u:playlist</code></p>
+<p>Request format for sub command: <code>m3u:play</code></p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>SET /httpapi.asp?command=setPlayerCmd:m3u:play:<span class="nt">&lt;url&gt;&lt;index&gt;</span>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:m3u:play:<span class="nt">&lt;url&gt;</span>
 </code></pre></div>
 <blockquote>
 <p>Example response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
 </code></pre></div>
-<p>Play Instruction for any valid <code>m3u</code> file or playlist specified as a <code>URL</code>. </p>
+<p>Play Instruction for any valid <code>m3u</code> file or playlist specified as a <code>URL</code>. The M3U used <a href="#extended-m3u-tags">extended tags</a> to support coverart URL, title and artist for the tracks.</p>
 
 <p>Sub-Command: <code>m3u:play</code></p>
 
@@ -1617,7 +1633,7 @@ GEt /httpapi.asp?command=setPlayerCmd:mute:<span class="nt">&lt;flag_value&gt;</
 <blockquote>
 <p>Request format for sub command: <code>loopmode</code></p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>SET /httpapi.asp?command=setPlayerCmd:loopmode:<span class="nt">&lt;flag_value&gt;</span>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:loopmode:<span class="nt">&lt;flag_value&gt;</span>
 </code></pre></div>
 <blockquote>
 <p>Example response:</p>
@@ -1641,7 +1657,7 @@ GEt /httpapi.asp?command=setPlayerCmd:mute:<span class="nt">&lt;flag_value&gt;</
 <blockquote>
 <p>Request format for sub command: <code>equalizer</code></p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>SET /httpapi.asp?command=setPlayerCmd:equalizer:<span class="nt">&lt;flag_value&gt;</span>
+<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:equalizer:<span class="nt">&lt;flag_value&gt;</span>
 </code></pre></div>
 <blockquote>
 <p>Example response:</p>
@@ -2127,7 +2143,7 @@ The response isn't in JSON format. It is just plaintext.
 <aside class="notice">
 The response isn't in JSON format. It is just plaintext.
 </aside>
-<h1 id='hexed-values'>Hexed Values</h1>
+<h1 id='appendix'>Appendix</h1><h2 id='hexed-values'>Hexed Values</h2>
 <blockquote>
 <p>Convert a hexadecimal string representation to a human readable ASCII string.</p>
 </blockquote>
@@ -2193,6 +2209,40 @@ The response isn't in JSON format. It is just plaintext.
 <p>As you may have noticed in some examples, there are certain values that need to be converted from a string to a hexadecimal value before sending to the API, or from a hexadecimal value to a human readable ASCII string after receiving a response. These values are marked with <code>[hexed string]</code>.</p>
 
 <p>Here are two C functions, one to convert a hexadecimal string representation in a human readable ASCII string, and one function to do the opposide:</p>
+<h2 id='extended-m3u-tags'>Extended M3U Tags</h2>
+<blockquote>
+<p>Example M3U file with extended tags and relative URL</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>#EXTM3U
+#EXTURL:http://192.168.0.2/test/cover.jpg
+#EXTINF:1,P!nk - Just give me a reason
+Just Give Me A Reason.mp3
+</code></pre></div>
+<blockquote>
+<p>Example M3U file with extended tags and absolute URL</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>#EXTM3U
+#EXTURL:http://192.168.0.2/test/cover.jpg
+#EXTINF:1,P!nk - Just give me a reason
+http://192.168.0.2/test/Just%20Give%20Me%20A%02Reason.mp3
+</code></pre></div>
+<p>Standard M3U does not define tags for coverart and title, artist. There&#39;s a extended tag to append an image data for coverart, but it&#39;s not suitable for streaming device. So we defined a private tag <code>EXTURL</code> for the URL of covert. And also referenced the <code>EXTINF</code> tag to include the title and artist. With the extra meta data, the playing state on 4STREAM APP would be more friendly. </p>
+
+<table><thead>
+<tr>
+<th>Tag</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>EXTURL</code></td>
+<td>The URL will be appended after the tag and <code>:</code>. It will be used as coverart of the track, and need to be absolute URL.</td>
+</tr>
+<tr>
+<td><code>EXTINF</code></td>
+<td>Information will be appended after the tag and <code>:</code>. It is in format <code>N,ARTIST - TITLE</code><br><code>N</code> is track index but it&#39;s not used.<br> <code>ARTIST</code> and <code>TITLE</code> is seperated by <code>-</code>, better to remove the <code>-</code> in title or artist.</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
