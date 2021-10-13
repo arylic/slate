@@ -10,6 +10,24 @@ toc_footers:
 includes:
   - tcp/intro_welcome
 
+  # SYSTEM COMMANDS
+  - tcp/cmd_system
+
+  # DEVICE STATUS & SOURCES
+  - tcp/cmd_query_status
+  - tcp/cmd_pair_SRC
+
+  # PLAYBACK CONTROL
+  - tcp/cmd_playback
+  - tcp/cmd_pair_VOL
+  - tcp/cmd_pair_TRE
+  - tcp/cmd_pair_BAS
+
+  # HARDWARE COMMANDS
+  - tcp/cmd_pair_LED
+  - tcp/cmd_pair_BEP  
+
+
 search: true
 
 code_clipboard: false

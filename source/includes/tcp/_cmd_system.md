@@ -1,16 +1,13 @@
-### SYSTEM COMMANDS
+# SYSTEM COMMANDS
 
 The following commands are all "system" commands 'SYS'
 
 Command: `MCU+PAS+RAKOIT:SYS:<str_command>`
 
 ### Factory Reset
-> Request format:
-
-```html
-"MCU+PAS+RAKOIT:SYS:RESET&"
+> Request format: ```html
+MCU+PAS+RAKOIT:SYS:RESET&
 ```
-
 > Example Response:
 
 ```plaintext

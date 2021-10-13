@@ -1,4 +1,4 @@
-## Device Status Command Pair `SRC`
+# Device Status Command Pair `SRC`
 
 These commands share a common parameter table
 
@@ -23,14 +23,14 @@ This request will return the current audio source
 
 Command: `MCU+PAS+RAKOIT:SRC&`
 
-Response: `MCU+PAS+RAKOIT:SRC<str_player_mode>&`
+Response: `MCU+PAS+RAKOIT:SRC{str_player_mode}&`
 
 
 ### Select Device Audio Source
 > Request format:
 
 ```html
-MCU+PAS+RAKOIT:SRC:`<str_player_mode>`&:
+"MCU+PAS+RAKOIT:SRC:<str_player_mode>&:"
 ```
 
 > Example Response:
