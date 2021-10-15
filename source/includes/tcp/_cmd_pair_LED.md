@@ -1,42 +1,44 @@
-## Device Main LED (Enable/Disable) Command Pair `LED`
-### Get LED Status (Enabled/Disbled)
-> Get Request format:
+## Device Main LED
+### Get LED Status
 
-```html
+> Command:
+
+```plaintext
 MCU+PAS+RAKOIT:LED&:
 ```
 
 > Example Response:
 
 ```plaintext
-MCU+PAS+LED:0& or MCU+PAS+LED:1&
+MCU+PAS+LED:0&              // LED Disabled
+MCU+PAS+LED:1&              // LED Enabled
 ```
-This request will return a boolean state of the LED Enable/Disable Function 
 
-Command: `MCU+PAS+RAKOIT:LED&`
+This command will return a boolean state of the LED Enable/Disable Function.
 
-Response: <br>`MCU+PAS+LED:0&` LED Disabled<br>`MCU+PAS+LED:1&` LED Enabled<br>
+<br><br><br><br><br><br><br>
 
-### Set LED Status (Enabled/Disbled)
-> Set Request format:
+### Set LED Status
 
-```html
-MCU+PAS+RAKOIT:LED:1& or MCU+PAS+RAKOIT:LED:0& or MCU+PAS+RAKOIT:LED:T&
+> Command:
+
+```plaintext
+MCU+PAS+RAKOIT:LED:0&       // Disable LED
+MCU+PAS+RAKOIT:LED:1&       // Enable LED
+MCU+PAS+RAKOIT:LED:T&       // Toggle current LED status
 ```
 
 > Example Response:
 
 ```plaintext
-MCU+PAS+LED:0&
-MCU+PAS+LED:1&
+MCU+PAS+LED:0&              // LED Disabled
+MCU+PAS+LED:1&              // LED Enabled
 ```
 
 Enables & Disables device main LED. 
 
-Command: `MCU+PAS+RAKOIT:LED:<bool_or_toggle>&`
-
 Parameter | Description
 ---|---|---
-`bool_or_toggle` | A boolean value or the character `T`<br>`1` Disable <br>`0` Enable<br>`T` Toggle between enable & disable   
-
-Response: <br>`MCU+PAS+LED:0&` LED Disabled<br>`MCU+PAS+LED:1&` LED Enabled
+`0` | Disable
+`1` | Enable
+`T` | Toggle current LED status

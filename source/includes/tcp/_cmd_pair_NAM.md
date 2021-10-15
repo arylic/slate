@@ -1,9 +1,10 @@
-## Device Name (Command Pair Get & Set)
+## Device Name
 
 ### Get Device Name
-> Get command format:
 
-```html
+> Command:
+
+```plaintext
 MCU+PAS+RAKOIT:NAM&:
 ```
 
@@ -12,20 +13,22 @@ MCU+PAS+RAKOIT:NAM&:
 ```plaintext
 MCU+PAS+RAKOIT:NAM:4E4F42425920424F58&
 ```
+
 This command will return the current device name.  
-
-Command: `MCU+PAS+RAKOIT:NAM&`
-
 Response: Is a hexadecimal string  
 
+<br><br>
 <aside class="notice">
 Note after a firmware upgrade the name of the device will be extended to '<ascii_str_name>' and `_XXXX` so '<ascii_str_name>_XXXX`.  XXXX correponds to the last two hexadecimal pairs of the device MAC address.
 </aside>
 
-### Set Device Name
-> Set command format:
+<br><br><br><br>
 
-```html
+### Set Device Name
+
+> Command:
+
+```plaintext
 MCU+PAS+RAKOIT:NAM:<hex_str_name>&
 ```
 
@@ -36,8 +39,6 @@ AXX+NAM+RAKOIT:<ascii_str_name>&
 ```
 
 Sets the device name. 
-
-Command: `MCU+PAS+RAKOIT:NAM:<hex_str_name>&`
 
 Parameter | Description
 ---|---|---

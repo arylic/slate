@@ -1,5 +1,5 @@
 ---
-title: Arylic Audio HTTP API
+title: Arylic Audio TCP API Interface
 
 # Languages must be one of: https://git.io/vQNgJ
 language_tabs:
@@ -8,51 +8,30 @@ toc_footers:
   - Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a>
     
 includes:
-  - http/intro_welcome
-  - http/intro_abstract
-  
-  # Networking
-  - http/group_networking
-  - http/cmd_networking_wlanGetApListEx
-  - http/cmd_networking_wlanConnectApEx
-  - http/cmd_networking_wlanConnectHideApEx
-  - http/cmd_networking_wlanGetConnectState
-  - http/cmd_networking_getStaticIP
-  - http/cmd_networking_setStaticIP
-  - http/cmd_networking_setDhcp
+  - tcp/intro_welcome
 
-  # Device Informations
-  - http/group_device
-  - http/cmd_device_getStatusEx
-  - http/cmd_device_getsyslog
+  # SYSTEM COMMANDS
+  - tcp/cmd_system
 
-  # Playback control
-  - http/group_playback
-  - http/cmd_playback
-  - http/cmd_playback_getPlayerStatus
-  - http/cmd_playback_setPlayerCmd
-  - http/cmd_playback_GetTrackNumber
+  # HARDWARE/DEVICE COMMANDS
+  - tcp/cmd_pair_NAM
+  - tcp/cmd_pair_LED
+  - tcp/cmd_pair_BEP
 
-  # USB disk playback
-  - http/group_usb
-  - http/cmd_usb_getLocalPlayList
-  - http/cmd_usb_playLocalList
-  - http/cmd_usb_getFileInfo
-  
-  # Multiroom
-  - http/group_multiroom
-  - http/cmd_ConnectMasterAp_JoinGroupMaster
-  - http/cmd_multiroom
-  - http/cmd_multiroom_getSlaveList
-  # - http/cmd_multiroom_SlaveChannel **KPW removed for now doesn't do anything !!
-  # - http/cmd_multiroom_SlaveMask **KPW removed for now doesn't do anything !!
-  - http/cmd_multiroom_SlaveMute
-  # - http/cmd_multiroom_SlaveVolume **KPW removed for now as confusing can be acheieved with other commands !!
-  - http/cmd_multiroom_SlaveKickout
-  - http/cmd_multiroom_ungroup
+  # NETWORK COMMANDS
+  - tcp/cmd_network
 
-  # Appendix
-  - http/appendix_hexed_string
+  # DEVICE STATUS & SOURCES
+  - tcp/cmd_query_status
+  - tcp/cmd_pair_SRC
+
+  # PLAYBACK CONTROL
+  - tcp/cmd_playback
+  - tcp/cmd_pair_VOL
+  - tcp/cmd_pair_TRE
+  - tcp/cmd_pair_BAS
+  - tcp/cmd_pair_VBS
+  - tcp/cmd_pair_LPM 
 
 search: true
 

@@ -8,28 +8,34 @@ It is a strong recommendation to familise yourself with the Arylic "Web Manageme
 
 Arylic provide a simple development Tool for Windows.   
 
-The "root" of these commands is <br>   `MCU+PAS+RAKOIT:`	
+The "root" of these commands is:   
+`MCU+PAS+RAKOIT:`	
 
-All commands are terminated with the special character `&`
+All commands are terminated with the special character `&`.
 
-Some Commands are Command Pairs where the same 3 character code `ABC` can be used for query/read or control/write
-    `MCU+PAS+RAKOIT:ABC&` - Query or Read Values
-    `MCU+PAS+RAKOIT:ABC:{parameter}&` - Control Functions or Write Values 
+Some Commands are Command Pairs where the same 3 character code `ABC` can be used for query/read or control/write:
 
-The Command Pairs (Read & Write) are the following:-
+* `MCU+PAS+RAKOIT:ABC&` - Query or Read Values
+* `MCU+PAS+RAKOIT:ABC:{parameter}&` - Control Functions or Write Values 
+
+The Command Pairs (Read & Write) are the following:
     
-    Playback related commands:
-        SRC - Device Source
-        VOL - Device Volume
-        TRE - Equaliser Treble Level
-        BAS - Equaliser Bass Level
-        VBS - Virtual Bass
-        LPM - Loop and Repeat Modes
+**Playback related commands:**
 
-    Hardware configuration commands:
-        NAM - Device Name
-        LED - Main Device LED  
-        BEP - Device Beep
+  * `SRC` - Device Source
+  * `VOL` - Device Volume
+  * `TRE` - Equaliser Treble Level
+  * `BAS` - Equaliser Bass Level
+  * `VBS` - Virtual Bass
+  * `LPM` - Loop and Repeat Modes
 
-    Coonection configuration commands:
-        BTC - BT connection blah blah
+**Hardware configuration commands:**
+
+  * `NAM` - Device Name
+  * `LED` - Main Device LED  
+  * `BEP` - Device Beep
+
+**Connection configuration commands:**
+
+  * `BTC` - BT connection blah blah
+  
