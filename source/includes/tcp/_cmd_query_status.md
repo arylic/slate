@@ -22,6 +22,7 @@ Response: `MCU+PAS+STA:{str_source},{bool_mute},{int_volume},{int_treble},{int_b
 Key | Value Description
 ---|---
 `str_source` | Playback mode<br>`0` - `PLAYER_MODE_NONE`
+`bool_mute` | A boolean value indicating if mute is active<br>`0` mute not active<br>`1` mute active.
 `int_volume` | Current volume<br>The integer range is from `0 - 100`. So can be considered a linear percentage (`0% to 100%`)
 `int_treble` | Current treble level<br> The integer range is from `-10 - 10`.  This corresponds to `-10dB` & `+10dB`  
 `int_bass` | Current bass level<br> The integer range is from `-10 - 10`.  This corresponds to `-10dB` & `+10dB`
@@ -31,3 +32,6 @@ Key | Value Description
 `bool_led`  | A boolean value indicating if main LED light is enabled or disabled<br>`0` LED disabled<br>`1` LED enabled
 `bool_upgrading`  | A boolean value indicating if a device firmware upgrade is in progress<br>`0` No firmware upgrade in progress<br>`1` upgrading firmware
 
+<aside class="notice">
+Defaults Factory Settings or Device Status after firmware upgrade are as follows.  `MCU+PAS+RAKOIT:STA:NET,0,30,0,0,1,1,0,1,0&`
+</aside>

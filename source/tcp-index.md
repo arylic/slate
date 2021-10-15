@@ -13,6 +13,14 @@ includes:
   # SYSTEM COMMANDS
   - tcp/cmd_system
 
+  # HARDWARE/DEVICE COMMANDS
+  - tcp/cmd_pair_NAM
+  - tcp/cmd_pair_LED
+  - tcp/cmd_pair_BEP
+
+  # NETWORK COMMANDS
+  - tcp/cmd_network
+
   # DEVICE STATUS & SOURCES
   - tcp/cmd_query_status
   - tcp/cmd_pair_SRC
@@ -22,11 +30,8 @@ includes:
   - tcp/cmd_pair_VOL
   - tcp/cmd_pair_TRE
   - tcp/cmd_pair_BAS
-
-  # HARDWARE COMMANDS
-  - tcp/cmd_pair_LED
-  - tcp/cmd_pair_BEP  
-
+  - tcp/cmd_pair_VBS
+  - tcp/cmd_pair_LPM 
 
 search: true
 

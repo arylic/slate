@@ -1,4 +1,4 @@
-# Device Status Command Pair `SRC`
+## Device Status Command Pair `SRC`
 
 These commands share a common parameter table
 

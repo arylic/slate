@@ -21,11 +21,14 @@ Command: `MCU+PAS+RAKOIT:SYS:RESET&`
 The response string will confirm that the command has been accepted 
 `PLY+000 AXX+PMT+000 AXX+FACTORY AXX+DEV+RST`
 
-### System Reboot
-> Request format:
+<aside class="notice">
+If playback is active before reboot, playback and current settings are retained.
+</aside>
 
+### System Reboot
+> Request format: 
 ```html
-"MCU+PAS+RAKOIT:SYS:REBOOT&"
+MCU+PAS+RAKOIT:SYS:REBOOT&
 ```
 
 > No Response:
@@ -36,6 +39,9 @@ Command: `MCU+PAS+RAKOIT:SYS:REBOOT&`
 
 This command will reboot the whole device including the base board and the wifi module.
 
+<aside class="notice">
+If playback is active before reboot, playback and current settings are retained.
+</aside>
 
 ### System Standby
 > Request format:
@@ -49,6 +55,10 @@ This command will reboot the whole device including the base board and the wifi 
 This will stop playback immediately and power off the device.
 
 Command: `MCU+PAS+RAKOIT:SYS:STANDBY&`
+
+<aside class="notice">
+Input Power will need to be cycled to switch on / power up the device
+</aside>
 
 
 

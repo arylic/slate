@@ -24,7 +24,12 @@ The Command Pairs (Read & Write) are the following:-
         TRE - Equaliser Treble Level
         BAS - Equaliser Bass Level
         VBS - Virtual Bass
+        LPM - Loop and Repeat Modes
 
     Hardware configuration commands:
+        NAM - Device Name
         LED - Main Device LED  
         BEP - Device Beep
+
+    Coonection configuration commands:
+        BTC - BT connection blah blah

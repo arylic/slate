@@ -37,6 +37,6 @@ Command: `MCU+PAS+RAKOIT:LED:<bool_or_toggle>&`
 
 Parameter | Description
 ---|---|---
-`bool_or_toggle` | A boolean value or the charater `T`<br>`1` Disable <br>`0` Enable<br>`T` Toggle between enable & disable   
+`bool_or_toggle` | A boolean value or the character `T`<br>`1` Disable <br>`0` Enable<br>`T` Toggle between enable & disable   
 
 Response: <br>`MCU+PAS+LED:0&` LED Disabled<br>`MCU+PAS+LED:1&` LED Enabled

@@ -25,7 +25,7 @@ Response: <br>`MCU+PAS+BEP:0&` BEEP Tone Disabled<br>`MCU+PAS+BEP:1&` BEEP Tone 
 > Set Request format:
 
 ```html
-MCU+PAS+RAKOIT:BEP:1& or MCU+PAS+RAKOIT:BEP:0& or MCU+PAS+RAKOIT:BEP:T&
+MCU+PAS+RAKOIT:BEP:1& or MCU+PAS+RAKOIT:BEP:0&
 ```
 
 > Example Response:
@@ -41,6 +41,6 @@ Command: `MCU+PAS+RAKOIT:BEP:<bool_or_toggle>&`
 
 Parameter | Description
 ---|---|---
-`bool_or_toggle` | A boolean value or the charater `T`<br>`1` Disable <br>`0` Enable<br>`T` Toggle between enable & disable   
+`bool_or_toggle` | A boolean value <br>`1` Disable <br>`0` Enable<br>
 
 Response: <br>`MCU+PAS+BEP:0&` BEEP Tone Disabled<br>`MCU+PAS+BEP:1&` BEEP Tone Enabled
