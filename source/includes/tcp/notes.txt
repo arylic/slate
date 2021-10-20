@@ -1,0 +1,14 @@
+KPW Notes - October 2021
+
+MCU+PAS+RAKOIT:SYS:REBOOT&
+Are we sure the Wifi Module is rebooted?  The reboot is very quick !!!
+
+Formattiing Example
+Parameter | Description
+---|---|---
+`0` | Disable
+`1` | Enable
+`T` | Toggle current LED status
+
+### Select Device Audio Source
+send string e.g. BT, NET, Returns Non Rakoit PLayer modes e.g. flag_player_mode
