@@ -1,51 +1,37 @@
-# Device Status Command Pair `SRC`
+## Device Bass Level - Command Pair
+### Get Device Bass Level
+>Command:
 
-These commands share a common parameter table
-
-Parameter | Description
----|---
-`str_player_mode` | The audio source that has to be switched<br>`NET`: wifi mode<br>`LINE-IN`: line analogue input<br>`BT`: bluetooth mode<br>`OPT`: optical digital input<br>`???`: RCA Analogue input<br>`COAX`: co-axial digital input<br>`LINE-IN2`: line analogue input #2
-
-### Get Device Audio Source
-> Request format:
-
-```html
-"MCU+PAS+RAKOIT:SRC&:
+```plaintext
+MCU+PAS+RAKOIT:BAS&
 ```
 
 > Example Response:
 
 ```plaintext
-MCU+PAS+SRC:NET&
+MCU+PAS+RAKOIT:BAS:`<int_bass>`&
 ```
 
-This request will return the current audio source 
+This request will return the current device bass level 
 
-Command: `MCU+PAS+RAKOIT:SRC&`
+Command:    `MCU+PAS+RAKOIT:BAS&`
 
-Response: `MCU+PAS+RAKOIT:SRC{str_player_mode}&`
+Response:   `MCU+PAS+RAKOIT:BAS<int_bass>&`<br>
+            `<int_bass>` Integer value of the bass level.  Value range is from `-10dB to 10dB`<br> 
 
 
-### Select Device Audio Source
-> Request format:
-
-```html
-"MCU+PAS+RAKOIT:SRC:<str_player_mode>&:"
-```
-
-> Example Response:
+### Select Device Bass Level
+>Command:
 
 ```plaintext
-NET = AXX+MEA+RDY AXX+PLY+000
-USB = AXX+MEA+RDY AXX+MEA+RDY AXX+PLY+PLA AXX+PLY+000 AXX+PLY+001
+MCU+PAS+RAKOIT:BAS`<int_bass>`&:
+
+There is no Response for this command:
 ```
 
-Selects the Audio Source of the Device. The available audio sources for each device will depend on the installed hardware. 
+Sets the Bass Level of the Device.
 
-Command: `MCU+PAS+RAKOIT:SRC:`
+Command:    `MCU+PAS+RAKOIT:BAS<int_bass>&`  
+            `<int_bass>` Integer value of the bass level.  Value range is from `-10dB to 10dB`<br>
 
-Response | Description
----|---
-`AXX+MEA+RDY AXX+PLY+000` |  Example reply 
-`MCU+PAS+ERR:UNSUPPORTED&` |  Check with FZ
-`MCU+PAS+ERR:SRC&` | Check with FZ
+Response:    There is no response for this command.

@@ -1,8 +1,8 @@
-## Device Virtual Bass (Enable/Disable) Command Pair `VBS`
+## Device Virtual Bass (Enable/Disable) - Command Pair
 ### Get Virtual Bass Status (Enabled/Disbled)
-> Get Request format:
+>Command:
 
-```html
+```plaintext
 MCU+PAS+RAKOIT:VBS&:
 ```
 
@@ -15,20 +15,24 @@ This request will return a boolean state of the Virtual Bass Enable/Disable Func
 
 Command: `MCU+PAS+RAKOIT:VBS&`
 
-Response: <br>`MCU+PAS+VBS:0&` Virtual Bass Disabled<br>`MCU+PAS+VBS:1&` Virtual Bass Enabled<br>
+Response: <br>
+`MCU+PAS+VBS:0&` Virtual Bass Disabled<br>
+`MCU+PAS+VBS:1&` Virtual Bass Enabled<br>
 
 ### Set Virtual Bass Status (Enabled/Disbled)
-> Set Request format:
+>Command:
 
-```html
-MCU+PAS+RAKOIT:VBS:1& or MCU+PAS+RAKOIT:VBS:0& or MCU+PAS+RAKOIT:VBS:T&
+```plaintext
+MCU+PAS+RAKOIT:VBS:0&       // Disable Virtual Bassa
+MCU+PAS+RAKOIT:VBS:1&       // Enable Virtual Bass
+MCU+PAS+RAKOIT:VBS:T&       // Toggle current Virtual Bass status
 ```
 
 > Example Response:
 
 ```plaintext
-MCU+PAS+VBS:0&
-MCU+PAS+VBS:1&
+MCU+PAS+VBS:0&                      // VBS Disabled
+MCU+PAS+VBS:1&                      // VBS Enabled
 ```
 
 Enables & Disables device Virtual Bass. 

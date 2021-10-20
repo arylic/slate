@@ -17,9 +17,11 @@ includes:
   - tcp/cmd_pair_NAM
   - tcp/cmd_pair_LED
   - tcp/cmd_pair_BEP
+  - tcp/cmd_CHN
 
-  # NETWORK COMMANDS
+  # CONNECTION STATUS COMMANDS
   - tcp/cmd_network
+  - tcp/cmd_pair_BTC
 
   # DEVICE STATUS & SOURCES
   - tcp/cmd_query_status

@@ -1,51 +1,37 @@
-## Device Status Command Pair `SRC`
+## Device Treble Level - Command Pair
+### Get Device Treble Level
+>Command:
 
-These commands share a common parameter table
-
-Parameter | Description
----|---
-`str_player_mode` | The audio source that has to be switched<br>`NET`: wifi mode<br>`LINE-IN`: line analogue input<br>`BT`: bluetooth mode<br>`OPT`: optical digital input<br>`???`: RCA Analogue input<br>`COAX`: co-axial digital input<br>`LINE-IN2`: line analogue input #2
-
-### Get Device Audio Source
-> Request format:
-
-```html
-"MCU+PAS+RAKOIT:SRC&:
+```plaintext
+MCU+PAS+RAKOIT:TRE&
 ```
 
 > Example Response:
 
 ```plaintext
-MCU+PAS+SRC:NET&
+MCU+PAS+RAKOIT:TRE:`<int_treble>`&
 ```
 
-This request will return the current audio source 
+This request will return the current device treble level 
 
-Command: `MCU+PAS+RAKOIT:SRC&`
+Command:    `MCU+PAS+RAKOIT:TRE&`
 
-Response: `MCU+PAS+RAKOIT:SRC{str_player_mode}&`
+Response:   `MCU+PAS+RAKOIT:TRE<int_treble>&`<br>
+            `<int_treble>` Integer value of the treble level.  Value range is from `-10dB to 10dB`<br> 
 
 
-### Select Device Audio Source
-> Request format:
-
-```html
-"MCU+PAS+RAKOIT:SRC:<str_player_mode>&:"
-```
-
-> Example Response:
+### Select Device Treble Level
+>Command:
 
 ```plaintext
-NET = AXX+MEA+RDY AXX+PLY+000
-USB = AXX+MEA+RDY AXX+MEA+RDY AXX+PLY+PLA AXX+PLY+000 AXX+PLY+001
+MCU+PAS+RAKOIT:TRE`<int_Treble>`&:
+
+There is no Response for this command:
 ```
 
-Selects the Audio Source of the Device. The available audio sources for each device will depend on the installed hardware. 
+Sets the treble Level of the Device.
 
-Command: `MCU+PAS+RAKOIT:SRC:`
+Command:    `MCU+PAS+RAKOIT:TRE<int_Treble>&`  
+            `<int_Treble>` Integer value of the treble level.  Value range is from `-10dB to 10dB`<br>
 
-Response | Description
----|---
-`AXX+MEA+RDY AXX+PLY+000` |  Example reply 
-`MCU+PAS+ERR:UNSUPPORTED&` |  Check with FZ
-`MCU+PAS+ERR:SRC&` | Check with FZ
+Response:    There is no response for this command.

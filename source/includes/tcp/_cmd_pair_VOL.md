@@ -1,10 +1,10 @@
-## Device Volume Command Pair
+## Device Volume - Command Pair
 
 ### Get Device Volume
-> Get command format:
+>Command:
 
-```html
-"MCU+PAS+RAKOIT:VOL&:
+```plaintext
+MCU+PAS+RAKOIT:VOL&:
 ```
 
 > Example Response:
@@ -22,9 +22,9 @@ Response:   `MCU+PAS+RAKOIT:VOL<int_volume>&`
 
 
 ### Select Device Volume
-> Set command format:
+>Command:
 
-```html
+```plaintext
 MCU+PAS+RAKOIT:VOL`<int_volume>`&:
 
 There is no Response for this command:
