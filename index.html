@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Arylic Audio HTTP API</title>
+    <title>Arylic Audio TCP API Interface</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -303,263 +303,234 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#http-api" class="toc-h1 toc-link" data-title="HTTP API">HTTP API</a>
+            <a href="#tcp-api" class="toc-h1 toc-link" data-title="TCP API">TCP API</a>
+          </li>
+          <li>
+            <a href="#system-commands" class="toc-h1 toc-link" data-title="System Commands">System Commands</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#abstract" class="toc-h2 toc-link" data-title="Abstract">Abstract</a>
+                    <a href="#factory-reset" class="toc-h2 toc-link" data-title="Factory Reset">Factory Reset</a>
+                  </li>
+                  <li>
+                    <a href="#system-reboot" class="toc-h2 toc-link" data-title="System Reboot">System Reboot</a>
+                  </li>
+                  <li>
+                    <a href="#system-standby" class="toc-h2 toc-link" data-title="System Standby">System Standby</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#networking" class="toc-h1 toc-link" data-title="Networking">Networking</a>
+            <a href="#hardware-commands" class="toc-h1 toc-link" data-title="Hardware Commands">Hardware Commands</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#list-of-scanned-ap-39-s" class="toc-h2 toc-link" data-title="List of scanned AP's">List of scanned AP's</a>
+                    <a href="#device-name" class="toc-h2 toc-link" data-title="Device Name">Device Name</a>
                   </li>
                   <li>
-                    <a href="#connect-to-wifi" class="toc-h2 toc-link" data-title="Connect to WiFi">Connect to WiFi</a>
+                    <a href="#device-main-led" class="toc-h2 toc-link" data-title="Device Main LED">Device Main LED</a>
                   </li>
                   <li>
-                    <a href="#connect-to-hidden-wifi" class="toc-h2 toc-link" data-title="Connect to hidden WiFi">Connect to hidden WiFi</a>
-                  </li>
-                  <li>
-                    <a href="#device-connection-status" class="toc-h2 toc-link" data-title="Device connection status">Device connection status</a>
-                  </li>
-                  <li>
-                    <a href="#query-networking-status" class="toc-h2 toc-link" data-title="Query networking status">Query networking status</a>
-                  </li>
-                  <li>
-                    <a href="#set-manual-ip" class="toc-h2 toc-link" data-title="Set Manual IP">Set Manual IP</a>
-                  </li>
-                  <li>
-                    <a href="#set-dhcp" class="toc-h2 toc-link" data-title="Set DHCP">Set DHCP</a>
+                    <a href="#device-main-beep-tone-enable-disable" class="toc-h2 toc-link" data-title="Device Main BEEP Tone (Enable/Disable)">Device Main BEEP Tone (Enable/Disable)</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#device-information" class="toc-h1 toc-link" data-title="Device Information">Device Information</a>
+            <a href="#connection-status-commands" class="toc-h1 toc-link" data-title="Connection Status Commands">Connection Status Commands</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-device-metadata" class="toc-h2 toc-link" data-title="Get Device Metadata">Get Device Metadata</a>
+                    <a href="#get-status-of-ethernet-connection-rj45-network" class="toc-h2 toc-link" data-title="Get Status of Ethernet Connection (RJ45 Network)">Get Status of Ethernet Connection (RJ45 Network)</a>
                   </li>
                   <li>
-                    <a href="#get-system-log" class="toc-h2 toc-link" data-title="Get System Log">Get System Log</a>
+                    <a href="#get-status-of-wireless-connection-wifi-network" class="toc-h2 toc-link" data-title="Get Status of Wireless Connection (WiFi Network)">Get Status of Wireless Connection (WiFi Network)</a>
+                  </li>
+                  <li>
+                    <a href="#get-status-of-internet-connection" class="toc-h2 toc-link" data-title="Get Status of Internet Connection">Get Status of Internet Connection</a>
+                  </li>
+                  <li>
+                    <a href="#device-bluetooth-connection" class="toc-h2 toc-link" data-title="Device Bluetooth Connection">Device Bluetooth Connection</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#playback-control" class="toc-h1 toc-link" data-title="Playback Control">Playback Control</a>
+            <a href="#device-status-amp-sources" class="toc-h1 toc-link" data-title="Device Status &amp; Sources">Device Status &amp; Sources</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#device-audio-source" class="toc-h2 toc-link" data-title="Device Audio Source">Device Audio Source</a>
-                  </li>
-                  <li>
-                    <a href="#play-preset-content" class="toc-h2 toc-link" data-title="Play Preset Content">Play Preset Content</a>
-                  </li>
-                  <li>
-                    <a href="#current-device-play-status" class="toc-h2 toc-link" data-title="Current Device - Play status">Current Device - Play status</a>
+                    <a href="#get-the-current-device-status" class="toc-h2 toc-link" data-title="Get the Current Device Status">Get the Current Device Status</a>
                   </li>
                   <li>
                     <a href="#description-of-response-values" class="toc-h2 toc-link" data-title="Description of response values">Description of response values</a>
                   </li>
                   <li>
-                    <a href="#playback" class="toc-h2 toc-link" data-title="Playback">Playback</a>
-                  </li>
-                  <li>
-                    <a href="#play-sub-command" class="toc-h2 toc-link" data-title="Play Sub-command">Play Sub-command</a>
-                  </li>
-                  <li>
-                    <a href="#m3u-file-playlist-sub-command" class="toc-h2 toc-link" data-title="M3U File/Playlist Sub-command">M3U File/Playlist Sub-command</a>
-                  </li>
-                  <li>
-                    <a href="#other-playback-sub-commands" class="toc-h2 toc-link" data-title="Other Playback Sub-Commands">Other Playback Sub-Commands</a>
-                  </li>
-                  <li>
-                    <a href="#playback-control-sub-commands" class="toc-h2 toc-link" data-title="Playback Control Sub-Commands">Playback Control Sub-Commands</a>
-                  </li>
-                  <li>
-                    <a href="#track-selection" class="toc-h2 toc-link" data-title="Track Selection">Track Selection</a>
-                  </li>
-                  <li>
-                    <a href="#adjusting-volume-mute-the-player" class="toc-h2 toc-link" data-title="Adjusting Volume, Mute the Player">Adjusting Volume, Mute the Player</a>
-                  </li>
-                  <li>
-                    <a href="#playback-shuffle-and-repeat-mode" class="toc-h2 toc-link" data-title="Playback SHUFFLE and REPEAT Mode">Playback SHUFFLE and REPEAT Mode</a>
-                  </li>
-                  <li>
-                    <a href="#adjust-the-equalizer" class="toc-h2 toc-link" data-title="Adjust the Equalizer">Adjust the Equalizer</a>
-                  </li>
-                  <li>
-                    <a href="#get-equalizer-settings" class="toc-h2 toc-link" data-title="Get Equalizer Settings">Get Equalizer Settings</a>
-                  </li>
-                  <li>
-                    <a href="#query-playlist-song-count" class="toc-h2 toc-link" data-title="Query Playlist Song Count">Query Playlist Song Count</a>
+                    <a href="#device-status" class="toc-h2 toc-link" data-title="Device Status">Device Status</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#usb-stick-disk-playback" class="toc-h1 toc-link" data-title="USB stick/disk playback">USB stick/disk playback</a>
+            <a href="#playback-commands" class="toc-h1 toc-link" data-title="Playback Commands">Playback Commands</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-content-list-from-usb-stick-disk" class="toc-h2 toc-link" data-title="Get content list from USB stick/disk">Get content list from USB stick/disk</a>
+                    <a href="#play-preset-content" class="toc-h2 toc-link" data-title="Play Preset Content">Play Preset Content</a>
                   </li>
                   <li>
-                    <a href="#track-info-from-usb-stick-disk" class="toc-h2 toc-link" data-title="Track Info from USB stick/disk">Track Info from USB stick/disk</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#multiroom-multizone" class="toc-h1 toc-link" data-title="Multiroom / Multizone">Multiroom / Multizone</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#add-guest-device-to-multiroom-group-router-mode" class="toc-h2 toc-link" data-title="Add Guest Device to Multiroom Group (Router Mode)">Add Guest Device to Multiroom Group (Router Mode)</a>
+                    <a href="#mute-device" class="toc-h2 toc-link" data-title="Mute Device">Mute Device</a>
                   </li>
                   <li>
-                    <a href="#multiroom-overview" class="toc-h2 toc-link" data-title="Multiroom Overview">Multiroom Overview</a>
+                    <a href="#device-volume" class="toc-h2 toc-link" data-title="Device Volume">Device Volume</a>
                   </li>
                   <li>
-                    <a href="#request-a-list-of-guest-devices-in-a-multiroom-group" class="toc-h2 toc-link" data-title="Request a list of Guest Devices in a Multiroom Group">Request a list of Guest Devices in a Multiroom Group</a>
+                    <a href="#device-treble-level" class="toc-h2 toc-link" data-title="Device Treble Level">Device Treble Level</a>
                   </li>
                   <li>
-                    <a href="#mute-a-guest-device" class="toc-h2 toc-link" data-title="Mute a Guest Device">Mute a Guest Device</a>
+                    <a href="#device-bass-level" class="toc-h2 toc-link" data-title="Device Bass Level">Device Bass Level</a>
                   </li>
                   <li>
-                    <a href="#remove-guest-device-from-multi-room-group" class="toc-h2 toc-link" data-title="Remove Guest Device from Multi-Room Group">Remove Guest Device from Multi-Room Group</a>
+                    <a href="#device-virtual-bass-on-off" class="toc-h2 toc-link" data-title="Device Virtual Bass (On/Off)">Device Virtual Bass (On/Off)</a>
                   </li>
                   <li>
-                    <a href="#disable-multiroom-mode" class="toc-h2 toc-link" data-title="Disable Multiroom Mode">Disable Multiroom Mode</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#appendix" class="toc-h1 toc-link" data-title="Appendix">Appendix</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#hexed-values" class="toc-h2 toc-link" data-title="Hexed Values">Hexed Values</a>
-                  </li>
-                  <li>
-                    <a href="#extended-m3u-tags" class="toc-h2 toc-link" data-title="Extended M3U Tags">Extended M3U Tags</a>
+                    <a href="#device-repeat-amp-shuffle-playback" class="toc-h2 toc-link" data-title="Device Repeat &amp; Shuffle playback">Device Repeat &amp; Shuffle playback</a>
                   </li>
               </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li>V1.0.0<br>Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a></li>
+            <li>Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='http-api'>HTTP API</h1>
-<p>Welcome to Arylic&#39;s developer documentation.<br>
-This documentation describes the API of DIY audio boards, which are manufactured by the <a href="https://linkplay.com/">Linkplay</a> company. Their boards are so called white label solutions, which means that hundreds of brands use them in their own products (as Arylic does). There are many well-known manufacturers that use Linkplay as their core. Theoretically, most of them should be controllable with the API described below.</p>
-<h2 id='abstract'>Abstract</h2>
-<blockquote>
-<p>Assuming a device IP address of <code>192.168.10.1</code>, the general request format would look like:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code> GET http://192.168.10.1/httpapi.asp?command={command}
-</code></pre></div>
-<p>Arylic&#39;s <code>Axx</code> modules are SoC modules for WiFi Audio solutions, which supports Smartlink, DLNA, Spotify Connect and Airplay. They also provide support for an <code>HTTP</code> API to get quick access.</p>
+        <h1 id='tcp-api'>TCP API</h1>
+<p>Welcome to Arylic&#39;s TCP API developer documentation.  </p>
 
-<p>To communicate with a board you have to send <code>HTTP GET</code> requests.<br>
-The response is in <code>JSON</code> format.</p>
+<p>The Query and Control Interface is supported by standard TCP/IP Sockets.  So unique socket identification on the LAN/WLAN is the pair of the Arylic Device IP Address and the Communication Port. The creation and management of TCP/IP Sockets is no covered in the Scope of this document as this can found in many places on the Internet and in books. </p>
+
+<p>It is a strong recommendation to familise yourself with the Arylic &quot;Web Management Interface&quot;.  This will enable you to configure the IP address of your Arylic Device and also configure the communications Port for the TCP/IP Socket if required.</p>
+
+<p>Arylic provide a simple development Tool for Windows.   </p>
+
+<p>The &quot;root&quot; of these commands is:<br>
+<code>MCU+PAS+RAKOIT:</code>   </p>
+
+<p>All commands are terminated with the special character <code>&amp;</code>.</p>
+
+<p>Some Commands are Command Pairs where the same 3 character code <code>ABC</code> can be used for query/read or control/write:</p>
+
+<ul>
+<li><code>MCU+PAS+RAKOIT:ABC&amp;</code> - Query or Read Values</li>
+<li><code>MCU+PAS+RAKOIT:ABC:{parameter}&amp;</code> - Control Functions or Write Values </li>
+</ul>
+
+<p>The Command Pairs (Read &amp; Write) are the following:</p>
+
+<p><strong>Playback related commands:</strong></p>
+
+<ul>
+<li><code>SRC</code> - Device Source</li>
+<li><code>VOL</code> - Device Volume</li>
+<li><code>TRE</code> - Equaliser Treble Level</li>
+<li><code>BAS</code> - Equaliser Bass Level</li>
+<li><code>VBS</code> - Virtual Bass</li>
+<li><code>LPM</code> - Loop and Repeat Modes</li>
+</ul>
+
+<p><strong>Hardware configuration commands:</strong></p>
+
+<ul>
+<li><code>NAM</code> - Device Name</li>
+<li><code>LED</code> - Main Device LED<br></li>
+<li><code>BEP</code> - Device Beep</li>
+</ul>
+
+<p><strong>Connection configuration commands:</strong></p>
+
+<ul>
+<li><code>BTC</code> - BT connection blah blah</li>
+</ul>
+<h1 id='system-commands'>System Commands</h1>
+<p>The following commands are all &quot;system&quot; commands &#39;SYS&#39;</p>
+
+<p>Command: <code>MCU+PAS+RAKOIT:SYS:&lt;str_command&gt;&amp;</code></p>
+<h3 id='factory-reset'>Factory Reset</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:SYS:RESET&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>AXX+FACTORY AXX+PMT+000 AXX+MUT+000 AXX+DEV+RST
+</code></pre></div>
+<p>This will stop playback and reset the device to factory settings.<br>
+The response string will confirm that the command has been accepted.</p>
+
+<p>Command:    <code>MCU+PAS+RAKOIT:SYS:RESET&amp;</code></p>
+
+<p>Response:   <code>AXX+FACTORY AXX+PMT+000 AXX+MUT+000 AXX+DEV+RST</code><br></p>
 
 <aside class="notice">
-All response examples in this documentation are from different devices (<strong>Up2Stream Amp v4</strong>, <strong>Up2Stream mini v3</strong>) but same firmware version (<code>4.6.9724.26</code>). It is possible that responses from older firmware may differ.
+If playback is active before reboot, playback and current settings are retained.
 </aside>
-<h1 id='networking'>Networking</h1><h2 id='list-of-scanned-ap-39-s'>List of scanned AP&#39;s</h2>
+
+<p><br><br><br></p>
+<h3 id='system-reboot'>System Reboot</h3>
 <blockquote>
-<p>Request format:</p>
+<p>Command: </p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanGetApListEx
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:SYS:REBOOT&amp;
 </code></pre></div>
 <blockquote>
-<p>Example response:</p>
+<p>No Response:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="nl">"res"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"aplist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"auth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AES"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"bssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b4:fb:e4:f4:73:81"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"extch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"rssi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"ssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57696E6B656C6761737365"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"auth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WPA2PSK"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"bssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18:e8:29:9d:75:c5"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"encry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AES"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"extch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"rssi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"ssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42657465696765757A65556E696669"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Retrieves a list of nearby scanned WiFi Access Points and reports some of the main properties.  The JSON table results will be sorted by signal strength <code>RSSI</code> </p>
 
-<p>Command: <code>wlanGetApListEx</code></p>
-<h3 id='description-of-response-values'>Description of response values</h3>
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>res</code></td>
-<td>Number of SSID&#39;s found</td>
-</tr>
-<tr>
-<td><code>aplist</code></td>
-<td>The key to get the list of scanned Access Points</td>
-</tr>
-</tbody></table>
-<h3 id='description-of-an-ap-response-object'>Description of an AP response object</h3>
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>auth</code></td>
-<td>Required WiFi authorization mechanism</td>
-</tr>
-<tr>
-<td><code>bssid</code></td>
-<td>The MAC address of that WiFi</td>
-</tr>
-<tr>
-<td><code>channel</code></td>
-<td>Used WiFi channel</td>
-</tr>
-<tr>
-<td><code>extch</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>rssi</code></td>
-<td>RSSI (Received Signal Strength Indication) value<br>Value range is from <code>0 - 100</code>.<br><code>100</code> means best signal strength.</td>
-</tr>
-<tr>
-<td><code>ssid</code></td>
-<td>The SSID of that WiFi network<br><code>[hexed string]</code></td>
-</tr>
-</tbody></table>
-<h2 id='connect-to-wifi'>Connect to WiFi</h2>
+<p>This will stop playback immediately and will reboot the device.  Playback is resumed after reboot has been completed.
+This command will reboot the whole device including the base board and the wifi module.</p>
+
+<p>Command:    <code>MCU+PAS+RAKOIT:SYS:REBOOT&amp;</code></p>
+
+<p>Response:   There is no response for this command<br></p>
+
+<aside class="notice">
+If playback is active before reboot, playback and current settings are retained.
+</aside>
+
+<p><br><br><br></p>
+<h3 id='system-standby'>System Standby</h3>
 <blockquote>
-<p>Request format:</p>
+<p>Command:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanConnectApEx:
-    ssid=<span class="nt">&lt;hex_ssid&gt;</span>:ch=<span class="nt">&lt;num_channel&gt;</span>:auth=<span class="nt">&lt;text_auth&gt;</span>:encry=<span class="nt">&lt;text_encry&gt;</span>:pwd=<span class="nt">&lt;hex_pwd&gt;</span>:chext=1
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"MCU+PAS+RAKOIT:SYS:STANDBY&amp;"
 </code></pre></div>
-<p>Request to connect to a desired WiFi network. Mainly used during device setup.</p>
+<blockquote>
+<p>No Response:</p>
+</blockquote>
 
-<p>Command: <code>wlanConnectApEx</code>  </p>
+<p>This will stop playback immediately and power off the device.</p>
+
+<p>Command:    <code>MCU+PAS+RAKOIT:SYS:STANBY&amp;</code></p>
+
+<p>Response:   There is no response for this command<br></p>
+
+<aside class="notice">
+Input Power will need to be cycled to switch on / power up the device
+</aside>
+<h1 id='hardware-commands'>Hardware Commands</h1><h2 id='device-name'>Device Name</h2><h3 id='get-device-name'>Get Device Name</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:NAM&amp;:
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:NAM:4E4F42425920424F58&amp;
+</code></pre></div>
+<p>This command will return the current device name as a hexadecimal string.  </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:NAM&amp;</code></p>
+
+<p>Response:<br>
+<code>MCU+PAS+RAKOIT:NAM&lt;hex_str_name&gt;&amp;</code>  </p>
 
 <table><thead>
 <tr>
@@ -568,48 +539,35 @@ All response examples in this documentation are from different devices (<strong>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>hex_ssid</code></td>
-<td><code>[hexed string]</code> of the WiFi SSID</td>
-</tr>
-<tr>
-<td><code>num_channel</code></td>
-<td>WiFi channel to connect (1-12)</td>
-</tr>
-<tr>
-<td><code>text_auth</code></td>
-<td>WiFi authorization mechanism, <code>OPEN</code> or <code>WPA2PSK</code></td>
-</tr>
-<tr>
-<td><code>text_encry</code></td>
-<td>Encryption type, <code>AES</code> or <code>NONE</code></td>
-</tr>
-<tr>
-<td><code>hex_pwd</code></td>
-<td><code>[hexed string]</code> of the WiFi password</td>
-</tr>
-<tr>
-<td><code>flag_chext</code></td>
-<td>1</td>
+<td><code>&lt;hex_str_name&gt;</code></td>
+<td>Device name string (ascii characters)</td>
 </tr>
 </tbody></table>
 
+<p><br><br>
 <aside class="notice">
-This request has no response, you can call <strong>`wlanGetConnectState`</strong> to get the connection status.
-</aside>
-<h2 id='connect-to-hidden-wifi'>Connect to hidden WiFi</h2>
-<blockquote>
-<p>Request format with password:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanConnectHideApEx:ssid=<span class="nt">&lt;hex_ssid&gt;</span>:pwd=<span class="nt">&lt;hex_pwd&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Request format without password:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanConnectHideApEx:ssid=<span class="nt">&lt;hex_ssid&gt;</span>
-</code></pre></div>
-<p>Connect the device to a hidden WiFi network. When connecting, the device connection may be lost.</p>
+Note after a firmware upgrade the name of the device will be extended to <code>&lt;ascii_str_name&gt;</code> and <code>_XXXX</code> so &#39;<ascii_str_name>_XXXX`.  XXXX corresponds to the last two hexadecimal pairs of the device MAC address.
+</aside></p>
 
-<p>Command: <code>wlanConnectHideApEx</code>  </p>
+<p><br><br><br></p>
+<h3 id='set-device-name'>Set Device Name</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:NAM:&lt;hex_str_name&gt;&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>AXX+NAM+RAKOIT:&lt;ascii_str_name&gt;&amp;
+</code></pre></div>
+<p>Sets the device name. </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:&lt;ascii_str_name&gt;NAM&amp;</code></p>
+
+<p>Response:<br>
+<code>MCU+PAS+RAKOIT:&lt;hex_str_name&gt;&amp;</code></p>
 
 <table><thead>
 <tr>
@@ -618,682 +576,551 @@ This request has no response, you can call <strong>`wlanGetConnectState`</strong
 </tr>
 </thead><tbody>
 <tr>
-<td><code>hex_ssid</code></td>
-<td><code>[hexed string]</code> of the WiFi SSID</td>
+<td><code>&lt;hex_str_name&gt;</code></td>
+<td>Device name string (hexadecimal)</td>
 </tr>
 <tr>
-<td><code>hex_pwd</code></td>
-<td><code>[hexed string]</code> of the WiFi password<br>(optional value)</td>
+<td><code>&lt;ascii_str_name&gt;</code></td>
+<td>Device name string (ascii characeters)</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-This request has no response, you can call <strong>'wlanGetConnectState'</strong> to get the connection state.
+When setting the Device name current playback will stop.
 </aside>
-<h2 id='device-connection-status'>Device connection status</h2>
+<h2 id='device-main-led'>Device Main LED</h2><h3 id='get-led-status'>Get LED Status</h3>
 <blockquote>
-<p>Request format:</p>
+<p>Command:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=wlanGetConnectState
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:LED&amp;
 </code></pre></div>
 <blockquote>
-<p>Example response:</p>
+<p>Example Response:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+LED:0&amp;                  // LED Disabled
+MCU+PAS+LED:1&amp;                  // LED Enabled
 </code></pre></div>
-<p>Command: <code>wlanGetConnectState</code>  </p>
+<p>This command will return a boolean state of the LED Enable/Disable Function.</p>
 
-<p>This command will return the status of the WiFi connection. The possible return values are as follows.</p>
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:LED&amp;</code></p>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+RAKOIT:LED:0&amp;</code></td>
+<td>LED Disabled</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+RAKOIT:LED:1&amp;</code></td>
+<td>LED Enabled</td>
+</tr>
+</tbody></table>
+
+<p><br><br><br></p>
+<h3 id='set-led-status'>Set LED Status</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:LED:0&amp;           // Disable LED
+MCU+PAS+RAKOIT:LED:1&amp;           // Enable LED
+MCU+PAS+RAKOIT:LED:T&amp;           // Toggle current LED status
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:LED:0&amp;           // LED Disabled
+MCU+PAS+RAKOIT:LED:1&amp;           // LED Enabled
+</code></pre></div>
+<p>Enables &amp; Disables device main LED. </p>
+
+<p>Command: <code>MCU+PAS+RAKOIT:LED:&lt;bool_or_toggle&gt;&amp;</code></p>
 
 <table><thead>
 <tr>
 <th>Value</th>
-<th>Value Description</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>PROCESS</code></td>
-<td>Connection still in progress.</td>
+<td><code>0</code></td>
+<td>Enable</td>
 </tr>
 <tr>
-<td><code>PAIRFAIL</code></td>
-<td>WiFi connection attempt failed. Wrong password given.</td>
+<td><code>1</code></td>
+<td>Disable</td>
 </tr>
 <tr>
-<td><code>FAIL</code></td>
-<td>WiFi connection attempt failed. Also this will be the reply for a device that is connected by LAN Ethernet port.</td>
-</tr>
-<tr>
-<td><code>OK</code></td>
-<td>Device is connected.</td>
+<td><code>T</code></td>
+<td>Toggle current LED status</td>
 </tr>
 </tbody></table>
 
-<aside class="notice">
-The response value is NOT in JSON format! It is just a plaintext string.
-</aside>
-<h2 id='query-networking-status'>Query networking status</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getStaticIP
-</code></pre></div>
-<blockquote>
-<p>Example response for ETH DHCP:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"wifi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Example response for ETH Manual IP:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"wifi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eth_static_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.10.103"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eth_static_mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255.255.255.0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eth_static_gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.10.1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eth_static_dns1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.10.1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eth_static_dns2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Query current networking status</p>
+<p>Response:</p>
 
-<p>Command: <code>getStaticIP</code>  </p>
-<h3 id='description-of-response-values'>Description of response values</h3>
 <table><thead>
 <tr>
-<th>Key</th>
-<th>Value Description</th>
+<th>Response</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>wifi</code></td>
-<td>state of WiFi: <br><code>-1</code> - not connected<br><code>0</code> - Static IP<br><code>1</code> - DHCP</td>
+<td><code>MCU+PAS+RAKOIT:LED:0&amp;</code></td>
+<td>LED Disabled</td>
 </tr>
 <tr>
-<td><code>eth</code></td>
-<td>state of ETH: <br><code>-1</code> - not connected<br><code>0</code> - Static IP<br><code>1</code> - DHCP</td>
-</tr>
-<tr>
-<td><code>eth_static_ip</code></td>
-<td>Available when <code>eth</code> is <code>0</code>, Manually set IP address</td>
-</tr>
-<tr>
-<td><code>eth_static_mask</code></td>
-<td>Available when <code>eth</code> is <code>0</code>, Net mask</td>
-</tr>
-<tr>
-<td><code>eth_static_gateway</code></td>
-<td>Available when <code>eth</code> is <code>0</code>, Gateway</td>
-</tr>
-<tr>
-<td><code>eth_static_dns1</code></td>
-<td>Available when <code>eth</code> is <code>0</code>, Prefered DNS</td>
-</tr>
-<tr>
-<td><code>eth_static_dsn2</code></td>
-<td>Available when <code>eth</code> is <code>0</code>, Alternate DNS</td>
-</tr>
-<tr>
-<td><code>wifi_static_ip</code></td>
-<td>Available when <code>wifi</code> is <code>0</code>, Manually set IP address</td>
-</tr>
-<tr>
-<td><code>wifi_static_mask</code></td>
-<td>Available when <code>wifi</code> is <code>0</code>, Net mask</td>
-</tr>
-<tr>
-<td><code>wifi_static_gateway</code></td>
-<td>Available when <code>wifi</code> is <code>0</code>, Gateway</td>
-</tr>
-<tr>
-<td><code>wifi_static_dns1</code></td>
-<td>Available when <code>wifi</code> is <code>0</code>, Prefered DNS</td>
-</tr>
-<tr>
-<td><code>wifi_static_dsn2</code></td>
-<td>Available when <code>wifi</code> is <code>0</code>, Alternate DNS</td>
+<td><code>MCU+PAS+RAKOIT:LED:1&amp;</code></td>
+<td>LED Enabled</td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-Introduced in version 4.6.328252
-</aside>
-<h2 id='set-manual-ip'>Set Manual IP</h2>
+<h2 id='device-main-beep-tone-enable-disable'>Device Main BEEP Tone (Enable/Disable)</h2><h3 id='get-beep-tone-status-enabled-disabled'>Get BEEP Tone Status (Enabled/Disabled)</h3>
 <blockquote>
-<p>Request format:</p>
+<p>Command::</p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setStaticIP:{"type":"<span class="nt">&lt;TYPE&gt;</span>","ip":"<span class="nt">&lt;IP&gt;</span>","mask":"<span class="nt">&lt;MASK&gt;</span>","gateway":"<span class="nt">&lt;GW&gt;</span>","dns":[{"service":"<span class="nt">&lt;DNS1&gt;</span>"},{"service":"<span class="nt">&lt;DNS2&gt;</span>"}]}
-</code></pre></div>
-<blockquote>
-<p>Sample Response: </p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>OK
-</code></pre></div>
-<p>Manually set network parameters for WiFi or Ethernet.</p>
-
-<p>Command: <code>setStaticIP</code>  </p>
-
-<p>Command parameters:</p>
-
-<ul>
-<li><code>&lt;TYPE&gt;</code> - Network interface to set, could be <code>wifi</code> or <code>eth</code></li>
-<li><code>&lt;IP&gt;</code> - IPV4 address to manually set</li>
-<li><code>&lt;MASK&gt;</code> - network mask </li>
-<li><code>&lt;GW&gt;</code> - Gateway</li>
-<li><code>&lt;DNS1&gt;</code> - Prefered DNS</li>
-<li><code>&lt;DNS2&gt;</code> - Alternate DNS</li>
-</ul>
-
-<aside class="notice">
-Introduced in version 4.6.328252
-</aside>
-<h2 id='set-dhcp'>Set DHCP</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setDhcp:<span class="nt">&lt;TYPE&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Sample Response: </p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>OK
-</code></pre></div>
-<p>Request to connect to a desired WiFi network. Mainly used during device setup.</p>
-
-<p>Command: <code>setDhcp</code>  </p>
-
-<p>Command parameters:</p>
-
-<ul>
-<li><code>&lt;TYPE&gt;</code> - Network interface to set, could be <code>wifi</code> or <code>eth</code></li>
-</ul>
-
-<aside class="notice">
-Introduced in version 4.6.328252
-</aside>
-<h1 id='device-information'>Device Information</h1><h2 id='get-device-metadata'>Get Device Metadata</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getStatusEx
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
-    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FF31F09E1A5020113B0A3918"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"DeviceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRO"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"GroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRO"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"ssid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRO_D4AD"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_us"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"firmware"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.6.328252"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"hardware"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A31"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"release"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP2STREAM_PRO_V3"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"priv_prj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UP2STREAM_PRO_V3"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"project_build_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a31rakoit"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"Release"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20210903"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"temp_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A7A50887ACBC9B36"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"hideSSID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"SSIDStrategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A31_stable_4.6"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"wmrm_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"internet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"MAC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00:22:6C:33:D4:AD"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"STA_MAC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00:00:00:00:00:00"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"CountryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CN"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"CountryRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"netstat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"essid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"apcli0"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"eth2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.167.74"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"ra0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.10.254"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"eth_dhcp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eth_static_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.167.74"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"eth_static_mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255.255.255.0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"eth_static_gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.167.1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"eth_static_dns1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194.168.4.100"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"eth_static_dns2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194.168.8.100"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"VersionUpdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"NewVer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"mcu_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"mcu_ver_new"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"dsp_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"dsp_ver_new"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021:09:27"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:25:17"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"tz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"dst_enable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"prompt_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"iot_ver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"upnp_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1005"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"cap1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x305200"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"capability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x28e90b80"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x6"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"streams_all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x7bff7ffe"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"streams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x7b9831fe"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"external"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"plm_support"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x6"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"preset_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"spotify_active"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"lbc_support"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"privacy_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"WifiChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"RSSI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"BSSID"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"battery"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"battery_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"securemode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"auth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WPAPSKWPA2PSK"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"encry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AES"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"upnp_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid:FF31F09E-1A50-2011-3B0A-3918FF31F09E"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"uart_pass_port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8899"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"communication_port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8819"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"web_firmware_update_hide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"ignore_talkstart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"web_login_result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"silenceOTATime"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"ignore_silenceOTATime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"new_tunein_preset_and_alarm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"iheartradio_new"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"new_iheart_podcast"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"tidal_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"service_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"security"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https</span><span class="se">\/</span><span class="s2">2.0"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"security_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w"> 
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Retrieves detailed informations about a connected device.</p>
-
-<p>Command: <code>getStatusEx</code></p>
-<h3 id='description-of-response-values'>Description of response values</h3>
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>uuid</code></td>
-<td>Device permanent UUID (will remain after device reboot)</td>
-</tr>
-<tr>
-<td><code>DeviceName</code></td>
-<td>The device UPnP and Airplay friendly name</td>
-</tr>
-<tr>
-<td><code>GroupName</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>ssid</code></td>
-<td>Device&#39;s own <code>SSID</code> when in WiFi pairing mode or when device&#39;s WiFi hotspot is active</td>
-</tr>
-<tr>
-<td><code>language</code></td>
-<td>The language</td>
-</tr>
-<tr>
-<td><code>firmware</code></td>
-<td>Current firmware version</td>
-</tr>
-<tr>
-<td><code>hardware</code></td>
-<td>Hardware model</td>
-</tr>
-<tr>
-<td><code>build</code></td>
-<td>Possible values: <code>release</code>, <code>debug</code>, <code>backup</code><br><code>release</code>: this is a release version<br><code>debug</code>: this is a debug version<br><code>backup</code>: this is a backup version</td>
-</tr>
-<tr>
-<td><code>project</code></td>
-<td>The project name</td>
-</tr>
-<tr>
-<td><code>priv_prj</code></td>
-<td>Project name which would stand for a specific board</td>
-</tr>
-<tr>
-<td><code>project_build_name</code></td>
-<td>Code identifier for customized release</td>
-</tr>
-<tr>
-<td><code>Release</code></td>
-<td>Firmware build date<br>Format: <code>YYYYMMDD</code></td>
-</tr>
-<tr>
-<td><code>temp_uuid</code></td>
-<td>Temporary UUID (will change after device reboot)</td>
-</tr>
-<tr>
-<td><code>hideSSID</code></td>
-<td>When the device is operating as a WiFi hotspot, this flag determines whether its SSID should be hidden or visible<br><code>0</code>: <code>ssid</code> is visible<br><code>1</code>: <code>ssid</code> is hidden</td>
-</tr>
-<tr>
-<td><code>SSIDStrategy</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>branch</code></td>
-<td>Code branch</td>
-</tr>
-<tr>
-<td><code>group</code></td>
-<td>Wether the device is working slave mode, <code>0</code> means master or standalone.</td>
-</tr>
-<tr>
-<td><code>master_uuid</code></td>
-<td>Exist when working in slave mode, showing the <code>UUID</code> of master device.</td>
-</tr>
-<tr>
-<td><code>slave_mask</code></td>
-<td>Exist when working in slave mode, showing if the device support mask feature. <code>0</code> means not supported.</td>
-</tr>
-<tr>
-<td><code>wmrm_version</code></td>
-<td>Multiroom library version, the latest version 4.2 is not compatible with 2.0.</td>
-</tr>
-<tr>
-<td><code>internet</code></td>
-<td>Current status of internet access:<br><code>0</code>: not ready<br><code>1</code>: ready</td>
-</tr>
-<tr>
-<td><code>MAC</code></td>
-<td>MAC address of the device when working in hotspot mode, will show on APP and also the sticker on module/device.</td>
-</tr>
-<tr>
-<td><code>STA_MAC</code></td>
-<td>MAC address of the <code>STA</code> = STATION</td>
-</tr>
-<tr>
-<td><code>CountryCode</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>CountryRegion</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>netstat</code></td>
-<td>WiFi connect state:<br><code>0</code>: no connection<br><code>1</code>: connecting<br><code>2</code>: connected</td>
-</tr>
-<tr>
-<td><code>essid</code></td>
-<td>SSID of the WiFi the device is connected to<br><code>[hexed string]</code></td>
-</tr>
-<tr>
-<td><code>apcli0</code></td>
-<td>Device&#39;s IP address over WiFi</td>
-</tr>
-<tr>
-<td><code>eth2</code></td>
-<td>Device&#39;s IP address when it&#39;s connected to ethernet</td>
-</tr>
-<tr>
-<td><code>ra0</code></td>
-<td>WiFi AP IP address, normally it is <code>10.10.10.254</code></td>
-</tr>
-<tr>
-<td><code>eth_dhcp</code></td>
-<td>Flag for DHCP or Static IP Address <br><code>0</code>: Static IP<br><code>1</code>: IP Address provided by LAN/WLAN DHCP Server</td>
-</tr>
-<tr>
-<td><code>eth_static_ip</code></td>
-<td>Device&#39;s Static IP address (If <code>eth_dhcp=0</code>)</td>
-</tr>
-<tr>
-<td><code>eth_static_mask</code></td>
-<td>Device&#39;s Network Mask (If <code>eth_dhcp=0</code>)</td>
-</tr>
-<tr>
-<td><code>eth_static_gateway</code></td>
-<td>Device&#39;s IP Gateway (If <code>eth_dhcp=0</code>)</td>
-</tr>
-<tr>
-<td><code>eth_static_dns1</code></td>
-<td>Device&#39;s Primary DNS Server (If <code>eth_dhcp=0</code>)</td>
-</tr>
-<tr>
-<td><code>eth_static_dns2</code></td>
-<td>Device&#39;s Secondary DNS Server (If <code>eth_dhcp=0</code>)</td>
-</tr>
-<tr>
-<td><code>VersionUpdate</code></td>
-<td>Flag that determines, if there is a new firmware version available or not.<br><code>0</code>: no new firmware<br><code>1</code>: new firmware available</td>
-</tr>
-<tr>
-<td><code>NewVer</code></td>
-<td>If there is a new firmware available (in case of <code>VersionUpdate</code> is set to <code>1</code>), this is the new version number</td>
-</tr>
-<tr>
-<td><code>mcu_ver</code></td>
-<td>Version of MCU on base board</td>
-</tr>
-<tr>
-<td><code>mcu_ver_new</code></td>
-<td>New version of MCU on base board, indicates if there is a newer version of MCU available<br><code>0</code> - No new version<br><code>others</code> - New version</td>
-</tr>
-<tr>
-<td><code>dsp_ver</code></td>
-<td>Version for voice processing, not used</td>
-</tr>
-<tr>
-<td><code>dsp_ver_new</code></td>
-<td>New version for voice processing, not used</td>
-</tr>
-<tr>
-<td><code>date</code></td>
-<td>Current Date</td>
-</tr>
-<tr>
-<td><code>time</code></td>
-<td>Current local time</td>
-</tr>
-<tr>
-<td><code>tz</code></td>
-<td>Offset of timezone</td>
-</tr>
-<tr>
-<td><code>dst_enable</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>region</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>prompt_status</code></td>
-<td>Indicates if the prompting voice would be played or not, you can set with command <code>PromptEnable</code> and <code>PromptDisable</code>.<br><code>0</code> - No prompting voice<br><code>1</code> - Have prompting voice</td>
-</tr>
-<tr>
-<td><code>iot_ver</code></td>
-<td>IOT library version, not used</td>
-</tr>
-<tr>
-<td><code>upnp_version</code></td>
-<td>UPnP Device Architecture Version</td>
-</tr>
-<tr>
-<td><code>cap1</code></td>
-<td>Bit mask for the module feature, used internally</td>
-</tr>
-<tr>
-<td><code>capability</code></td>
-<td>Bit mask for the module feature, used internally</td>
-</tr>
-<tr>
-<td><code>languages</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>streams_all</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>streams</code></td>
-<td>This is a bit mask:<br><code>0</code>: If Airplay is enabled<br><code>1</code>: If DLNA is enabled<br><code>2</code>: Has TTPod support<br><code>3</code>: Has TuneIn support<br><code>4</code>: Has Pandora support<br><code>5</code>: Has DoubanFM support<br>!! DOCUMENTATION IN PROGRESS !!*</td>
-</tr>
-<tr>
-<td><code>external</code></td>
-<td>hexadecimal value<br><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>plm_support</code></td>
-<td>This is a bit mask, each bit stands for an external input source:<br><code>bit1</code>: LineIn (Aux support)<br><code>bit2</code>: Bluetooth support<br><code>bit3</code>: USB support<br><code>bit4</code>: Optical support<br><code>bit6</code>: Coaxial support<br><code>bit8</code>: LineIn 2 support<br><code>bit15</code>: USBDAC support<br>Others are reserved or not used.</td>
-</tr>
-<tr>
-<td><code>preset_key</code></td>
-<td>Quantity of presets available:<br></td>
-</tr>
-<tr>
-<td><code>spotify_active</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em><br>But I guess:<br>Flag that indicates if Spotify is currently playing on the device (via Spotify Connect?)<br><code>0</code>: Spotify is not playing<br><code>1</code>: Spotify is playing</td>
-</tr>
-<tr>
-<td><code>lbc_support</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>privacy_mode</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>WifiChannel</code></td>
-<td>The current connected WiFi channel</td>
-</tr>
-<tr>
-<td><code>RSSI</code></td>
-<td><a href="https://en.wikipedia.org/wiki/Received_signal_strength_indication">RSSI Level</a> of used WiFi<br>Value ranges from <code>0 - 100</code>. <code>100</code> means best signal strength.</td>
-</tr>
-<tr>
-<td><code>BSSID</code></td>
-<td>The Basic Service Set Identifiers : In most cases this will be the MAC Address of the Wireless Acces Point Used (e.g. Router)</td>
-</tr>
-<tr>
-<td><code>battery</code></td>
-<td><code>0</code>: battery is not charging<br><code>1</code>: battery is charging</td>
-</tr>
-<tr>
-<td><code>battery_percent</code></td>
-<td>Battery charge level<br>Value ranges from <code>0 - 100</code></td>
-</tr>
-<tr>
-<td><code>securemode</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>auth</code></td>
-<td>Type of WiFi Protected Access used (Authentication Key).</td>
-</tr>
-<tr>
-<td><code>encry</code></td>
-<td>Type of WiFi Protected Access used (Encryption Protocol).</td>
-</tr>
-<tr>
-<td><code>upnp_uuid</code></td>
-<td>The UPnP UUID</td>
-</tr>
-<tr>
-<td><code>uart_pass_port</code></td>
-<td>Port used for TCP/IP Communcations/Socket Connections</td>
-</tr>
-<tr>
-<td><code>communication_port</code></td>
-<td>TCP port for internal messages</td>
-</tr>
-<tr>
-<td><code>web_firmware_update_hide</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>ignore_talkstart</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>silenceOTATime</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>ignore_silenceOTATime</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>new_tunein_preset_and_alarm</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>iheartradio_new</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>new_iheart_podcast</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>tidal_version</code></td>
-<td>TIDAL API version</td>
-</tr>
-<tr>
-<td><code>service_version</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>security</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>security_version</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-There are <strong>LOTS</strong> of keys in the example response which don't have any description yet!
-</aside>
-<h2 id='get-system-log'>Get System Log</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getsyslog
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code><span class="cp">&lt;!doctype html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
-        <span class="nt">&lt;DIV&gt;</span>
-            <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"dl"</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">data/sys.log</span><span class="nt">&gt;</span>download<span class="nt">&lt;/a&gt;&lt;hr&gt;&lt;/span&gt;</span>
-        <span class="nt">&lt;/DIV&gt;</span>
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
-<p>Command: <code>getsyslog</code></p>
-
-<p>To get current system log for debugging, the content is encryted. The response for this command is special, it will show a download link for user. And after clicked, will download the log file onto your computer. </p>
-<h1 id='playback-control'>Playback Control</h1><h3 id='device-audio-source'>Device Audio Source</h3>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=switchmode:<span class="nt">&lt;player_mode&gt;</span>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:BEP&amp;
 </code></pre></div>
 <blockquote>
 <p>Example Response:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:BEP:0&amp;           // BEEP Disabled 
+MCU+PAS+RAKOIT:BEP:1&amp;           // BEEP Enabled
+</code></pre></div>
+<p>This request will return a boolean state of the BEEP Tone Enable/Disable Function </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:BEP&amp;</code></p>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+RAKOIT:BEP:0&amp;</code></td>
+<td>BEEP Tone Disabled</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+RAKOIT:BEP:1&amp;</code></td>
+<td>BEEP Tone Enabled</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h3 id='set-beep-tone-status-enable-disable'>Set BEEP Tone Status (Enable/Disable)</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:BEP:0&amp;           // Disable BEEP Tone
+MCU+PAS+RAKOIT:BEP:1&amp;           // Enable BEEP Tone
+
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:BEP:0&amp;           // BEEP Tone  Disabled 
+MCU+PAS+RAKOIT:BEP:1&amp;           // BEEP Tone Enabled
+</code></pre></div>
+<p>Enables &amp; Disables device main BEEP Tone. </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:BEP:&lt;bool&gt;&amp;</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;bool&gt;</code></td>
+<td>A boolean value <br><code>0</code> Enable <br><code>1</code> Disable</td>
+</tr>
+</tbody></table>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+RAKOIT:BEP:0&amp;</code></td>
+<td>BEEP Tone Disabled</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+RAKOIT:BEP:1&amp;</code></td>
+<td>BEEP Tone Enabled</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h3 id='get-audio-channel-information-mono-stereo'>Get Audio Channel Information (Mono/Stereo)</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:CHN&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+CHN:S&amp;                  // Device output is Stereo
+MCU+PAS+CHN:L&amp;                  // Device output is Mono - Left Channel
+MCU+PAS+CHN:R&amp;                  // Device output is Mono - Right Channel
+</code></pre></div>
+<p>This request will return a string which will indicate stereo active or mono active (including channel left or right) </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:CHN&amp;</code></p>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+RAKOIT:CHN:S&amp;</code></td>
+<td>Device output is Stereo</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+RAKOIT:CHN:L&amp;</code></td>
+<td>Device output is Mono - Left Channel</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+RAKOIT:CHN:R&amp;</code></td>
+<td>Device output is Mono - Right Channel</td>
+</tr>
+</tbody></table>
+<h1 id='connection-status-commands'>Connection Status Commands</h1><h3 id='get-status-of-ethernet-connection-rj45-network'>Get Status of Ethernet Connection (RJ45 Network)</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:ETH&amp;:
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:ETH:0&amp;           // Device not connected to LAN
+MCU+PAS+RAKOIT:ETH:1&amp;           // Device connected to LAN
+</code></pre></div>
+<p>This command will return the status of the device on the Local Area Network (LAN).  </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:ETH&amp;</code></p>
+
+<p>Response:   </p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+RAKOIT:ETH:0&amp;</code></td>
+<td>Device not connected to LAN</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+RAKOIT:ETH:1&amp;</code></td>
+<td>Device connected to LAN</td>
+</tr>
+</tbody></table>
+
+<p><br><br><br> </p>
+<h3 id='get-status-of-wireless-connection-wifi-network'>Get Status of Wireless Connection (WiFi Network)</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:WIF&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:WIF:0&amp;           // Device not connected to WLAN
+MCU+PAS+RAKOIT:WIF:1&amp;           // Device connected to WLAN
+</code></pre></div>
+<p>This command will return the status of the device on the Wireless Local Area Network (WLAN).  </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:WIF&amp;</code></p>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+RAKOIT:WIF:0&amp;</code></td>
+<td>Device not connected to WLAN</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+RAKOIT:WIF:1&amp;</code></td>
+<td>Device connected to WLAN</td>
+</tr>
+</tbody></table>
+
+<p><br><br><br></p>
+<h3 id='get-status-of-internet-connection'>Get Status of Internet Connection</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:WWW&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:WWW:0&amp;           // Device not connected to Internet
+MCU+PAS+RAKOIT:WWW:1&amp;           // Device connected to Internet
+</code></pre></div>
+<p>This command will return the status of the device Internet Connection.  </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:WWW&amp;</code></p>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+RAKOIT:WWW:0&amp;</code></td>
+<td>Device not connected to Internet</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+RAKOIT:WWW:1&amp;</code></td>
+<td>Device connected to Internet</td>
+</tr>
+</tbody></table>
+<h2 id='device-bluetooth-connection'>Device Bluetooth Connection</h2><h3 id='get-bluetooth-connection-status'>Get Bluetooth Connection Status</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:BTC&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+BTC:0&amp;                  // Bluetooth connection not active 
+MCU+PAS+BTC:1&amp;                  // Bluetooth connection active
+</code></pre></div>
+<p>This request will return the boolean state of the Bluetooth connection,   </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:BTC&amp;</code></p>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+BTC:0&amp;</code></td>
+<td>Bluetooth connection not active</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+BTC:1&amp;</code></td>
+<td>Bluetooth connection active</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+If the Device is not in Bluetooth player mode then the reply will always be <code>MCU+PAS+BTC:0&</code>.
+</aside>
+<h3 id='reconnect-last-active-bluetooth-connection'>Reconnect last active Bluetooth connection</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:BTC:0&amp;           // Disconnect current Bluetooth connection 
+MCU+PAS+RAKOIT:BTC:1&amp;           // Reconnect to a last active Bluetooth connection
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+BTC:0&amp;                  // Bluetooh disconnected
+MCU+PAS+BTC:1&amp;                  // Bluetooth connected
+MCU+PAS+RAKOIT:ERR:INVALID&amp;     // Device is not in Bluetooth player mode
+</code></pre></div>
+<p>Connects and disconnects Bluetooth active connection when the player mode is Bluetooth. </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:BTC:&lt;bool&gt;&amp;</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;bool&gt;</code></td>
+<td>A boolean value<br><code>0</code> Disconnect Bluetooth<br><code>1</code> Connect Bluetooth</td>
+</tr>
+</tbody></table>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+VBS:0&amp;</code></td>
+<td>Bluetooh disconnected</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+VBS:1&amp;</code></td>
+<td>Bluetooth connected</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+RAKOIT:ERR:INVALID&amp;</code></td>
+<td>Device is not in Bluetooth player mode</td>
+</tr>
+</tbody></table>
+<h1 id='device-status-amp-sources'>Device Status &amp; Sources</h1><h3 id='get-the-current-device-status'>Get the Current Device Status</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:STA&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:STA:NET,0,60,0,0,0,1,1,1,0&amp;
+</code></pre></div>
+<p>This command provides useful device status information.  </p>
+
+<p>Command: <code>MCU+PAS+RAKOIT:STA&amp;</code></p>
+
+<p>Response: <code>MCU+PAS+STA:&lt;str_source&gt;,&lt;bool_mute&gt;,&lt;int_volume&gt;,&lt;int_treble&gt;,&lt;int_bass&gt;,&lt;bool_net&gt;,&lt;bool_internet&gt;,&lt;bool_playing&gt;,&lt;bool_led&gt;,&lt;bool_upgrading&gt;&amp;</code></p>
+<h3 id='description-of-response-values'>Description of response values</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;str_source&gt;</code></td>
+<td>Playback mode&lt;<br><code>NET</code>: wifi mode<br><code>LINE-IN</code>: line analogue input<br><code>BT</code>: bluetooth mode<br><code>OPT</code>: optical digital input<br><code>???</code>: RCA Analogue input<br><code>COAX</code>: co-axial digital input<br><code>LINE-IN2</code>: line analogue input #2</td>
+</tr>
+<tr>
+<td><code>&lt;bool_mute&gt;</code></td>
+<td>A boolean value indicating if mute is active<br><code>0</code> mute not active<br><code>1</code> mute active.</td>
+</tr>
+<tr>
+<td><code>&lt;int_volume&gt;</code></td>
+<td>Current volume<br>The integer range is from <code>0 to 100</code>. So can be considered a linear percentage (<code>0% to 100%</code>)</td>
+</tr>
+<tr>
+<td><code>&lt;int_treble&gt;</code></td>
+<td>Current treble level<br> The integer range is from <code>-10 to 10</code>.  This corresponds to <code>-10dB</code> &amp; <code>+10dB</code></td>
+</tr>
+<tr>
+<td><code>&lt;int_bass&gt;</code></td>
+<td>Current bass level<br> The integer range is from <code>-10 to 10</code>.  This corresponds to <code>-10dB</code> &amp; <code>+10dB</code></td>
+</tr>
+<tr>
+<td><code>&lt;bool_net&gt;</code></td>
+<td>A boolean value indicating current device local network status<br><code>0</code> Not on local network<br><code>1</code> Device on local network.</td>
+</tr>
+<tr>
+<td><code>&lt;bool_internet&gt;</code></td>
+<td>A boolean value indicating current device internet connection status<br><code>0</code> No internet connection<br><code>1</code> Internet connection active</td>
+</tr>
+<tr>
+<td><code>&lt;bool_playing&gt;</code></td>
+<td>A boolean value indicating if playback is active<br><code>0</code> Playback not active<br><code>1</code> Playback active</td>
+</tr>
+<tr>
+<td><code>&lt;bool_led&gt;</code></td>
+<td>A boolean value indicating if main LED light is enabled or disabled<br><code>0</code> LED disabled<br><code>1</code> LED enabled</td>
+</tr>
+<tr>
+<td><code>&lt;bool_upgrading&gt;</code></td>
+<td>A boolean value indicating if a device firmware upgrade is in progress<br><code>0</code> No firmware upgrade in progress<br><code>1</code> upgrading firmware</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Defaults Factory Settings or Device Status after firmware upgrade are as follows.  "MCU+PAS+RAKOIT:STA:NET,0,30,0,0,1,1,0,1,0&"
+</aside>
+<h2 id='device-status'>Device Status</h2>
+<p>These commands share a common parameter table composed of strings.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>str_player_mode</code></td>
+<td>The audio source that has to be switched<br><code>NET</code>: wifi mode<br><code>LINE-IN</code>: line analogue input<br><code>BT</code>: bluetooth mode<br><code>OPT</code>: optical digital input<br><code>???</code>: RCA Analogue input<br><code>COAX</code>: co-axial digital input<br><code>LINE-IN2</code>: line analogue input #2</td>
+</tr>
+</tbody></table>
+<h3 id='get-device-audio-source'>Get Device Audio Source</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:SRC&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:SRC`&lt;str_player_mode&gt;`&amp;
+</code></pre></div>
+<p>This request will return the current player mode / audio source </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:SRC&amp;</code></p>
+
+<p>Response:<br>
+<code>MCU+PAS+RAKOIT:SRC&lt;str_player_mode&gt;&amp;</code></p>
+
+<p><br><br><br></p>
+<h3 id='select-device-audio-source'>Select Device Audio Source</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:SRC:`&lt;str_player_mode&gt;`&amp;:
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>NET                         // AXX+MEA+RDY AXX+PLY+000
+USB                         // AXX+MEA+RDY AXX+MEA+RDY AXX+PLY+PLA AXX+PLY+000 AXX+PLY+001
+BT                          // AXX+MEA+RDY AXX+MEA+RDY AXX+PLY+PLA
 </code></pre></div>
 <p>Selects the Audio Source of the Device. The available audio sources for each device will depend on the installed hardware. </p>
 
-<p>Sub-Command: <code>switchmode</code></p>
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:SRC:&lt;str_player_mode&gt;&amp;</code></p>
+
+<p>Response:</p>
 
 <table><thead>
 <tr>
@@ -1302,24 +1129,37 @@ There are <strong>LOTS</strong> of keys in the example response which don't have
 </tr>
 </thead><tbody>
 <tr>
-<td><code>player_mode</code></td>
-<td>The audio source that has to be switched<br><code>0</code>: wifi mode<br><code>40</code>: line analogue input<br><code>41</code>: bluetooth mode<br><code>43</code>: optical digital input<br><code>44</code>: RCA Analogue input<br><code>45</code>: co-axial digital input<br><code>47</code>: line analogue input #2</td>
+<td><code>AXX+MEA+RDY AXX+PLY+000</code></td>
+<td>Example reply</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+ERR:UNSUPPORTED&amp;</code></td>
+<td>Check with FZ</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+ERR:SRC&amp;</code></td>
+<td>Check with FZ</td>
 </tr>
 </tbody></table>
-<h3 id='play-preset-content'>Play Preset Content</h3>
+
+<aside class="notice">
+The RAKOIT command sent changes the audio source but the reply format is using the LinkPlay command set. Arylic are checking if this is correct!
+</aside>
+<h1 id='playback-commands'>Playback Commands</h1><h3 id='play-preset-content'>Play Preset Content</h3>
 <blockquote>
-<p>Request format</p>
+<p>Command:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=MCUKeyShortClick:<span class="nt">&lt;num_value&gt;</span>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:PST:&lt;num_preset&gt;&amp;
 </code></pre></div>
 <blockquote>
 <p>Example response:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>AXX+MEA+RDY
 </code></pre></div>
 <p>Play Instruction for one of the Programmable Presets (maximum 10) </p>
 
-<p>Command: <code>MCUKeyShortClick</code></p>
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:PST:&lt;num_value&gt;&amp;</code></p>
 
 <table><thead>
 <tr>
@@ -1328,921 +1168,389 @@ There are <strong>LOTS</strong> of keys in the example response which don't have
 </tr>
 </thead><tbody>
 <tr>
-<td><code>num_value</code></td>
+<td><code>&lt;num_value&gt;</code></td>
 <td>The numeric value of the required Preset<br>Value range is from <code>0 - 10</code></td>
 </tr>
 </tbody></table>
-<h3 id='current-device-play-status'>Current Device - Play status</h3>
-<p>Command: <code>getPlayerStatus</code></p>
-
+<h3 id='mute-device'>Mute Device</h3>
 <blockquote>
-<p>Request format:</p>
+<p>Command:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getPlayerStatus
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:MUT:1&amp;               // Mute the device
+MCU+PAS+RAKOIT:MUT:0&amp;               // Unmute the device
+MCU+PAS+RAKOIT:MUT:T&amp;               // Toggle current mute status
 </code></pre></div>
 <blockquote>
-<p>Example response:</p>
+<p>Example Response:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ch"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mode"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"loop"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eq"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"play"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"curpos"</span><span class="p">:</span><span class="s2">"11"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"offset_pts"</span><span class="p">:</span><span class="s2">"11"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totlen"</span><span class="p">:</span><span class="s2">"170653"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Title"</span><span class="p">:</span><span class="s2">"596F752661706F733B766520476F7420746865204C6F7665205B2A5D"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Artist"</span><span class="p">:</span><span class="s2">"466C6F72656E636520616E6420746865204D616368696E65"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Album"</span><span class="p">:</span><span class="s2">"4C756E6773205B31362F34345D"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"alarmflag"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"plicount"</span><span class="p">:</span><span class="s2">"11"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"plicurr"</span><span class="p">:</span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"vol"</span><span class="p">:</span><span class="s2">"47"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mute"</span><span class="p">:</span><span class="s2">"0
-}
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+MUT:0&amp;                      // Device is unmuted
+MCU+PAS+MUT:1&amp;                      // Device is muted
+</code></pre></div>
+<p>Mute and Unmute device. </p>
 
-</span></code></pre></div><h3 id='description-of-response-values'>Description of response values</h3>
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:MUT:&lt;bool_or_toggle&gt;&amp;</code></p>
+
 <table><thead>
 <tr>
-<th>Key</th>
-<th>Value Description</th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>type</code></td>
-<td><code>0</code>: Main or standalone device<br><code>1</code>: Device is a Multiroom Guest</td>
+<td><code>bool_or_toggle</code></td>
+<td>A boolean value or the charater <code>T</code><br><code>1</code> mute <br><code>0</code> unmute<br><code>T</code> Toggle between mute and unmute</td>
+</tr>
+</tbody></table>
+<h2 id='device-volume'>Device Volume</h2><h3 id='get-device-volume'>Get Device Volume</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:VOL&amp;:
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+VOL:`&lt;int_volume&gt;`&amp;
+</code></pre></div>
+<p>This request will return the current device volume level </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:VOL&amp;</code></p>
+
+<p>Response:<br>
+<code>MCU+PAS+RAKOIT:VOL&lt;int_volume&gt;&amp;</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;int_volume&gt;</code></td>
+<td>Integer value of the volume level.<br>Value range is from <code>0 - 100</code></td>
+</tr>
+</tbody></table>
+<h3 id='select-device-volume'>Select Device Volume</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:VOL`&lt;int_volume&gt;`&amp;:
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>There is no Response for this command
+</code></pre></div>
+<p>Sets the Volume of the Device.</p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:VOL&lt;int_volume&gt;&amp;</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;int_volume&gt;</code></td>
+<td>Integer value of the volume level.<br>Value range is from <code>0 - 100</code></td>
+</tr>
+</tbody></table>
+
+<p>Response:<br>
+There is no response for this command.</p>
+<h2 id='device-treble-level'>Device Treble Level</h2><h3 id='get-device-treble-level'>Get Device Treble Level</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:TRE&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:TRE:`&lt;int_treble&gt;`&amp;
+</code></pre></div>
+<p>This request will return the current device treble level </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:TRE&amp;</code></p>
+
+<p>Response:<br>
+<code>MCU+PAS+RAKOIT:TRE&lt;int_treble&gt;&amp;</code></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;int_treble&gt;</code></td>
+<td>Integer value of the treble level.<br>Value range is from <code>-10dB to 10dB</code></td>
+</tr>
+</tbody></table>
+<h3 id='select-device-treble-level'>Select Device Treble Level</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:TRE`&lt;int_Treble&gt;`&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>There is no Response for this command
+</code></pre></div>
+<p>Sets the treble Level of the Device.</p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:TRE&lt;int_Treble&gt;&amp;</code></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;int_Treble&gt;</code></td>
+<td>Integer value of the treble level.<br>Value range is from <code>-10dB to 10dB</code></td>
+</tr>
+</tbody></table>
+
+<p>Response:<br>
+There is no response for this command.</p>
+<h2 id='device-bass-level'>Device Bass Level</h2><h3 id='get-device-bass-level'>Get Device Bass Level</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:BAS&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:BAS:`&lt;int_bass&gt;`&amp;
+</code></pre></div>
+<p>This request will return the current device bass level </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:BAS&amp;</code></p>
+
+<p>Response:<br>
+<code>MCU+PAS+RAKOIT:BAS&lt;int_bass&gt;&amp;</code></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;int_bass&gt;</code></td>
+<td>Integer value of the bass level.<br>Value range is from <code>-10dB to 10dB</code></td>
+</tr>
+</tbody></table>
+<h3 id='set-device-bass-level'>Set Device Bass Level</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:BAS`&lt;int_bass&gt;`&amp;
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>There is no Response for this command
+</code></pre></div>
+<p>Sets the Bass Level of the Device.</p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:BAS&lt;int_bass&gt;&amp;</code></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;int_bass&gt;</code></td>
+<td>Integer value of the bass level.<br>Value range is from <code>-10dB to 10dB</code></td>
+</tr>
+</tbody></table>
+
+<p>Response:<br>
+There is no response for this command.</p>
+<h2 id='device-virtual-bass-on-off'>Device Virtual Bass (On/Off)</h2><h3 id='get-virtual-bass-status-on-off'>Get Virtual Bass Status (On/Off)</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:VBS&amp;:
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+VBS:0&amp;                  // Virtual Bass Disabled
+MCU+PAS+VBS:1&amp;                  // Virtual Bass Enabled
+</code></pre></div>
+<p>This request will return a boolean state of the Virtual Bass Enable/Disable Function </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:VBS&amp;</code></p>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+VBS:0&amp;</code></td>
+<td>Virtual Bass Disabled</td>
 </tr>
 <tr>
-<td><code>ch</code></td>
-<td>Active channel(s)<br><code>0</code>: Stereo<br><code>1</code>: Left<br><code>2</code>: Right</td>
+<td><code>MCU+PAS+VBS:1&amp;</code></td>
+<td>Virtual Bass Enabled</td>
 </tr>
+</tbody></table>
+<h3 id='set-virtual-bass-status-on-off'>Set Virtual Bass Status (On/Off)</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:VBS:0&amp;           // Disable Virtual Bass
+MCU+PAS+RAKOIT:VBS:1&amp;           // Enable Virtual Bass
+MCU+PAS+RAKOIT:VBS:T&amp;           // Toggle current Virtual Bass status
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+VBS:0&amp;                  // VBS Disabled
+MCU+PAS+VBS:1&amp;                  // VBS Enabled
+</code></pre></div>
+<p>Enables &amp; Disables device Virtual Bass. </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:VBS:&lt;bool_or_toggle&gt;&amp;</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bool_or_toggle</code></td>
+<td>A boolean value or the character <code>T</code><br><code>1</code> Disable <br><code>0</code> Enable<br><code>T</code> Toggle between enable &amp; disable</td>
+</tr>
+</tbody></table>
+
+<p>Response:   </p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+VBS:0&amp;</code></td>
+<td>Virtual Bass Disabled</td>
+</tr>
+<tr>
+<td><code>MCU+PAS+VBS:1&amp;</code></td>
+<td>Virtual Bass Enabled</td>
+</tr>
+</tbody></table>
+<h2 id='device-repeat-amp-shuffle-playback'>Device Repeat &amp; Shuffle playback</h2>
+<p>These commands share a common parameter table</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;str_shuffle_repeat&gt;</code></td>
+<td>Activates a combination of Shuffle and Repeat modes<br><code>REPEATALL</code>: Shuffle disabled, Repeat enabled - loop<br><code>REPEATONE</code>: Shuffle disabled, Repeat enabled - loop once<br><code>REPEATSHUFFLE</code>: Shuffle enabled, Repeat enabled - loop<br><code>SHUFFLE</code>: Shuffle enabled, Repeat disabled<br><code>SEQUENCE</code>: Shuffle disabled, Repeat disabled<br><code>REPEATALL</code>: Shuffle enabled, Repeat enabled - loop once<br></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The command <code>REPEATALL</code> appears twice in the table.  Arylic are checking this ! 
+</aside>
+<h3 id='get-device-repeat-amp-shuffle-modes'>Get Device Repeat &amp; Shuffle Modes</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>"MCU+PAS+RAKOIT:LPM&amp;:
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT+SRC:LPM&amp;
+</code></pre></div>
+<p>This request will return a combination of the current shuffle &amp; repeat mode status.</p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT:LPM&amp;</code></p>
+
+<p>Response:</p>
+
+<table><thead>
+<tr>
+<th>Response</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MCU+PAS+RAKOIT:LPM&lt;str_shuffle_repeat&gt;&amp;</code></td>
+<td>See parameter table above.</td>
+</tr>
+</tbody></table>
+<h3 id='set-device-repeat-amp-shuffle-modes'>Set Device Repeat &amp; Shuffle Modes</h3>
+<blockquote>
+<p>Command:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>MCU+PAS+RAKOIT:SRC:`&lt;str_shuffle_repeat&gt;`&amp;:
+</code></pre></div>
+<blockquote>
+<p>Example Responses:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>AXX+PLP+000                 // REPEATALL
+AXX+PLP+001                 // REPEATONE
+AXX+PLP+002                 // REPEATSHUFFLE - REPEAT ALL &amp; SHUFFLE
+AXX+PLP+003                 // SHUFFLE
+AXX+PLP+004                 // NO SHUFFLE NO REPEAT
+</code></pre></div>
+<p>Selects the desired combination of shuffle and repeat functions. </p>
+
+<p>Command:<br>
+<code>MCU+PAS+RAKOIT::</code></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td><code>mode</code></td>
-<td>Playback mode<br><code>0</code> - <code>PLAYER_MODE_NONE</code><br><code>1</code> - <code>PLAYER_MODE_AIRPLAY</code><br><code>2</code> - <code>PLAYER_MODE_DLNA</code><br><code>10</code> - <code>PLAYER_MODE_WIIMU</code> e.g. vTuner, Home Media Share, Amazon Music, Deezer<br><code>11</code> - <code>PLAYER_MODE_WIIMU_LOCAL</code> e.g. UDISK(Local USB disk on Arylic Device)<br><code>12</code> - <code>PLAYER_MODE_WIIMU_STATION</code><br><code>13</code> - <code>PLAYER_MODE_WIIMU_RADIO</code><br><code>14</code> - <code>PLAYER_MODE_WIIMU_SONGLIST</code><br><code>19</code> - <code>PLAYER_MODE_WIIMU_MAX</code><br><code>20</code> - <code>PLAYER_MODE_HTTP</code><br><code>21</code> - <code>PLAYER_MODE_HTTP_LOCAL</code><br><code>29</code> - <code>PLAYER_MODE_HTTP_MAX</code><br><code>30</code> - <code>PLAYER_MODE_ALARM</code><br><code>31</code> - <code>PLAYER_MODE_SPOTIFY</code><br><code>40</code> - <code>PLAYER_MODE_LINEIN</code><br><code>41</code> - <code>PLAYER_MODE_BT</code><br><code>42</code> - <code>PLAYER_MODE_EXT_LOCAL</code><br><code>43</code> - <code>PLAYER_MODE_OPTICAL</code><br><code>49</code> - <code>PLAYER_MODE_LINEIN_MAX</code><br><code>50</code> - <code>PLAYER_MODE_MIRROR</code><br><code>60</code> - <code>PLAYER_MODE_TALK</code><br><code>99</code> - <code>PLAYER_MODE_CHILD</code> The Device is a Guest in a Multiroom Zone<br><br><aside class="warning">@Arylic: Documentation is MISSING! Please review and give feedback.</aside></td>
-</tr>
-<tr>
-<td><code>loop</code></td>
-<td>Is a Combination of <code>SHUFFLE</code> and <code>REPEAT</code> modes<br><code>0</code>: <code>SHUFFLE:</code> disabled  <code>REPEAT:</code> enabled - loop<br><code>1</code>: <code>SHUFFLE:</code> disabled  <code>REPEAT:</code> enabled - loop once<br><code>2</code>: <code>SHUFFLE:</code> enabled  <code>REPEAT:</code> enabled - loop<br><code>3</code>: <code>SHUFFLE:</code> enabled  <code>REPEAT:</code> disabled<br><code>4</code>: <code>SHUFFLE:</code> disabled <code>REPEAT:</code> disabled<br><code>5</code>: <code>SHUFFLE:</code> enabled  <code>REPEAT:</code> enabled - loop once<br></td>
-</tr>
-<tr>
-<td><code>eq</code></td>
-<td>The current Equalizer setting</td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td>Device status<br><code>stop</code>: no audio selected<br><code>play</code>: playing audio<br><code>load</code>: load <strong>??</strong><br><code>pause</code>: audio paused</td>
-</tr>
-<tr>
-<td><code>curpos</code></td>
-<td>Current playing position (in ms)</td>
-</tr>
-<tr>
-<td><code>offset_pts</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>totlen</code></td>
-<td>Current track length (in ms)</td>
-</tr>
-<tr>
-<td><code>Title</code></td>
-<td><code>[hexed string]</code> of the track title</td>
-</tr>
-<tr>
-<td><code>Artist</code></td>
-<td><code>[hexed string]</code> of the artist</td>
-</tr>
-<tr>
-<td><code>Album</code></td>
-<td><code>[hexed string]</code> of the album</td>
-</tr>
-<tr>
-<td><code>alarmflag</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>plicount</code></td>
-<td>The total number of tracks in the playlist</td>
-</tr>
-<tr>
-<td><code>plicurr</code></td>
-<td>Index of current track in playlist</td>
-</tr>
-<tr>
-<td><code>vol</code></td>
-<td>Current volume<br>Value range is from <code>0 - 100</code>. So can be considered a linear percentage (<code>0% to 100%</code>)</td>
-</tr>
-<tr>
-<td><code>mute</code></td>
-<td>The mute status<br><code>0</code>: Not muted<br><code>1</code>: Muted</td>
-</tr>
-</tbody></table>
-<h3 id='playback'>Playback</h3>
-<p>Command: <code>setPlayerCmd</code>  </p>
-
-<p>The command <code>setPlayerCmd</code> is the main command, it needs a sub command to execute an action. See the list of current available sub commands.</p>
-<h3 id='play-sub-command'>Play Sub-command</h3>
-<blockquote>
-<p>Request format for sub command: <code>play</code></p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:play:<span class="nt">&lt;url&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<p>Play Instruction for any valid audio file or stream specified as a <code>URL</code>. </p>
-
-<p>Sub-Command: <code>play</code></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>url</code></td>
-<td>A complete <code>URL</code> for an audio source on the internet or addressable local device<br><code>http://89.223.45.5:8000/progressive-flac</code> example audio file<br><code>http://stream.live.vc.bbcmedia.co.uk/bbc_6music</code> example radio station file</td>
-</tr>
-</tbody></table>
-<h3 id='m3u-file-playlist-sub-command'>M3U File/Playlist Sub-command</h3>
-<blockquote>
-<p>Request format for sub command: <code>m3u:play</code></p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:m3u:play:<span class="nt">&lt;url&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<p>Play Instruction for any valid <code>m3u</code> file or playlist specified as a <code>URL</code>. The M3U used <a href="#extended-m3u-tags">extended tags</a> to support coverart URL, title and artist for the tracks.</p>
-
-<p>Sub-Command: <code>m3u:play</code></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>url</code></td>
-<td>A complete <code>URL</code> for an m3u file source on the internet or addressable local device<br><code>http://nwt-stuff.com/Audio/playlists/ProgFLAC.m3u</code> example audio file<br><code>http://nwt-stuff.com/Audio/playlists/bbc_6music.m3u8</code> example radio station file</td>
+<td>Playback mode<br><code>PLAYER_MODE_NONE</code><br><code>NET</code>: NET Blah Blah Blah<br><code>USB</code>: USB disk pen drive connected to  device)<br><code>USBDAC</code>: USB DAC e.g. Fromlap to connected with USB lead<br><code>BT</code>:  Bluetooth Input<br><code>LINE-IN</code>: Analogue Line in<br><code>LINE-IN2</code>: <code>PLAYER_MODE_LINEIN2</code><br><code>OPT</code>: <code>PLAYER_MODE_OPTICAL</code><br><code>COAX</code>: <code>PLAYER_MODE_COAXIAL</code><br><code>I2S</code>: <code>PLAYER_MODE_I2S</code><br><code>HSMI</code>: HDMI IN`<br></td>
 </tr>
 </tbody></table>
 
-<aside class="notice">
-The format of `m3u` files is not covered in this documentation. See <a href="https://docs.fileformat.com/audio/m3u/" target="_blank">further information on m3u file formats</a>.
-</aside>
-<h3 id='other-playback-sub-commands'>Other Playback Sub-Commands</h3>
-<p><em>!! DOCUMENTATION IN PROGRESS !!</em></p>
+<p>NET/USB/USBDAC/LINE-IN/LINE-IN2/BT/OPT/COAX/I2S/HDMI</p>
 
-<table><thead>
-<tr>
-<th>Sub-Command</th>
-<th>Parameters</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>hex_playlist</code></td>
-<td><code>uri</code>, <code>index</code></td>
-<td>Play an URI<br><code>uri</code> is an M3U playlist<br><code>index</code> is the start index<br>The <code>uri</code> value must be a <code>[hexed string]</code></td>
-</tr>
-</tbody></table>
-<h3 id='playback-control-sub-commands'>Playback Control Sub-Commands</h3>
-<blockquote>
-<p>Request format for sub commands: <code>pause</code> | <code>resume</code> | <code>onepause</code> | <code>stop</code>:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:pause
-GET /httpapi.asp?command=setPlayerCmd:resume
-GET /httpapi.asp?command=setPlayerCmd:onepause
-GET /httpapi.asp?command=setPlayerCmd:stop
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<p>The following commands will operate on the selected audio device.  </p>
-
-<table><thead>
-<tr>
-<th>Sub-Command</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>pause</code></td>
-<td>Pause current playback</td>
-</tr>
-<tr>
-<td><code>resume</code></td>
-<td>Resume playback from last position, if it is paused</td>
-</tr>
-<tr>
-<td><code>onepause</code></td>
-<td>Toggle Play/Pause</td>
-</tr>
-<tr>
-<td><code>stop</code></td>
-<td>Stop current playback and removes slected source from device</td>
-</tr>
-</tbody></table>
-<h3 id='track-selection'>Track Selection</h3>
-<blockquote>
-<p>Request format for sub commands: <code>prev</code> | <code>next</code> | <code>seek</code>:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:prev
-GET /httpapi.asp?command=setPlayerCmd:next
-GET /httpapi.asp?command=setPlayerCmd:seek:<span class="nt">&lt;position&gt;</span>
-GET /httpapi.asp?command=setPlayerCmd:playindex:<span class="nt">&lt;index&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<p>The following commands will operate on the selected audio device.</p>
-
-<table><thead>
-<tr>
-<th>Sub-Command</th>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>prev</code></td>
-<td></td>
-<td>Play previous track</td>
-</tr>
-<tr>
-<td><code>next</code></td>
-<td></td>
-<td>Play next track</td>
-</tr>
-<tr>
-<td><code>seek</code></td>
-<td><code>position</code></td>
-<td>Seconds to seek to, should be less than duration</td>
-</tr>
-<tr>
-<td><code>playindex</code></td>
-<td><code>index</code></td>
-<td>play the selected track in current playlist, start from 1, and will play last track when <code>index</code> exceed the number of tracks. <br><aside class="notice"> Introduced in version 4.6.328252 </aside></td>
-</tr>
-</tbody></table>
-<h3 id='adjusting-volume-mute-the-player'>Adjusting Volume, Mute the Player</h3>
-<blockquote>
-<p>Request format for sub command: <code>vol</code> | <code>mute</code></p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GEt /httpapi.asp?command=setPlayerCmd:vol:<span class="nt">&lt;num_value&gt;</span>
-GEt /httpapi.asp?command=setPlayerCmd:mute:<span class="nt">&lt;flag_value&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Sub-Command</th>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>vol</code></td>
-<td><code>num_value</code></td>
-<td>Adjusts the volume of the current device.<br>Value range is from <code>0-100</code>.</td>
-</tr>
-<tr>
-<td><code>mute</code></td>
-<td><code>flag_value</code></td>
-<td>Set the mute mode<br><code>0</code>: Not muted<br><code>1</code>: Muted</td>
-</tr>
-</tbody></table>
-<h3 id='playback-shuffle-and-repeat-mode'>Playback SHUFFLE and REPEAT Mode</h3>
-<blockquote>
-<p>Request format for sub command: <code>loopmode</code></p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:loopmode:<span class="nt">&lt;flag_value&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Sub-Command</th>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>loopmode</code></td>
-<td><code>flag_value</code></td>
-<td>Activates a combination of Shuffle and Repeat modes<br><code>0</code>: Shuffle disabled, Repeat enabled - loop<br><code>1</code>: Shuffle disabled, Repeat enabled - loop once<br><code>2</code>: Shuffle enabled, Repeat enabled - loop<br><code>3</code>: Shuffle enabled, Repeat disabled<br><code>4</code>: Shuffle disabled, Repeat disabled<br><code>5</code>: Shuffle enabled, Repeat enabled - loop once<br></td>
-</tr>
-</tbody></table>
-<h3 id='adjust-the-equalizer'>Adjust the Equalizer</h3>
-<blockquote>
-<p>Request format for sub command: <code>equalizer</code></p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:equalizer:<span class="nt">&lt;flag_value&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Sub-Command</th>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>equalizer</code></td>
-<td><code>flag_value</code></td>
-<td>Adjusts the built in equalizer. Available values are:<br><code>0</code>: Disables EQ<br><code>1</code>: Classic<br><code>2</code>: Popular<br><code>3</code>: Jazz<br><code>4</code>: Vocal<br><br><strong>NOTE: Not all device supports an equalizer.</strong></td>
-</tr>
-</tbody></table>
-<h3 id='get-equalizer-settings'>Get Equalizer Settings</h3>
-<blockquote>
-<p>Request format for sub command: <code>getEqualizer</code></p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:getEqualizer
-</code></pre></div>
-<blockquote>
-<p>Example response (when EQ is set to Jazz):</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>3
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Sub-Command</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>getEqualizer</code></td>
-<td>Returns current EQ setting. The response value is one of the possible settings from command <code>setPlayerCmd:equalizer:&lt;value&gt;</code></td>
-</tr>
-</tbody></table>
-<h2 id='query-playlist-song-count'>Query Playlist Song Count</h2>
-<p>Query number of tracks of current playlist, will return the number in plain.</p>
-
-<p>Command: <code>GetTrackNumber</code></p>
-
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=GetTrackNumber
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>0
-</code></pre></div>
-<aside class="notice">
-Introduced in version 4.6.328252
-</aside>
-<h1 id='usb-stick-disk-playback'>USB stick/disk playback</h1><h2 id='get-content-list-from-usb-stick-disk'>Get content list from USB stick/disk</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getLocalPlayList
-</code></pre></div>
-<blockquote>
-<p>Example response when a stick/disk is connected and files where found:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="nl">"num"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w"> 
-   </span><span class="nl">"locallist"</span><span class="p">:[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"file"</span><span class="p">:</span><span class="s2">"2F6D656469612F736461312F52656164696E672032303136202D20466F616C732E6D7033"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"file"</span><span class="p">:</span><span class="s2">"2F6D656469612F736461312F52656164696E672032303136202D20524843502E6D7033"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"file"</span><span class="p">:</span><span class="s2">"2F6D656469612F736461312F52656164696E672032303136202D20426966667920436C79726F2E6D7033"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Example response when no stick/disk is connected or no files where found:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>no music file
-</code></pre></div>
-<p>Returns a list of music files on an attached USB stick or hard drive (connected with a USB Adaptor)</p>
-
-<p>Command: <code>getLocalPlayList</code></p>
-
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value-Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>num</code></td>
-<td>Number of valid audio files.<br>Value range is from <code>1-124</code>.</td>
-</tr>
-<tr>
-<td><code>locallist</code></td>
-<td>The array containing the filenames</td>
-</tr>
-<tr>
-<td><code>file</code></td>
-<td>A single string of path, filename &amp; file extension. Note the string returned is a <code>[hexed string]</code>.</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-The treatment of hexed data is covered in a seperate section.  
-</aside>
-<h3 id='play-from-usb-stick-disk'>Play from USB stick/disk</h3>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=setPlayerCmd:playLocalList:<span class="nt">&lt;num_file_index&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<p>Based on the return value of <code>getLocalPlayList</code> this command can be used to selectively play individual tracks on a connected USB stick/hard disk. The parameter <index> specifies the position of the track within the array returned by <code>getLocalPlayList</code>.</p>
-
-<p>Sub-command: <code>playLocalList</code></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>num_file_index</code></td>
-<td>The numerical position of an audio file in the USB file index.<br>Value range is from <code>1-124</code>.</td>
-</tr>
-</tbody></table>
-<h2 id='track-info-from-usb-stick-disk'>Track Info from USB stick/disk</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=getFileInfo:<span class="nt">&lt;num_file_index_start&gt;</span>:<span class="nt">&lt;num_range&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example response for <code>range=1</code>:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="nl">"filename"</span><span class="p">:</span><span class="s2">"2F6D656469612F736461312F52656164696E672032303136202D20466F616C732E6D7033"</span><span class="p">,</span><span class="err">&lt;br&gt;</span><span class="w"> 
-   </span><span class="nl">"totlen"</span><span class="p">:</span><span class="s2">"00:00:00"</span><span class="p">,</span><span class="err">&lt;br&gt;</span><span class="w"> 
-   </span><span class="nl">"Title"</span><span class="p">:</span><span class="s2">"52656164696E672032303136202D20466F616C732E6D7033"</span><span class="p">,</span><span class="err">&lt;br&gt;</span><span class="w">
-   </span><span class="nl">"Artist"</span><span class="p">:</span><span class="s2">"756E6B6E6F776E"</span><span class="p">,</span><span class="err">&lt;br&gt;</span><span class="w"> 
-   </span><span class="nl">"Album"</span><span class="p">:</span><span class="s2">"756E6B6E6F776E"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div>
-<blockquote>
-<p>Example response for <code>range=2</code>:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"infolist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"filename"</span><span class="p">:</span><span class="s2">"2F6D656469612F736461312F52656164696E672032303136202D20466F616C732E6D7033"</span><span class="p">,</span><span class="w"> 
-         </span><span class="nl">"totlen"</span><span class="p">:</span><span class="s2">"00:00:00"</span><span class="p">,</span><span class="w"> 
-         </span><span class="nl">"Title"</span><span class="p">:</span><span class="s2">"52656164696E672032303136202D20466F616C732E6D7033"</span><span class="p">,</span><span class="w"> 
-         </span><span class="nl">"Artist"</span><span class="p">:</span><span class="s2">"756E6B6E6F776E"</span><span class="p">,</span><span class="w"> 
-         </span><span class="nl">"Album"</span><span class="p">:</span><span class="s2">"756E6B6E6F776E"</span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nl">"filename"</span><span class="p">:</span><span class="s2">"2F6D656469612F736461312F52656164696E672032303136202D20466F616C732E6D7033"</span><span class="p">,</span><span class="w"> 
-         </span><span class="nl">"totlen"</span><span class="p">:</span><span class="s2">"00:00:00"</span><span class="p">,</span><span class="w"> 
-         </span><span class="nl">"Title"</span><span class="p">:</span><span class="s2">"52656164696E672032303136202D20466F616C732E6D7033"</span><span class="p">,</span><span class="w"> 
-         </span><span class="nl">"Artist"</span><span class="p">:</span><span class="s2">"756E6B6E6F776E"</span><span class="p">,</span><span class="w"> 
-         </span><span class="nl">"Album"</span><span class="p">:</span><span class="s2">"756E6B6E6F776E"</span><span class="p">},</span><span class="w">
-      </span><span class="err">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Allows to query file information on a connected USB stick or hard drive. Two parameters are passed. The first, the  <code>index</code> value, stands for &quot;the number of files in the file system&quot; from which the output should start. The second parameter <code>range</code> specifies how many files should be analyzed, starting with <code>index</code>. So, if <code>range</code> is larger than <code>1</code>, the response will give informations for multiple music files.</p>
-
-<p>Command: <code>getFileInfo</code></p>
-<h3 id='parameter-description'>Parameter Description</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>num_file_index_start</code></td>
-<td>Start Position - the numerical position of an audio file in the USB file index.<br>Value range is from <code>1-1024</code>.</td>
-</tr>
-<tr>
-<td><code>num_range</code></td>
-<td>The quantity of files to be analysed, starting from the <code>num_file_index_start</code> value</td>
-</tr>
-</tbody></table>
-<h3 id='response-description'>Response Description</h3>
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value-Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>filename</code></td>
-<td>The filename as <code>[hexed string]</code></td>
-</tr>
-<tr>
-<td><code>totlen</code></td>
-<td>Total playing time of that track (in ms)</td>
-</tr>
-<tr>
-<td><code>Title</code></td>
-<td>The title of that track.<br>If the info is available, the value is returned as <code>[hexed string]</code>, otherwise <code>UNKNOWN</code> in plaintext</td>
-</tr>
-<tr>
-<td><code>Artist</code></td>
-<td>The artist of that track.<br>If the info is available, the value is returned as <code>[hexed string]</code>, otherwise <code>UNKNOWN</code> in plaintext</td>
-</tr>
-<tr>
-<td><code>Album</code></td>
-<td>The album where this track is from.<br>If the info is available, the value is returned as <code>[hexed string]</code>, otherwise <code>UNKNOWN</code> in plaintext</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-The treatment of hexed data is covered in a seperate section.  
-</aside>
-<h1 id='multiroom-multizone'>Multiroom / Multizone</h1>
-<p>Multiroom is a very special feature in LinkPlay modules. Several devices can be grouped together to form a so-called listening zone, so that all devices in this group play music from one and the same source. The volume can be controlled per device or for the entire group.</p>
-
-<p>If you have already grouped several devices into one zone, then one device of this group is always the host. All other devices are child to this one. This is important to know if you want to play music via Spotify Connect. In the Spotify app, only the host appears in the list of Connect devices! All other devices are hidden.</p>
-<h2 id='add-guest-device-to-multiroom-group-router-mode'>Add Guest Device to Multiroom Group (Router Mode)</h2>
-<p>This command will add/join a Guest Device to the Host Device or an existing Multiroom Group (which is assigned to the host device).  The command is sent to the Guest Device and the IP Address of Host Device needs to be added to the command as shown below.</p>
-
-<p>Command: <code>ConnectMasterAp:JoinGroupMaster</code>:</p>
-
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=ConnectMasterAp:JoinGroupMaster:eth<span class="nt">&lt;ip_address&gt;</span>:wifi0.0.0.0
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div><h3 id='parameter-description'>Parameter Description</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>ip_address</code></td>
-<td>The IP address of the host device to be removed from the group</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-The response isn't in JSON format. It is just plaintext.
-</aside>
-<h2 id='multiroom-overview'>Multiroom Overview</h2>
-<p>Command: <code>multiroom</code></p>
-
-<p>The command <code>multiroom</code> is the main command, it needs a sub command to execute an action. See the list of current available sub-commands.</p>
-
-<table><thead>
-<tr>
-<th>Sub-Command</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>getSlaveList</code></td>
-<td>Requests a list of Guest Devices in the Multiroom Group</td>
-</tr>
-<tr>
-<td><code>SlaveVolume</code></td>
-<td>Adjusts the volume of a Guest Device</td>
-</tr>
-<tr>
-<td><code>SlaveKickout</code></td>
-<td>Removes a Guest Device from the Multi-Room Group</td>
-</tr>
-<tr>
-<td><code>Ungroup</code></td>
-<td>disables Multiroom mode on the Host Device, and will split up the entire group</td>
-</tr>
-</tbody></table>
-<h2 id='request-a-list-of-guest-devices-in-a-multiroom-group'>Request a list of Guest Devices in a Multiroom Group</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:getSlaveList
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="nl">"slaves"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"wmrm_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"slave_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wohnzimmer"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FF31F09EFFF1D2BB4FDE2B3F"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.213.69.106"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WiiMu-A31"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"mute"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"battery_percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"battery_charging"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Example response when there are no Guest Devices connected e.g. This Device is in standalone mode:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="nl">"slaves"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"wmrm_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Sub-Command: <code>getSlaveList</code></p>
-
-<p>This sub-command requests a list of Guest Devices in the Multiroom Group.  A <code>JSON</code> table with information about the Guest Devices is returned.</p>
-<h3 id='response-description-json-table'>Response Description (JSON Table)</h3>
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value-Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>slaves</code></td>
-<td>The number of Guest Devices connected to this Host Device. Numeric value.</td>
-</tr>
-<tr>
-<td><code>wmrm_version</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS  Windows Media Rights Management ? !!</em></td>
-</tr>
-<tr>
-<td><code>slave_list</code></td>
-<td>Identifier for the array of Guest Devices.</td>
-</tr>
-</tbody></table>
-
-<p>Guest Device Information</p>
-
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value-Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>The name of the Guest Device</td>
-</tr>
-<tr>
-<td><code>uuid</code></td>
-<td>UUI of the Guest Device</td>
-</tr>
-<tr>
-<td><code>ip</code></td>
-<td>Guest Device&#39;s IP address</td>
-</tr>
-<tr>
-<td><code>version</code></td>
-<td><em>!! DOCUMENTATION IN PROGRESS !!</em></td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>Audio Module type  <br><code>WiiMu-A31</code>: LinkPlay A31 (used for A50, PRO, MINI, S50+ AMP)</td>
-</tr>
-<tr>
-<td><code>channel</code></td>
-<td>Active audio channel<br><code>0</code>: Stereo<br><code>1</code>: Left channel<br><code>2</code>: Right channel</td>
-</tr>
-<tr>
-<td><code>volume</code></td>
-<td>Current volume.<br>Value range is from <code>0 - 100</code>.<br>So can be considered a linear percentage (0% to 100%)</td>
-</tr>
-<tr>
-<td><code>mute</code></td>
-<td>Mute status:<br><code>0</code>: Guest Device is unmuted<br><code>1</code>: Guest Device is muted</td>
-</tr>
-<tr>
-<td><code>battery_percent</code></td>
-<td>Battery level (if battery is present).<br>Value ranges from <code>0 - 100</code>.<br>So can be considered a linear percentage (0% to 100%)</td>
-</tr>
-<tr>
-<td><code>battery_charging</code></td>
-<td>Flag that indicates whether the battery is currently charging or not.<br><code>0</code>: Battery not charging<br><code>1</code>: Battery is charging</td>
-</tr>
-</tbody></table>
-<h2 id='mute-a-guest-device'>Mute a Guest Device</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:SlaveMute:<span class="nt">&lt;ip_address&gt;</span>:<span class="nt">&lt;flag_mute&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<p>Mute a specific Guest Device of a Multiroom group.</p>
-
-<p>Sub-Command: <code>SlaveMute</code></p>
-<h3 id='parameter-description'>Parameter Description</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>ip_address</code></td>
-<td>The IP address of the Guest Device to control with this command</td>
-</tr>
-<tr>
-<td><code>flag_mute</code></td>
-<td>The desired mute status<br><code>0</code>: Unmuted<br><code>1</code>: Muted</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-The response isn't in JSON format. It is just plaintext.
-</aside>
-<h2 id='remove-guest-device-from-multi-room-group'>Remove Guest Device from Multi-Room Group</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:SlaveKickout:<span class="nt">&lt;ip_address&gt;</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<p>Sub-Command: <code>SlaveKickout</code></p>
-
-<p>This command will remove the required Guest Device from the Multi-Room Group</p>
-<h3 id='parameter-description'>Parameter Description</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>ip_address</code></td>
-<td>The IP address of the Guest Device to control with this command</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-The response isn't in JSON format. It is just plaintext.
-</aside>
-<h2 id='disable-multiroom-mode'>Disable Multiroom Mode</h2>
-<blockquote>
-<p>Request format:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight html tab-html"><code>GET /httpapi.asp?command=multiroom:Ungroup
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>OK
-</code></pre></div>
-<p>This sub-command disables Multiroom mode on the Host Device, and will split up the entire group.  All devices are returned to stand alone mode.</p>
-
-<p>Sub-Command: <code>Ungroup</code></p>
-
-<aside class="notice">
-The response isn't in JSON format. It is just plaintext.
-</aside>
-<h1 id='appendix'>Appendix</h1><h2 id='hexed-values'>Hexed Values</h2>
-<blockquote>
-<p>Convert a hexadecimal string representation to a human readable ASCII string.</p>
-</blockquote>
-<div class="highlight"><pre class="highlight c tab-c"><code><span class="kt">int</span> <span class="nf">hex_to_ascii</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pSrc</span><span class="p">,</span> 
-    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pDst</span><span class="p">,</span> 
-    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nSrcLength</span><span class="p">,</span> 
-    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nDstLength</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">memset</span><span class="p">(</span><span class="n">pDst</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nDstLength</span><span class="p">);</span>
-
-    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">nSrcLength</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">2</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="kt">char</span> <span class="n">val1</span> <span class="o">=</span> <span class="n">pSrc</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-        <span class="kt">char</span> <span class="n">val2</span> <span class="o">=</span> <span class="n">pSrc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
-
-        <span class="k">if</span> <span class="p">(</span> <span class="n">val1</span> <span class="o">&gt;</span> <span class="mh">0x60</span><span class="p">)</span>
-             <span class="n">val1</span> <span class="o">-=</span> <span class="mh">0x57</span><span class="p">;</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">val1</span> <span class="o">&gt;</span> <span class="mh">0x40</span><span class="p">)</span>
-             <span class="n">val1</span> <span class="o">-=</span> <span class="mh">0x37</span><span class="p">;</span>
-        <span class="k">else</span>
-            <span class="n">val1</span> <span class="o">-=</span> <span class="mh">0x30</span><span class="p">;</span>
-
-        <span class="k">if</span> <span class="p">(</span> <span class="n">val2</span> <span class="o">&gt;</span> <span class="mh">0x60</span><span class="p">)</span>
-            <span class="n">val2</span> <span class="o">-=</span> <span class="mh">0x57</span><span class="p">;</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">val2</span> <span class="o">&gt;</span> <span class="mh">0x40</span><span class="p">)</span>
-            <span class="n">val2</span> <span class="o">-=</span> <span class="mh">0x37</span><span class="p">;</span>
-        <span class="k">else</span>
-            <span class="n">val2</span> <span class="o">-=</span> <span class="mh">0x30</span><span class="p">;</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="n">val1</span> <span class="o">&gt;</span> <span class="mi">15</span> <span class="o">||</span> <span class="n">val2</span> <span class="o">&gt;</span> <span class="mi">15</span> <span class="o">||</span> <span class="n">val1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">val2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-
-        <span class="n">pDst</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">val1</span><span class="o">*</span><span class="mi">16</span> <span class="o">+</span> <span class="n">val2</span><span class="p">;</span>
-        <span class="n">j</span><span class="o">++</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="n">j</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>Convert a human readable ASCII string to a hexadecimal string representation.</p>
-</blockquote>
-<div class="highlight"><pre class="highlight c tab-c"><code><span class="kt">int</span> <span class="nf">ascii_to_hex</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">ascii_in</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">hex_out</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ascii_len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">hex_len</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">const</span> <span class="kt">char</span> <span class="n">hex</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">'0'</span><span class="p">,</span> <span class="sc">'1'</span><span class="p">,</span> <span class="sc">'2'</span><span class="p">,</span> <span class="sc">'3'</span><span class="p">,</span> <span class="sc">'4'</span><span class="p">,</span> <span class="sc">'5'</span><span class="p">,</span> <span class="sc">'6'</span><span class="p">,</span> <span class="sc">'7'</span><span class="p">,</span> <span class="sc">'8'</span><span class="p">,</span><span class="sc">'9'</span><span class="p">,</span> <span class="sc">'A'</span><span class="p">,</span> <span class="sc">'B'</span><span class="p">,</span> <span class="sc">'C'</span><span class="p">,</span> <span class="sc">'D'</span><span class="p">,</span> <span class="sc">'E'</span><span class="p">,</span> <span class="sc">'F'</span><span class="p">};</span>
-    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="n">memset</span><span class="p">(</span><span class="n">hex_out</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hex_len</span><span class="p">);</span>
-
-    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">ascii_len</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">ascii_in</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x000000ff</span><span class="p">;</span> 
-        <span class="n">hex_out</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex</span><span class="p">[</span><span class="n">b</span> <span class="o">/</span> <span class="mi">16</span><span class="p">];</span>
-        <span class="n">hex_out</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex</span><span class="p">[</span><span class="n">b</span> <span class="o">%</span> <span class="mi">16</span><span class="p">];</span>
-
-        <span class="o">++</span><span class="n">i</span><span class="p">;</span>
-        <span class="n">ret</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span> 
-<span class="p">}</span>
-</code></pre></div>
-<p>As you may have noticed in some examples, there are certain values that need to be converted from a string to a hexadecimal value before sending to the API, or from a hexadecimal value to a human readable ASCII string after receiving a response. These values are marked with <code>[hexed string]</code>.</p>
-
-<p>Here are two C functions, one to convert a hexadecimal string representation in a human readable ASCII string, and one function to do the opposide:</p>
-<h2 id='extended-m3u-tags'>Extended M3U Tags</h2>
-<blockquote>
-<p>Example M3U file with extended tags and relative URL</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>#EXTM3U
-#EXTURL:http://192.168.0.2/test/cover.jpg
-#EXTINF:1,P!nk - Just give me a reason
-Just Give Me A Reason.mp3
-</code></pre></div>
-<blockquote>
-<p>Example M3U file with extended tags and absolute URL</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>#EXTM3U
-#EXTURL:http://192.168.0.2/test/cover.jpg
-#EXTINF:1,P!nk - Just give me a reason
-http://192.168.0.2/test/Just%20Give%20Me%20A%02Reason.mp3
-</code></pre></div>
-<p>Standard M3U does not define tags for coverart and title, artist. There&#39;s a extended tag to append an image data for coverart, but it&#39;s not suitable for streaming device. So we defined a private tag <code>EXTURL</code> for the URL of covert. And also referenced the <code>EXTINF</code> tag to include the title and artist. With the extra meta data, the playing state on 4STREAM APP would be more friendly. </p>
-
-<table><thead>
-<tr>
-<th>Tag</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>EXTURL</code></td>
-<td>The URL will be appended after the tag and <code>:</code>. It will be used as coverart of the track, and need to be absolute URL.</td>
-</tr>
-<tr>
-<td><code>EXTINF</code></td>
-<td>Information will be appended after the tag and <code>:</code>. It is in format <code>N,ARTIST - TITLE</code><br><code>N</code> is track index but it&#39;s not used.<br> <code>ARTIST</code> and <code>TITLE</code> is seperated by <code>-</code>, better to remove the <code>-</code> in title or artist.</td>
-</tr>
-</tbody></table>
+<p>Response | Description
+<code>
+`AXX+MEA+RDY AXX+PLY+000` |  Example reply 
+`MCU+PAS+ERR:UNSUPPORTED&amp;` |  Check with FZ
+`MCU+PAS+ERR:SRC&amp;` | Check with FZ
+</code></p>
 
       </div>
       <div class="dark-box">
