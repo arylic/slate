@@ -15,7 +15,7 @@ Arylic Devices deliver the following DLNA Services by default:-
 - ConnectionManager
 - RenderingControl
 - PlayQueue (Frank Z what is this used for ?)
-- QPlay (Frank Z what is this used for ?)
+- QPLAY is a upnp extension for chinese music service QQMusic
 
 Arylic Devices are principally "DLNA Renderers" which require a minumum of
 - AVTransport
@@ -26,12 +26,11 @@ To Control and Interrogate the Arylic Devices we only need to consider the follo
 - AVTransport
 - RenderingControl
 
-Our documentaion is laid out by Functional needs so a combination of AVTransport & RenderingControl Services will be mixed up for clarity of functional needs.
+Our instructions for Arylic Deveoplers we will only document DLNA commands that have a relevance to the Arylic Product Range. If you refer to https://developer.arylic.com/docs/ you will see a useful table for funcionality related to the various Interface platforms.
 
-However for completeness we are listing the full DLNA Command Set for each Servive and identifying their relevance to Arylic Products
+The UPNP/DLNA Interface can be used for the following Functional Requirements:-
+    - Playback Control
+    - Title and artist
+    - Coverart and playlist    
 
-RenderingControl
--wait for info from Frank Z
-
-AVTransport
--wait for info from Frank Z
+So the documentation is organised by these Functional Requirements and not the Services Provided (AVTransport & Rendering Control) 
