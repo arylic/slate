@@ -1,4 +1,4 @@
-### Play from USB stick/disk
+## Play from USB stick/disk
 > Request format:
 
 ```html

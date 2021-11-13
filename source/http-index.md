@@ -5,7 +5,7 @@ title: Arylic Audio HTTP API
 language_tabs:
 
 toc_footers:
-  - V1.0.0<br>Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a> 
+  - V1.0.1<br>Made with ❤️ by<br><a href='https://woodbytes.me' target='_blank'>Woodbytes</a> and <a href="https://www.facebook.com/NWT.Stuff" target="_blank">NWT.Stuff</a> 
   
 includes:
   - http/intro_welcome
@@ -25,12 +25,13 @@ includes:
   - http/group_device
   - http/cmd_device_getStatusEx
   - http/cmd_device_getsyslog
+  - http/cmd_device_redirect_ota
 
   # Playback control
   - http/group_playback
-  - http/cmd_playback
   - http/cmd_playback_getPlayerStatus
   - http/cmd_playback_setPlayerCmd
+  - http/cmd_playback
   - http/cmd_playback_GetTrackNumber
 
   # USB disk playback
@@ -53,8 +54,9 @@ includes:
 
   # Appendix
   - http/group_appendix
-  - http/appendix_hexed_string
+  - http/appendix_changelog
   - http/appendix_extended_m3u
+  - http/appendix_hexed_string
 
 search: true
 

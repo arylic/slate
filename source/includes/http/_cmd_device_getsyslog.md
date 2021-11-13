@@ -22,7 +22,7 @@ GET /httpapi.asp?command=getsyslog
 </html>
 ```
 
-Command: `getsyslog`
-
 To get current system log for debugging, the content is encryted. The response for this command is special, it will show a download link for user. And after clicked, will download the log file onto your computer. 
+
+Command: `getsyslog`
 

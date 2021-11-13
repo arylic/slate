@@ -17,7 +17,9 @@ Command: `setDhcp`
 
 Command parameters:
 
-* `<TYPE>` - Network interface to set, could be `wifi` or `eth`
+Parameter | Description
+---|---
+`TYPE` | Network interface to set, could be `wifi` or `eth`
 
 <aside class="notice">
 Introduced in version 4.6.328252

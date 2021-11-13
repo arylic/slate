@@ -1,4 +1,4 @@
-### Current Device - Play status
+## Playback Status
 
 Command: `getPlayerStatus`
 
@@ -40,7 +40,7 @@ Key | Value Description
 ---|---
 `type` | `0`: Main or standalone device<br>`1`: Device is a Multiroom Guest 
 `ch` | Active channel(s)<br>`0`: Stereo<br>`1`: Left<br>`2`: Right
-`mode` | Playback mode<br>`0` - `PLAYER_MODE_NONE`<br>`1` - `PLAYER_MODE_AIRPLAY`<br>`2` - `PLAYER_MODE_DLNA`<br>`10` - `PLAYER_MODE_WIIMU` e.g. vTuner, Home Media Share, Amazon Music, Deezer<br>`11` - `PLAYER_MODE_WIIMU_LOCAL` e.g. UDISK(Local USB disk on Arylic Device)<br>`12` - `PLAYER_MODE_WIIMU_STATION`<br>`13` - `PLAYER_MODE_WIIMU_RADIO`<br>`14` - `PLAYER_MODE_WIIMU_SONGLIST`<br>`19` - `PLAYER_MODE_WIIMU_MAX`<br>`20` - `PLAYER_MODE_HTTP`<br>`21` - `PLAYER_MODE_HTTP_LOCAL`<br>`29` - `PLAYER_MODE_HTTP_MAX`<br>`30` - `PLAYER_MODE_ALARM`<br>`31` - `PLAYER_MODE_SPOTIFY`<br>`40` - `PLAYER_MODE_LINEIN`<br>`41` - `PLAYER_MODE_BT`<br>`42` - `PLAYER_MODE_EXT_LOCAL`<br>`43` - `PLAYER_MODE_OPTICAL`<br>`49` - `PLAYER_MODE_LINEIN_MAX`<br>`50` - `PLAYER_MODE_MIRROR`<br>`60` - `PLAYER_MODE_TALK`<br>`99` - `PLAYER_MODE_CHILD` The Device is a Guest in a Multiroom Zone<br><br><aside class="warning">@Arylic: Documentation is MISSING! Please review and give feedback.</aside>
+`mode` | Playback mode<br>`0`: Idling <br>`1`: airplay streaming<br>`2`: DLNA streaming<br>`10`: Playing network content, e.g. vTuner, Home Media Share, Amazon Music, Deezer, etc.<br>`11`: playing UDISK(Local USB disk on Arylic Device)<br>`20`: playback start by HTTPAPI<br>`31`: Spotify Connect streaming<br>`40`: Line-In input mode<br>`41`: Bluetooth input mode<br>`43`: Optical input mode<br>`47`: Line-In #2 input mode<br>`51`: USBDAC input mode<br>`99`: The Device is a Guest in a Multiroom Zone<br>
 `loop` | Is a Combination of `SHUFFLE` and `REPEAT` modes<br>`0`: `SHUFFLE:` disabled  `REPEAT:` enabled - loop<br>`1`: `SHUFFLE:` disabled  `REPEAT:` enabled - loop once<br>`2`: `SHUFFLE:` enabled  `REPEAT:` enabled - loop<br>`3`: `SHUFFLE:` enabled  `REPEAT:` disabled<br>`4`: `SHUFFLE:` disabled `REPEAT:` disabled<br>`5`: `SHUFFLE:` enabled  `REPEAT:` enabled - loop once<br>   
 `eq` | The current Equalizer setting
 `status` | Device status<br>`stop`: no audio selected<br>`play`: playing audio<br>`load`: load **??**<br>`pause`: audio paused

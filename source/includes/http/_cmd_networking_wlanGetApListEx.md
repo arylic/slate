@@ -54,3 +54,4 @@ Key | Value Description
 `extch` | *!! DOCUMENTATION IN PROGRESS !!*
 `rssi` | RSSI (Received Signal Strength Indication) value<br>Value range is from `0 - 100`.<br>`100` means best signal strength.
 `ssid` | The SSID of that WiFi network<br>`[hexed string]`
+
