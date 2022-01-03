@@ -18,11 +18,7 @@ Command: `setPlayerCmd:switchmode`
 
 Parameter | Description
 ---|---
-`player_mode` | The audio source that has to be switched<br>`wifi`: wifi mode<br>`line-in`: line analogue input<br>`bluetooth`: bluetooth mode<br>`optical`: optical digital input<br>`co-axial`: co-axial digital input<br>`line-in2`: line analogue input #2<br>`udisk`: UDisk mode
-
-<aside class="notice">
-The USBDAC mode is not available in API yet.
-</aside>
+`player_mode` | The audio source that has to be switched<br>`wifi`: wifi mode<br>`line-in`: line analogue input<br>`bluetooth`: bluetooth mode<br>`optical`: optical digital input<br>`co-axial`: co-axial digital input<br>`line-in2`: line analogue input #2<br>`udisk`: UDisk mode<br>`PCUSB`: USBDAC mode
 
 ## Play a URL
 
