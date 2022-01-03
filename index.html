@@ -1466,13 +1466,9 @@ There are <strong>LOTS</strong> of keys in the example response which don't have
 </thead><tbody>
 <tr>
 <td><code>player_mode</code></td>
-<td>The audio source that has to be switched<br><code>wifi</code>: wifi mode<br><code>line-in</code>: line analogue input<br><code>bluetooth</code>: bluetooth mode<br><code>optical</code>: optical digital input<br><code>co-axial</code>: co-axial digital input<br><code>line-in2</code>: line analogue input #2<br><code>udisk</code>: UDisk mode</td>
+<td>The audio source that has to be switched<br><code>wifi</code>: wifi mode<br><code>line-in</code>: line analogue input<br><code>bluetooth</code>: bluetooth mode<br><code>optical</code>: optical digital input<br><code>co-axial</code>: co-axial digital input<br><code>line-in2</code>: line analogue input #2<br><code>udisk</code>: UDisk mode<br><code>PCUSB</code>: USBDAC mode</td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-The USBDAC mode is not available in API yet.
-</aside>
 <h2 id='play-a-url'>Play a URL</h2>
 <blockquote>
 <p>Request format </p>
@@ -2191,6 +2187,10 @@ The response isn't in JSON format. It is just plaintext.
 <th>Changes</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>v1.0.2</td>
+<td>Added USBDAC mode for <code>setPlayerCmd:switchmode</code></td>
+</tr>
 <tr>
 <td>v1.0.1</td>
 <td>Removed not available command <code>equalizer</code>,<code>getEqualizer</code>,<code>setPlayerCmd:hex_playlist</code><br> Added redirect OTA server API <code>SetUpdateServer</code><br>Correct command <code>setPlayerCmd:switchmode</code><br>Updated description for some APIs and fixed some format issues</td>
