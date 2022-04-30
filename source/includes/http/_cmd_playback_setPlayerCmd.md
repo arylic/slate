@@ -170,7 +170,9 @@ Parameter | Description
 > Request format:
 
 ```html
-GET /httpapi.asp?command=setPlayerCmd:vol:<volume>
+GET /httpapi.asp?command=setPlayerCmd:vol:50
+GET /httpapi.asp?command=setPlayerCmd:vol--
+GET /httpapi.asp?command=setPlayerCmd:vol%2b%2b
 ```
 
 > Example response:
@@ -181,11 +183,11 @@ OK
 
 Set system volume
 
-Command: `setPlayerCmd:vol:<volume>`
+Command: `setPlayerCmd:vol<volume>`
 
 Parameter | Description
 ---|---
-`volume` | Adjusts the volume of the current device.<br>Value range is from `0-100`.
+`volume` | Adjust volume for current device<br>`:vol`: direct volue, value range is `0-100`<br>`--`: Decrease by 6<br>`%2b%2b`: Increase by 6
 
 ## Mute and Unmute 
 
